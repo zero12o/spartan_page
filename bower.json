@@ -1,0 +1,14 @@
+{
+  "name": "bootstrap_orderform",
+  "version": "0.0.1",
+  "authors": [
+    "mobiuszero <mobius.zero12o.kero@gmail.com>"
+  ],
+  "description": "This is a custom orderform",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap-sass-official": "3.3.5",
+    "font-awesome": "fontawesome#~4.4.0"
+  },
+  "private": true
+}
