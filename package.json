@@ -16,15 +16,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "npm",
-    "grunt",
-    "bower",
-    "pizza",
-    "petes",
-    "a",
-    "place",
-    "fort",
-    "lauderdale"
+    "optin",
+    "landing",
+    "marketing",
+    "squeeze",
+    "leadpages"
   ],
   "author": "mobiuszero",
   "license": "MIT",
@@ -34,10 +30,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zero12o/eatatpetes"
+    "url": "https://github.com/zero12o/spartan_page"
   },
   "bugs": {
-    "url": "https://github.com/zero12o/eatatpetes/issues"
+    "url": "https://github.com/zero12o/spartan_page/issues"
   },
-  "homepage": "https://github.com/zero12o/eatatpetes"
+  "homepage": "https://github.com/zero12o/spartan_page"
 }
