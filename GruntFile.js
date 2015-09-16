@@ -41,6 +41,10 @@ module.exports = function(grunt) {
             }
         },
         watch: {
+            assemble: {
+                files: ['_html/layouts/default.hbs', '_html/pages/*.hbs'],
+                tasks: ['assemble']
+            },
             sass: {
                 files: '_scss/*.scss',
                 tasks: ['sass:dist']
@@ -63,4 +67,4 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('assemble');
     grunt.registerTask('default', ['clean', 'assemble','concat','buildcss']);
     grunt.registerTask('buildcss', ['sass:dist']);
-};
+}; 

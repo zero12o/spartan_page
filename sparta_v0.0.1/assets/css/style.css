@@ -6262,8 +6262,8 @@ button.close {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("//netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.eot?v=4.4.0");
-  src: url("//netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.eot?#iefix&v=4.4.0") format("embedded-opentype"), url("//netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.woff2?v=4.4.0") format("woff2"), url("//netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.woff?v=4.4.0") format("woff"), url("//netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.ttf?v=4.4.0") format("truetype"), url("//netdna.bootstrapcdn.com/font-awesome/4.4.0/fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular") format("svg");
+  src: url("../fonts/fontawesome-webfont.eot?v=4.4.0");
+  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.4.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.4.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.4.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.4.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -8942,6 +8942,10 @@ body {
   overflow-x: hidden;
 }
 
+section, div, body {
+  position: relative;
+}
+
 .module {
   min-height: 100vh;
   padding-top: 2.5%;
@@ -8949,15 +8953,19 @@ body {
 }
 
 section.title {
-  position: relative;
   background-color: #1f616f;
 }
-section.title h1, section.title section.title h2 {
+section.title h1, section.title h2 {
   color: #ffffff;
 }
-section.title.title h1 {
-  font-size: 2.8125em;
+section.title h1 {
+  font-size: 7.8125em;
   text-shadow: 0 0 15px #000;
+  padding-top: 1.25em;
+}
+
+section.bonus {
+  background-color: #e1e1e1;
 }
 
 ul.fa_bullets li {
@@ -9188,15 +9196,14 @@ footer p {
 .modal-body p {
   margin-top: 4.5%;
 }
-
-.close {
-  opacity: 1;
-}
-
-h2.modal-register {
+.modal-body h2 {
   font-size: 2.125em;
   margin-bottom: 5.5%;
   margin-bottom: 5.5%;
+}
+
+.close {
+  opacity: 1;
 }
 
 .btn-warning {

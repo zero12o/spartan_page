@@ -79,9 +79,9 @@
 	$select_fa_bullets_mode: full_mode;
 // iii. functions
 // ************************
-@mixin border-radius($box) {
-	@include prefixer(border-radius, $box, webkit moz spec);
-}
+	@mixin border-radius($box) {
+		@include prefixer(border-radius, $box, webkit moz spec);
+	}
 
 // 1. Font 
 // ========================
@@ -105,13 +105,15 @@
 	body {
 	    overflow-x: hidden;
 	}
+	section,div,body {
+		position: relative;
+	}
 	.module {
 		min-height: 100vh;
 		@include padding(2.5% null 2.5% null);
 	}
-// title section 
+// title section  
 	section.title {
-		position: relative;
 		background-color: $base_bgcolor;
 		// background-image: $image_titlebg;
 	    // background-position: center center;
@@ -120,15 +122,19 @@
 	    // background-repeat: no-repeat;
 		@include margin(null null null null);
 
-		&	h1, section.title h2{
+		&	h1, h2{
 		color: $sub_fontColor;
 		}
-		&.title h1 {
-			font-size: em(45);
+		& h1 {
+			font-size: em(125);
 			text-shadow: 0 0 15px #000;
+			padding-top: em(20);
 		}
 	}
-
+// bonus section 
+	section.bonus {
+		background-color: $bonus_bgcolor;
+	}
 // 3. Unordered & Ordered Lists
 // =========================
 //  
@@ -232,36 +238,36 @@
 	}
 // 5. Modals 
 // =========================
-.modal-footer, .modal-header {
-	border-top: none;
-	border-bottom: none;
-}
-.modal-body {
-	@include padding (1.5% 5.5% 4.5% 5.5%);
-	& .btn-lg {
-	    font-size: 24px;
-	    font-weight: 700;
+	.modal-footer, .modal-header {
+		border-top: none;
+		border-bottom: none;
 	}
-	& p {
-		@include margin(4.5% null null null);
+	.modal-body {
+		@include padding (1.5% 5.5% 4.5% 5.5%);
+		& .btn-lg {
+		    font-size: 24px;
+		    font-weight: 700;
+		}
+		& p {
+			@include margin(4.5% null null null);
+		}
+		& h2 {
+			font-size: em(34);
+			@include margin(null null 5.5% null);
+		    @include margin (null null 5.5% null);
+		}
 	}
-}
+	.close {
+		opacity: 1;
+	}
 
-.close {
-	opacity: 1;
-}
-h2.modal-register {
-	font-size: em(34);
-	@include margin(null null 5.5% null);
-    @include margin (null null 5.5% null);
-}
 // 6. Buttons
 // =========================
-.btn-warning {
-    font-size: 1.85em;
-    color: #000;
-    background-color: #FFFF18;
-    @include padding (null 3.5% null 3.5%);
-    @include margin (3.5% null null null);
-    @include transition(all 500ms ease);
-}
+	.btn-warning {
+	    font-size: 1.85em;
+	    color: #000;
+	    background-color: #FFFF18;
+	    @include padding (null 3.5% null 3.5%);
+	    @include margin (3.5% null null null);
+	    @include transition(all 500ms ease);
+	}
