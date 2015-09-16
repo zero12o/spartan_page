@@ -4,6 +4,18 @@ var sassFiles = {
 
 module.exports = function(grunt) {
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        assemble: {
+            options: {
+                layout: "_html/layouts/default.hbs",
+                flatten: true
+            },
+            pages: {
+              files: {
+                  'sparta_v0.0.1/': ['_html/pages/*.hbs']
+              }
+            }
+        },
         sass: {
             dev: {
                 options: {
@@ -37,6 +49,9 @@ module.exports = function(grunt) {
                 files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', 'sparta_v0.0.1/assets/js/master.js'],
                 tasks: ['concat:js']
             }
+        },
+        clean: {
+            all: ['sparta_v0.0.1/*.html']
         }
 
     });
@@ -44,6 +59,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('assemble');
+    grunt.registerTask('default', ['clean', 'assemble','concat','buildcss']);
     grunt.registerTask('buildcss', ['sass:dist']);
-    grunt.registerTask('default', ["concat","buildcss"]);
 };
