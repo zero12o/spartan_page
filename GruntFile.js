@@ -1,5 +1,5 @@
 var sassFiles = {
-    'assets/css/style.css': '_scss/style.scss'
+    'sparta_v0.0.1/assets/css/style.css': '_scss/style.scss'
 };
 
 module.exports = function(grunt) {
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 options: {
-                    style: 'compressed',
+                    style: 'expanded',
                     sourcemap: 'none'
                 },
                 files: sassFiles
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
             },
             js: {
                 src: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', 'assets/js/master.js'],
-                dest:'assets/js/all_scripts.min.js'
+                dest:'sparta_v0.0.1/assets/js/all_scripts.min.js'
             }
         },
         watch: {
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                 tasks: ['sass:dist']
             },
             js: {
-                files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', 'assets/js/master.js'],
+                files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', 'sparta_v0.0.1/assets/js/master.js'],
                 tasks: ['concat:js']
             }
         }
