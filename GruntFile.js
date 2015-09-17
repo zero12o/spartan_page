@@ -7,10 +7,11 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         assemble: {
             options: {
-                layout: "_html/layouts/default.hbs",
-                flatten: true
+                layout: "_html/layouts/main.hbs",
+                flatten: true,
+                partials: '_html/components/*.hbs'
             },
-            pages: {
+            site: {
               files: {
                   'sparta_v0.0.1/': ['_html/pages/*.hbs']
               }
@@ -25,7 +26,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 options: {
-                    style: 'expanded',
+                    style: 'compressed',
                     sourcemap: 'none'
                 },
                 files: sassFiles
@@ -42,7 +43,7 @@ module.exports = function(grunt) {
         },
         watch: {
             assemble: {
-                files: ['_html/layouts/default.hbs', '_html/pages/*.hbs'],
+                files: ['_html/layouts/main.hbs', '_html/pages/*.hbs','_html/components/*.hbs'],
                 tasks: ['assemble']
             },
             sass: {
@@ -65,6 +66,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('assemble');
-    grunt.registerTask('default', ['clean', 'assemble','concat','buildcss']);
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.registerTask('default', ['clean','assemble','concat','buildcss',]);
     grunt.registerTask('buildcss', ['sass:dist']);
 }; 
