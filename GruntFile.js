@@ -37,8 +37,26 @@ module.exports = function(grunt) {
                 sourceMap: false,
             },
             js: {
-                src: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', 'assets/js/master.js'],
+                src: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', '_js/*'],
                 dest:'sparta_v0.0.1/assets/js/all_scripts.min.js'
+            }
+        },
+        copy: {
+            images: {
+                files: [{
+                    expand: true,
+                    cwd: '_img/',
+                    src: ['**/*.{png,jpg,svg,PNG,JPG}'],
+                    dest: 'sparta_v0.0.1/assets/img/'
+                }]
+            },
+            videos: {
+                files: [{
+                    expand: true,
+                    cwd: '_video/',
+                    src: ['**/*.{mp4,ogv,webm}'],
+                    dest: 'sparta_v0.0.1/assets/videos/'
+                }]
             }
         },
         watch: {
@@ -51,7 +69,7 @@ module.exports = function(grunt) {
                 tasks: ['sass:dist']
             },
             js: {
-                files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', 'sparta_v0.0.1/assets/js/master.js'],
+                files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', '_js/*'],
                 tasks: ['concat:js']
             }
         },
@@ -66,7 +84,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('assemble');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.registerTask('default', ['clean','assemble','concat','buildcss',]);
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.registerTask('default', ['clean','assemble','concat','buildcss','copy']);
     grunt.registerTask('buildcss', ['sass:dist']);
 }; 

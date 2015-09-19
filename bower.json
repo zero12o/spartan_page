@@ -12,6 +12,7 @@
   },
   "private": true,
   "devDependencies": {
-    "sass-web-fonts": "~1.1.0"
+    "sass-web-fonts": "~1.1.0",
+    "waypoints": "~4.0.0"
   }
 }

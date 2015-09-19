@@ -34,8 +34,9 @@
 // ************************
 // - Background
 	$base_bgcolor: #1f616f;
-	// $image_titlebg: url('../img/guycohen-background.jpg');
+	$image_titlebg: url('../img/titlebg.png');
 	$secondary_bgcolor: #ffffff;
+	$video_overlay_bgcolor: #212121;
 	$bonus_bgcolor: #e1e1e1;
 	$footer_bgcolor: #212121;
 // - Font Family
@@ -45,7 +46,6 @@
 //  - Font Colors
 	$base_fontColor: #212121;
 	$sub_fontColor: #ffffff; 
-	$accent_fontColor: #de3232;
 	$heading_fontColor: #1c1c1c;
 	$text-danger_fontColor: #d90000;
 //  - Bullet Icons And Colors
@@ -75,8 +75,7 @@
 		bullet: '\f111'
 	);
 	$fa_bullets_check_color: #128915;
-// - Options 
-	$select_fa_bullets_mode: full_mode;
+
 // iii. functions
 // ************************
 	@mixin border-radius($box) {
@@ -99,7 +98,10 @@
 	.text-danger {
 		color: $text-danger_fontColor;
 	}
-
+	// font styles
+	.text-underline {
+		text-decoration: underline;
+	}
 // 2. Layout
 // =======================
 	body {
@@ -113,23 +115,77 @@
 		@include padding(2.5% null 2.5% null);
 	}
 // title section  
-	section.title {
-		background-color: $base_bgcolor;
+	section.title.module {
+		@include padding(0 null 0 null);
+	}
+	section.title { 
+		// background-color: darken($base_bgcolor, 5%);
 		// background-image: $image_titlebg;
 	    // background-position: center center;
 	    // background-size: 100%;
-	    // background-color: #000;
 	    // background-repeat: no-repeat;
-		@include margin(null null null null);
+	    // background-attachment: fixed;
 
-		&	h1, h2{
-		color: $sub_fontColor;
+	    border-right: none;
+	    border-left: none;
+		@include margin(null null null null);
+		& .container { 
+			@include padding(3.25% null 3.25% null);
+		}
+		&	h1, h2, h4, p {
+			color: $sub_fontColor;
+			line-height: 1.30;
+		}
+		& p {
+			font-size: em(17);
 		}
 		& h1 {
-			font-size: em(125);
-			text-shadow: 0 0 15px #000;
-			padding-top: em(20);
+			font-size: em(47);
+			padding-top: em(1.25);
 		}
+		& h4 {  
+			margin-bottom: em(14); 
+		}
+		& .fa-inverse {
+			color: $sub_fontColor;
+		}
+		& .video-btn {
+			position: absolute;
+			top: 85%;
+			left: 2%;
+		}
+		& {
+			video {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: auto;
+				height: auto;
+				z-index: -100;
+				transform: translateX(-50%) translateY(-50%);
+				background-image: url('../assets/img/Hello-World.jpg') no-repeat;
+				background-size: cover;
+				transition: 2s opacity;
+			}
+			.videoverlay {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: auto;
+				height: auto;
+				z-index: -100;
+				transform: translateX(-50%) translateY(-50%);
+				background-color: rgba($video_overlay_bgcolor, 0.65);
+			}
+		}
+	}
+// main content section 
+	section.content {
+		background-color: $secondary_bgcolor;
 	}
 // bonus section 
 	section.bonus {
@@ -161,6 +217,8 @@
 //  full_mode = renders all the icons
 //  check_icon = renders all is needed for the check icon
 //  check_circle_icon =  renders the circle-check icon
+// - Options 
+	$select_fa_bullets_mode: full_mode;
 
 	ul.fa_bullets li {
 		list-style: none;
@@ -271,3 +329,11 @@
 	    @include margin (3.5% null null null);
 	    @include transition(all 500ms ease);
 	}
+
+	.video-btn { 
+		background: none;
+		border: none;
+		&:hover,&:focus,&:active {
+		outline: 0; // to remove the blue border of the button when clicked.
+		}
+	} 
