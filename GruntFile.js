@@ -59,11 +59,10 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        clean: {
+            all: ['sparta_v0.0.1/*.html','sparta_v0.0.1/assets/js/*.js','sparta_v0.0.1/assets/img/*']
+        },
         watch: {
-            assemble: {
-                files: ['_html/layouts/main.hbs', '_html/pages/*.hbs','_html/components/*.hbs'],
-                tasks: ['assemble']
-            },
             sass: {
                 files: '_scss/*.scss',
                 tasks: ['sass:dist']
@@ -71,11 +70,18 @@ module.exports = function(grunt) {
             js: {
                 files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', '_js/*'],
                 tasks: ['concat:js']
+            },
+            copy: {
+                files: ['_video/*','_img/*'],
+                tasks: ['copy:videos', 'copy:images']
+            },
+            assemble: {
+                files: ['_html/layouts/main.hbs', '_html/pages/*.hbs','_html/components/*.hbs'],
+                tasks: ['assemble']
             }
-        },
-        clean: {
-            all: ['sparta_v0.0.1/*.html','sparta_v0.0.1/assets/js/*.js']
+
         }
+       
 
     });
     grunt.loadNpmTasks('grunt-contrib-sass');
