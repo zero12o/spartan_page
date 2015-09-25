@@ -92,9 +92,19 @@
 		h#{$heading},.h#{$heading} {
 			font-family: $heading_font-family;
 			font-weight: 800;
+			line-height: 1.30;
 			@include margin(null null 3% null);
 		}
 	}
+
+	$heading_sizes: ( 2: 42px, 3: 36px, 4: 30px, 5: 24px, 6: 20px ); 
+
+	@each $heading, $value in $heading_sizes {
+		h#{$heading}, .h#{$heading} {
+			font-size: em($value);
+		}
+	}
+
 	.text-danger {
 		color: $text-danger_fontColor;
 	}
@@ -125,26 +135,17 @@
 	    // background-size: 100%;
 	    // background-repeat: no-repeat;
 	    // background-attachment: fixed;
-
+	    color: $sub_fontColor;
 	    border-right: none;
 	    border-left: none;
 		@include margin(null null null null);
 		& .container { 
 			@include padding(3.25% null 3.25% null);
 		}
-		&	h1, h2, h4, p {
-			color: $sub_fontColor;
-			line-height: 1.30;
-		}
-		& p {
-			font-size: em(17);
-		}
 		& h1 {
-			font-size: em(47);
+			font-size: em(55);
 			padding-top: em(1.25);
-		}
-		& h4 {  
-			margin-bottom: em(14); 
+			line-height: 1.50;
 		}
 		& .fa-inverse {
 			color: $sub_fontColor;
@@ -349,7 +350,7 @@
 		    border-radius: 4px;
 		    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.20);
 		    box-shadow: inset 0 1px 1px rgba(0,0,0,0.20);
-		    @include animation (fade_in 300ms ease-in);
+		    @include animation (fade_in 350ms ease-in);
 
 		    & .img-thumbnail {
 		    	margin-top: em(18px);
