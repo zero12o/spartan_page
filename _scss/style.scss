@@ -18,7 +18,7 @@
 //  5. Modal
 //  6. Buttons
 //  7. Bonus Sections Animations
-// 
+//  8. Menu Style And Actions
 // 
 // 
 //  
@@ -33,7 +33,7 @@
 // ii. variables 
 // ************************
 // - Background
-	$base_bgcolor: #1f616f;
+	$base_bgcolor: #212121;
 	$image_titlebg: url('../img/titlebg.png');
 	$secondary_bgcolor: #ffffff;
 	$video_overlay_bgcolor: #212121;
@@ -96,15 +96,12 @@
 			@include margin(null null 3% null);
 		}
 	}
-
-	$heading_sizes: ( 2: 42px, 3: 36px, 4: 30px, 5: 24px, 6: 20px ); 
-
+	$heading_sizes: ( 2: 42px, 3: 36px, 4: 30px, 5: 24px, 6: 20px );
 	@each $heading, $value in $heading_sizes {
 		h#{$heading}, .h#{$heading} {
 			font-size: em($value);
 		}
 	}
-
 	.text-danger {
 		color: $text-danger_fontColor;
 	}
@@ -180,7 +177,7 @@
 				height: auto;
 				z-index: -100;
 				transform: translateX(-50%) translateY(-50%);
-				background-color: rgba($video_overlay_bgcolor, 0.65);
+				background-color: rgba($video_overlay_bgcolor, 0.45);
 			}
 		}
 	}
@@ -330,7 +327,6 @@
 	    @include margin (3.5% null null null);
 	    @include transition(all 500ms ease);
 	}
-
 	.video-btn { 
 		background: none;
 		border: none;
@@ -362,7 +358,6 @@
 		    	@include animation (fade_in 1.65s ease-in);
 			}
 		}
-
 		@include keyframes(fade_in) {
 			0% {
 				@include opacity(0);
@@ -373,5 +368,37 @@
 				@include transform(translateY(0px));
 			}
 				
+		}
+	}
+// 8. Menu Style And Actions
+// =========================
+    .navbar {
+        border-radius: 0px;
+    }
+    .stickly_navbar {
+	    position: fixed;
+	    min-width: 100%;
+	    z-index: 15;
+    }
+	.navbar-default {
+	    background-color: rgba($base_bgcolor, 0.05);
+	    border-color: rgba($base_bgcolor, 0.25);
+	}
+	.navbar-content-view {
+		background-color: lighten($base_bgcolor, 100%);
+	    border-color: lighten($base_bgcolor, 100%);
+	    border-right-color: lighten($base_bgcolor, 100%);
+	    border-left-color: lighten($base_bgcolor, 100%);
+	    border-top-color: lighten($base_bgcolor, 100%);
+	    border-bottom-color: lighten($base_bgcolor, 80%);
+
+	    @include animation (fade 200ms ease-in);
+	}
+	@include keyframes(fade) {
+		0% {
+			@include opacity(0);
+		}
+		100% {
+			@include opacity(1);
 		}
 	}
