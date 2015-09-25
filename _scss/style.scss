@@ -143,7 +143,7 @@
 			@include padding(3.25% null 3.25% null);
 		}
 		& h1 {
-			font-size: em(55);
+			font-size: em(58);
 			padding-top: em(1.25);
 			line-height: 1.50;
 		}
@@ -350,8 +350,8 @@
 		    border-radius: 4px;
 		    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.20);
 		    box-shadow: inset 0 1px 1px rgba(0,0,0,0.20);
-		    @include animation (fade_in 350ms ease-in);
-		    
+		    @include animation (fade_in 550ms ease-in);
+		     
 		    & .img-thumbnail {
 		    	margin-top: em(18px);
 		    }
@@ -359,16 +359,18 @@
 		    	@include animation (fade_in 1s ease-in);
 			}
 			&:nth-of-type(3) {
-		    	@include animation (fade_in 1.5s ease-in);
+		    	@include animation (fade_in 1.65s ease-in);
 			}
 		}
+
 		@include keyframes(fade_in) {
-			from {
+			0% {
 				@include opacity(0);
+				@include transform(translateY(75px));
 			}
-				
-			to {
+			100% {
 				@include opacity(1);
+				@include transform(translateY(0px));
 			}
 				
 		}
