@@ -351,10 +351,16 @@
 		    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.20);
 		    box-shadow: inset 0 1px 1px rgba(0,0,0,0.20);
 		    @include animation (fade_in 350ms ease-in);
-
+		    
 		    & .img-thumbnail {
 		    	margin-top: em(18px);
 		    }
+			&:nth-of-type(2) {
+		    	@include animation (fade_in 1s ease-in);
+			}
+			&:nth-of-type(3) {
+		    	@include animation (fade_in 1.5s ease-in);
+			}
 		}
 		@include keyframes(fade_in) {
 			from {
