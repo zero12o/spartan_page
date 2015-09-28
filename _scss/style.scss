@@ -20,7 +20,7 @@
 //  7. Article Section
 //  8. Main Menu 
 //  9. Title Section 
-// 
+// 10. Media Queries
 // 
 //  
 // ----------------------------
@@ -378,12 +378,12 @@
 			color: $sub_fontColor;
 		}
 
-		& .video-btn {
-			position: absolute;
-			top: 85%;
-			left: 2%;
-		}
 		& {
+			.video-btn {
+				position: absolute;
+				top: 85%;
+				left: 2%;
+			}
 			video {
 				position: fixed;
 				top: 50%;
@@ -412,3 +412,5 @@
 			}
 		}
 	}
+
+

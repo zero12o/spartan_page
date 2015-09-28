@@ -37,7 +37,7 @@ module.exports = function(grunt) {
                 sourceMap: false,
             },
             js: {
-                src: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js','bower_components/waypoints/lib/noframework.waypoints.min.js','_js/*'],
+                src: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js','bower_components/waypoints/lib/noframework.waypoints.min.js','_js/*.js'],
                 dest:'sparta_v0.0.1/assets/js/scripts.min.js'
             }
         },
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
                 tasks: ['sass:dist']
             },
             js: {
-                files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', '_js/*'],
+                files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', '_js/*.js'],
                 tasks: ['concat:js']
             },
             copy: {
