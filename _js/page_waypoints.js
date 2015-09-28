@@ -3,19 +3,19 @@
 // ============================================================================================
 // Bonus Section Animations 
 // ============================================================================================
-var bonus_sect = document.getElementById("bonus_section");
-var bonus = document.getElementById('bonus_1');
-var bonus2 = document.getElementById('bonus_2');
-var bonus3 = document.getElementById('bonus_3');
+var article_sect = document.getElementById("articles_section");
+var article1 = document.getElementById('article_1');
+var article2 = document.getElementById('article_2');
+var article3 = document.getElementById('article_3');
 
-var bonus_waypoint_down = new Waypoint ({
-	element: bonus_sect, handler: function (direction) {
-		bonus.classList.add("bonus_item");
-		bonus.classList.remove("hidden");
-		bonus2.classList.add("bonus_item");
-		bonus2.classList.remove("hidden");
-		bonus3.classList.add("bonus_item");
-		bonus3.classList.remove("hidden");
+var acticle_waypoint = new Waypoint ({
+	element: article_sect, handler: function (direction) {
+		article1.classList.add("article_item");
+		article1.classList.remove("hidden");
+		article2.classList.add("article_item");
+		article2.classList.remove("hidden");
+		article3.classList.add("article_item");
+		article3.classList.remove("hidden");
 	},  
 	offset: '15%'
 });
@@ -34,6 +34,7 @@ var sticky_menu = new Waypoint ({
 		}
 		else {
 			menu.classList.remove("stickly_navbar","navbar-content-view");
+			menu.classList.add("navbar-default");
 		}
 	}
 });

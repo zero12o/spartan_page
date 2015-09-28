@@ -17,8 +17,9 @@
 //  4. Footer
 //  5. Modal
 //  6. Buttons
-//  7. Bonus Sections Animations
-//  8. Menu Style And Actions
+//  7. Article Section
+//  8. Main Menu 
+//  9. Title Section 
 // 
 // 
 //  
@@ -122,71 +123,20 @@
 		@include padding(2.5% null 2.5% null);
 	}
 // title section  
-	section.title.module {
-		@include padding(0 null 0 null);
-	}
 	section.title { 
 		// background-color: darken($base_bgcolor, 5%);
 		// background-image: $image_titlebg;
-	    // background-position: center center;
-	    // background-size: 100%;
-	    // background-repeat: no-repeat;
-	    // background-attachment: fixed;
-	    color: $sub_fontColor;
-	    border-right: none;
-	    border-left: none;
-		@include margin(null null null null);
-		& .container { 
-			@include padding(3.25% null 3.25% null);
-		}
-		& h1 {
-			font-size: em(58);
-			padding-top: em(1.25);
-			line-height: 1.50;
-		}
-		& .fa-inverse {
-			color: $sub_fontColor;
-		}
-		& .video-btn {
-			position: absolute;
-			top: 85%;
-			left: 2%;
-		}
-		& {
-			video {
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				min-width: 100%;
-				min-height: 100%;
-				width: auto;
-				height: auto;
-				z-index: -100;
-				transform: translateX(-50%) translateY(-50%);
-				background-image: url('../assets/img/Hello-World.jpg') no-repeat;
-				background-size: cover;
-				transition: 2s opacity;
-			}
-			.videoverlay {
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				min-width: 100%;
-				min-height: 100%;
-				width: auto;
-				height: auto;
-				z-index: -100;
-				transform: translateX(-50%) translateY(-50%);
-				background-color: rgba($video_overlay_bgcolor, 0.45);
-			}
-		}
+		// background-position: center center;
+		// background-size: 100%;
+		// background-repeat: no-repeat;
+		// background-attachment: fixed;
 	}
 // main content section 
 	section.content {
 		background-color: $secondary_bgcolor;
 	}
 // bonus section 
-	section.bonus {
+	section.articles {
 		background-color: $bonus_bgcolor;
 	}
 // 3. Unordered & Ordered Lists
@@ -334,10 +284,10 @@
 		outline: 0; // to remove the blue border of the button when clicked.
 		}
 	} 
-// 7. Bonus Sections Animations
+// 7. Article Section Animations and styles
 // =========================
-	section.bonus {
-		& .bonus_item {
+	section.articles {
+		& .article_item {
 		    min-height: em(20);
 		    padding: em(19);
 		    margin-bottom: em(20);
@@ -370,7 +320,7 @@
 				
 		}
 	}
-// 8. Menu Style And Actions
+// 8. Main Menu
 // =========================
     .navbar {
         border-radius: 0px;
@@ -383,16 +333,20 @@
 	.navbar-default {
 	    background-color: rgba($base_bgcolor, 0.05);
 	    border-color: rgba($base_bgcolor, 0.25);
+
+        & ul.navbar-nav li a {
+        	color: $sub_fontColor;
+        }
 	}
 	.navbar-content-view {
 		background-color: lighten($base_bgcolor, 100%);
-	    border-color: lighten($base_bgcolor, 100%);
-	    border-right-color: lighten($base_bgcolor, 100%);
-	    border-left-color: lighten($base_bgcolor, 100%);
-	    border-top-color: lighten($base_bgcolor, 100%);
+	    border-color: rgba($base_bgcolor, 0.0);
 	    border-bottom-color: lighten($base_bgcolor, 80%);
-
 	    @include animation (fade 200ms ease-in);
+
+        & ul.navbar-nav li a {
+        	color: darken($sub_fontColor, 75%);
+        }
 	}
 	@include keyframes(fade) {
 		0% {
@@ -400,5 +354,61 @@
 		}
 		100% {
 			@include opacity(1);
+		}
+	}
+
+// 9. Title Section W/ Full Width Video 
+// =========================
+	section.title.module {
+		@include padding(0 null 0 null);
+	    color: $sub_fontColor;
+	    border-right: none;
+	    border-left: none;
+		@include margin(null null null null);
+
+		& .container { 
+			@include padding(3.25% null 3.25% null);
+		}
+		& h1 {
+			font-size: em(58);
+			padding-top: em(1.25);
+			line-height: 1.50;
+		}
+		& .fa-inverse {
+			color: $sub_fontColor;
+		}
+
+		& .video-btn {
+			position: absolute;
+			top: 85%;
+			left: 2%;
+		}
+		& {
+			video {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: auto;
+				height: auto;
+				z-index: -100;
+				transform: translateX(-50%) translateY(-50%);
+				background-image: url('../assets/img/Hello-World.jpg') no-repeat;
+				background-size: cover;
+				transition: 2s opacity;
+			}
+			.videoverlay {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: auto;
+				height: auto;
+				z-index: -100;
+				transform: translateX(-50%) translateY(-50%);
+				background-color: rgba($video_overlay_bgcolor, 0.45);
+			}
 		}
 	}
