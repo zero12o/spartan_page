@@ -9,7 +9,7 @@ module.exports = function(grunt) {
             options: {
                 layout: "_html/layouts/main.hbs",
                 flatten: true,
-                partials: '_html/components/*.hbs'
+                partials: '_html/components/**/*.hbs'
             },
             site: {
               files: {
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
                 tasks: ['copy:videos', 'copy:images']
             },
             assemble: {
-                files: ['_html/layouts/main.hbs', '_html/pages/*.hbs','_html/components/*.hbs'],
+                files: ['_html/layouts/main.hbs', '_html/pages/*.hbs','_html/components/**/*.hbs'],
                 tasks: ['assemble']
             }
 

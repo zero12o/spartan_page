@@ -1,3 +1,6 @@
+// ============================================================================================
+// hello_world video actions 
+// ============================================================================================
 // This is the video background actions that I have decided to use. For now anyways I made need to change this in the future. Stay Tuned.  
 var vid = document.getElementById("hello_world");
 var pauseButton = document.querySelector(".title .video-btn");

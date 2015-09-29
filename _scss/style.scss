@@ -20,8 +20,8 @@
 //  7. Article Section
 //  8. Main Menu 
 //  9. Title Section 
-// 10. Media Queries
-// 
+// 10. Carousel 
+// 11. Testimonials Carousel
 //  
 // ----------------------------
 // i. imports
@@ -43,7 +43,7 @@
 // - Font Family
 	$base_font-family: 'Droid Sans', sans-serif;
 	$heading_font-family: 'Oswald', sans-serif;
-	$list_font-family:  'FontAwesome';
+	$fa_font-family:  'FontAwesome';
 //  - Font Colors
 	$base_fontColor: #212121;
 	$sub_fontColor: #ffffff; 
@@ -97,6 +97,7 @@
 			@include margin(null null 3% null);
 		}
 	}
+	// I dont like the way I have done this and I have to revist this in the future. 
 	$heading_sizes: ( 2: 42px, 3: 36px, 4: 30px, 5: 24px, 6: 20px );
 	@each $heading, $value in $heading_sizes {
 		h#{$heading}, .h#{$heading} {
@@ -139,6 +140,37 @@
 	section.articles {
 		background-color: $bonus_bgcolor;
 	}
+// blockquote 
+blockquote {
+	position: relative;
+	margin-top: em(25);
+	margin-bottom: em(25);
+	& p::before {
+		font-family: $fa_font-family; 
+		content: "\f10d \00a0";
+		font-size: em(31.5);
+	    position: absolute;
+	    top: em(-3px);
+	    left: em(10px);
+	    color: lighten($base_fontColor, 75%)
+	}
+	& p {
+		padding-left: em(42.5px);
+		text-align: justify;
+	}
+	& p::after {
+		font-family: $fa_font-family; 
+		content: "\00a0 \f10e";
+		font-size: em(25.5);
+		position: absolute;
+		padding-left: em(5px);
+	    color: lighten($base_fontColor, 75%)
+	}
+	& footer { // since I have used "footer" tag for the sites footer background. 
+		background: rgba($footer_bgcolor, 0.0); 
+	}
+}
+
 // 3. Unordered & Ordered Lists
 // =========================
 //  
@@ -166,7 +198,7 @@
 //  check_icon = renders all is needed for the check icon
 //  check_circle_icon =  renders the circle-check icon
 // - Options 
-	$select_fa_bullets_mode: full_mode;
+	$select_fa_bullets_mode: check_circle_icon;
 
 	ul.fa_bullets li {
 		list-style: none;
@@ -176,7 +208,7 @@
 	ul.fa_bullets > li:before {
 	    @include position(absolute, null null null 2.25%);
 	    font-size: em(45);
-		font-family: $list_font-family;		
+		font-family: $fa_font-family;		
 	}
 
 	@if $select_fa_bullets_mode == full_mode {
@@ -333,7 +365,7 @@
 	.navbar-default {
 	    background-color: rgba($base_bgcolor, 0.05);
 	    border-color: rgba($base_bgcolor, 0.25);
-
+	    @include transition(all 600ms ease-in-out);
         & ul.navbar-nav li a {
         	color: $sub_fontColor;
         }
@@ -412,5 +444,38 @@
 			}
 		}
 	}
+// 10. Carousel
+// =========================
+.carousel {
+	& button.carousel-control.left {
+		background-image: none;
+		border: none;
+	}
 
+	& button.carousel-control.right {
+		background-image: none;
+		border: none;
+	}
+}
+// 10. Testimonials Carousel
+// =========================
+.testimonials {
+	&.carousel {
+		& .carousel-control {
+			width: 4.75%;
+			height: em(43);
+			top: 40%;
+		}
+		& button.carousel-control.left {
+			background-color: $base_bgcolor;
+		}
 
+		& button.carousel-control.right {
+			background-color: $base_bgcolor;
+
+		}	
+	}
+	& .carousel-indicators li {
+		background: lighten($base_bgcolor,60%);
+	}
+}
