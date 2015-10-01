@@ -1,5 +1,5 @@
 //  Theme made my Mobiuszero. 
-//  bulid version 0.2.5
+//  bulid version 0.3.2
 //  
 // -------------------------
 // 	Table of contents
@@ -319,7 +319,7 @@ blockquote {
 // 7. Article Section Animations and styles
 // =========================
 	section.articles {
-		& .article_item {
+		& .article_box {
 		    min-height: em(20);
 		    padding: em(19);
 		    margin-bottom: em(20);
@@ -446,36 +446,36 @@ blockquote {
 	}
 // 10. Carousel
 // =========================
-.carousel {
-	& button.carousel-control.left {
-		background-image: none;
-		border: none;
-	}
-
-	& button.carousel-control.right {
-		background-image: none;
-		border: none;
-	}
-}
-// 10. Testimonials Carousel
-// =========================
-.testimonials {
-	&.carousel {
-		& .carousel-control {
-			width: 4.75%;
-			height: em(43);
-			top: 40%;
-		}
+	.carousel {
 		& button.carousel-control.left {
-			background-color: $base_bgcolor;
+			background-image: none;
+			border: none;
 		}
 
 		& button.carousel-control.right {
-			background-color: $base_bgcolor;
+			background-image: none;
+			border: none;
+		}
+	}
+// 10. Testimonials Carousel
+// =========================
+	.testimonials {
+		&.carousel {
+			& .carousel-control {
+				width: 4.75%;
+				height: em(43);
+				top: 40%;
+			}
+			& button.carousel-control.left {
+				background-color: $base_bgcolor;
+			}
 
-		}	
+			& button.carousel-control.right {
+				background-color: $base_bgcolor;
+
+			}	
+		}
+		& .carousel-indicators li {
+			background: lighten($base_bgcolor,60%);
+		}
 	}
-	& .carousel-indicators li {
-		background: lighten($base_bgcolor,60%);
-	}
-}
