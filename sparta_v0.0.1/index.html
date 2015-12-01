@@ -6,30 +6,28 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>mobiuszero - my portfolio site</title>
+        <title>mobiuszero</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css?v=0.2.5">
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- =================== Google TagManager ================== -->
+            	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N8XWT9"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-N8XWT9');</script>
+        <!-- =================== End Google TagManager ============== -->
     </head>
     <body>
-        <!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N8XWT9"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N8XWT9');</script>
-<!-- End Google Tag Manager -->
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="main_menu" class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand logo" href="#title_section" data-menu="main_menu_link"><span class="h5">&#60;</span><span>MobiusZero </span><span class="h5">&#92;&#62;</span></a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar_mainmenu">
             <span class="sr-only">Toggle navigation</span>
             <i class="fa fa-bars fa-lg fa-inverse"></i>
@@ -37,21 +35,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
         <div class="collapse navbar-collapse navbar_mainmenu">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Home</a>
-                </li>
-                <li><a href="#">Products</a> 
-                </li>
-                <li><a href="#">About Us</a>
-                </li>
-                <li><a href="#">Contact Us</a>
-                </li>
+                <li><a href="#title_section" data-menu="main_menu_link">Home</a></li>
+                <li><a href="#about" data-menu="main_menu_link">About</a></li>
+                <li><a href="#portfolio" data-menu="main_menu_link">Portfolio</a></li>
+                <li><a href="#contact" data-menu="main_menu_link">Contact</a></li>
             </ul>
         </div>
     </div>
 </div>
         
 	<section id="title_section" class="title module">
-		<video id="hello_world" poster="assets/img/Hello-World.jpg" autoplay loop>
+		<video id="hello_world" poster="assets/img/Hello-World.png" autoplay loop>
 		        <source src="assets/videos/Hello-World.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
 		        <source src="assets/videos/Hello-World.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
 		</video>
@@ -60,44 +54,84 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</h1> 
+					<h1 class="text-center logo"><span class="h5">&#60;</span><span>MobiusZero </span><span class="h5">&#92;&#62;</span></h1> 
 				</div>		 
 			</div>
 		</div>
 	</section>
-	<section id="content_section" class="content module">
+	<section id="about" class="content module">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h2 class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h2> 
-					<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h3>
-					<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h4>
-					<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h5>
-					<h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h6>
-					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p> 
-
+				<div class="col-md-10 col-md-offset-1">
+		            <h1>A few words about me.</h1> 
+		            <h4>I am a web designer that is based in Florida. My focus is front-end design. I breath it, think it, and sleep it. Its my obsession and I couldn't be happier.</h4>
+		            <p>I create beautiful, usable, professional websites using best practice accessibility and the latest W3C web standards guidelines, resulting in semantic and SEO friendly webpages. All my websites are lovingly hand coded in HTML 5 and CCS3.</p>
+		            <p>In my toolbox I use Photoshop, Illustrator, and Fireworks for layout and asset building. Dreamweaver for email layout and coding. Node and Grunt for page building and modularization for different setups with the very kind help of sublime text 3. Finally, I use frameworks like bootstrap to help me in my quest to make outstanding looking websites.</p>
+		            <p>I am currently teaching myself more php and javascript so I can create wordpress themes or more interesting looking pages. Though my two year plan that I have will have me circling around C++. I may dibble in Ruby on Rails. Stay tuned by <a data-menu="contact" href="#contact">following me.</a></p>
+		            <p>I have practical knowledge of Infusionsoft to create small to large scale marketing funnels. So, if you need help with getting your marketing funnel in order I can be more than happy to help out.</p> 
 				</div>
 			</div>
 		</div>
 	</section>
+	<section id="portfolio" class="portfolio content module">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-md-10 col-md-offset-1">
+					<h2>My Portfolio</h2>
+					<p>Here's the projects that I have worked on over the last few years. If you like what you see or would like to know what else that I have done <a data-menu="contact" href="#contact">let me know.</a></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4" >
+							<img src="http://lorempixel.com/400/300/city/" alt="lorem ipsum pixel" width="385" height="325" class="img-responsive waypoint hidden" />
+						</div>
+						<div class="col-md-4">
+							<img src="http://lorempixel.com/400/300/city/" alt="lorem ipsum pixel" width="385" height="325" class="img-responsive waypoint hidden" />
+						</div>
+						<div class="col-md-4">
+							<img src="http://lorempixel.com/400/300/city/" alt="lorem ipsum pixel" width="385" height="325" class="img-responsive waypoint hidden" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4" >
+							<img src="http://lorempixel.com/400/300/city/" alt="lorem ipsum pixel" width="385" height="325" class="img-responsive waypoint hidden" />
+						</div>
+						<div class="col-md-4">
+							<img src="http://lorempixel.com/400/300/city/" alt="lorem ipsum pixel" width="385" height="325" class="img-responsive waypoint hidden" />
+						</div>
+						<div class="col-md-4">
+							<img src="http://lorempixel.com/400/300/city/" alt="lorem ipsum pixel" width="385" height="325" class="img-responsive waypoint hidden" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>   
+	<section id="contact" class="content module">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-md-10 col-md-offset-1">
+				<h2>Contact Me</h2>
+				
+				</div>
+			</div>
+		</div>
+	</section>  
         <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <ul>
-                            <li>Lorem ipsum dolor sit amet copyright &copy; <span id="year"></span><script> var d = new Date(); var n = d.getFullYear(); document.getElementById("year").innerHTML = n; </script></li>
-                            <li>Home</li>
-                            <li>Contact Us</li>
-                            <li>Disclaimer</li>
-                            <li>Terms and Conditions</li>
+                            <li>mobiuszero copyright &copy; <span id="year"></span><script> var d = new Date(); var n = d.getFullYear(); document.getElementById("year").innerHTML = n; </script></li>
+                            <li>Privacy Policy</li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> 
-                    </div>
+                    </div> 
                 </div>
             </div>
         </footer>
-        <!-- Add your site or application content here -->
+        <!-- jquery script -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <!-- bootstrap plugins -->
         <script src="assets/js/scripts.min.js?v=3.3.5"></script>

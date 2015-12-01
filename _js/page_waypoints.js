@@ -6,7 +6,7 @@
 // ============================================================================================
 // Sticky Menu Actions
 // ============================================================================================
-	var sticky_menu = $("#content_section").waypoint({
+	var sticky_menu = $("#about").waypoint({
 		handler: function (direction) {
 			if (direction == "down") {
 				$("#main_menu").addClass("stickly_navbar navbar-content-view").removeClass("navbar-default");
@@ -17,11 +17,12 @@
 		offset: "38%"
 	});
 // ============================================================================================
-// Article Section Animations 
+// Portfolio Section Animations 
 // ============================================================================================
-	var article_section = $("#articles_section").waypoint({
+	// Find the class then add a class then remove a class within the the section.
+	var portfolio_section = $("#portfolio").waypoint({
 		handler: function (direction) {
-			$(".article_waypoint").addClass("article_box").removeClass("hidden");
+			$(".waypoint").addClass("portfolio_item").removeClass("hidden");
 		},
-		offset: "15%"
+		offset: "30%"
 	});

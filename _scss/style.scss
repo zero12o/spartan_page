@@ -1,5 +1,5 @@
 //  Theme made my Mobiuszero. 
-//  bulid version 0.3.2
+//  bulid version 0.4.0
 //  
 // -------------------------
 // 	Table of contents
@@ -17,7 +17,7 @@
 //  4. Footer
 //  5. Modal
 //  6. Buttons
-//  7. Article Section
+//  7. Portfolio Section
 //  8. Main Menu 
 //  9. Title Section 
 // 10. Carousel 
@@ -26,24 +26,24 @@
 // ----------------------------
 // i. imports
 // ************************
-@import "bourbon"; 
+@import "bourbon"; //multipurpose functions
 @import "bootstrap";
 @import "font-awesome";
 @import "web-fonts";
+@import "fonts/logofont.css";
 @include web-fonts(("Droid Sans": ("400","700")), "Oswald");
+@import "sass_mq"; //media queries function call
 // ii. variables 
 // ************************
 // - Background
 	$base_bgcolor: #212121;
-	$image_titlebg: url('../img/titlebg.png');
 	$secondary_bgcolor: #ffffff;
-	$video_overlay_bgcolor: #212121;
-	$bonus_bgcolor: #e1e1e1;
-	$footer_bgcolor: #212121;
+	$image_titlebg: url('../img/titlebg.png');
 // - Font Family
 	$base_font-family: 'Droid Sans', sans-serif;
 	$heading_font-family: 'Oswald', sans-serif;
 	$fa_font-family:  'FontAwesome';
+	$logo_font-family: 'PRISTINA';
 //  - Font Colors
 	$base_fontColor: #212121;
 	$sub_fontColor: #ffffff; 
@@ -88,6 +88,10 @@
 	body {
 		font-family: $base_font-family;
 		font-size: 16px;
+		color: lighten($base_fontColor, 20%);
+	}
+	p {
+		font-size: em(18);
 	}
 	@for $heading from 1 through 6 {
 		h#{$heading},.h#{$heading} {
@@ -98,11 +102,15 @@
 		}
 	}
 	// I dont like the way I have done this and I have to revist this in the future. 
-	$heading_sizes: ( 2: 42px, 3: 36px, 4: 30px, 5: 24px, 6: 20px );
+	$heading_sizes: ( 2: 40px, 3: 36px, 4: 26px, 5: 18px, 6: 16px );
 	@each $heading, $value in $heading_sizes {
 		h#{$heading}, .h#{$heading} {
 			font-size: em($value);
+			color: lighten($base_fontColor, 23%);
 		}
+	}
+	.logo {
+		font-family: $logo_font-family;
 	}
 	.text-danger {
 		color: $text-danger_fontColor;
@@ -137,8 +145,8 @@
 		background-color: $secondary_bgcolor;
 	}
 // bonus section 
-	section.articles {
-		background-color: $bonus_bgcolor;
+	section.portfolio {
+		background-color: $base_bgcolor;
 	}
 // blockquote 
 blockquote {
@@ -167,7 +175,7 @@ blockquote {
 	    color: lighten($base_fontColor, 75%)
 	}
 	& footer { // since I have used "footer" tag for the sites footer background. 
-		background: rgba($footer_bgcolor, 0.0); 
+		background: rgba($base_bgcolor, 0.0); 
 	}
 }
 
@@ -253,7 +261,7 @@ blockquote {
 	footer {
 		@include padding (5% null 2.5% null);
 		color: $sub_fontColor;
-		background: $footer_bgcolor;
+		background: $base_bgcolor;
 	}
 	footer ul {
 		list-style: none;
@@ -318,21 +326,22 @@ blockquote {
 	} 
 // 7. Article Section Animations and styles
 // =========================
-	section.articles {
-		& .article_box {
-		    min-height: em(20);
-		    padding: em(19);
-		    margin-bottom: em(20);
-		    background-color: #f5f5f5;
-		    border: 1px solid #e3e3e3;
-		    border-radius: 4px;
-		    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.20);
-		    box-shadow: inset 0 1px 1px rgba(0,0,0,0.20);
+	section.portfolio {
+		padding-bottom: em(60px);
+		& div.col-md-10, div.col-md-10 h2 {
+			color: $sub_fontColor;
+		}
+		& .row:nth-of-type(2) {
+			margin-top: em(10px);
+		}
+		& div.row div.col-md-4 {
+			padding-right: 5px;
+			padding-left: 5px;
+		}
+		& .portfolio_item {
+			display: inline-block;
 		    @include animation (fade_in 550ms ease-in);
 		     
-		    & .img-thumbnail {
-		    	margin-top: em(18px);
-		    }
 			&:nth-of-type(2) {
 		    	@include animation (fade_in 1s ease-in);
 			}
@@ -356,11 +365,35 @@ blockquote {
 // =========================
     .navbar {
         border-radius: 0px;
+        padding-top: 1.25%;	
+        padding-bottom: 1.25%;
+        & .navbar-right {
+        	margin-right: 0;
+        }
+		& .logo.navbar-brand {
+			font-size: em(35px);
+			padding-top: em(5.5px);
+			margin-left: 0;
+			color: $sub_fontColor;
+			display: none;
+			& span.h5 {
+				font-weight: 100;
+				font-size: em(12px);
+				color: $sub_fontColor;
+			}
+		}
     }
     .stickly_navbar {
 	    position: fixed;
 	    min-width: 100%;
 	    z-index: 15;
+	    & .logo.navbar-brand {
+	    	display: inline;
+	    	color: darken($sub_fontColor, 75%);
+	    	& span.h5 { 
+	    		color: darken($sub_fontColor, 75%);	
+	    	}
+	    }
     }
 	.navbar-default {
 	    background-color: rgba($base_bgcolor, 0.05);
@@ -369,15 +402,23 @@ blockquote {
         & ul.navbar-nav li a {
         	color: $sub_fontColor;
         }
+        & .navbar-toggle {
+        	border-color: inherit;
+        }
 	}
 	.navbar-content-view {
 		background-color: lighten($base_bgcolor, 100%);
 	    border-color: rgba($base_bgcolor, 0.0);
 	    border-bottom-color: lighten($base_bgcolor, 80%);
 	    @include animation (fade 200ms ease-in);
-
+		& .fa-inverse {
+			color: darken($sub_fontColor, 75%);
+		}
         & ul.navbar-nav li a {
         	color: darken($sub_fontColor, 75%);
+        }
+        & .navbar-toggle {
+        	border-color: inherit;
         }
 	}
 	@include keyframes(fade) {
@@ -389,7 +430,7 @@ blockquote {
 		}
 	}
 
-// 9. Title Section W/ Full Width Video 
+// 9. Title Section 
 // =========================
 	section.title.module {
 		@include padding(0 null 0 null);
@@ -397,19 +438,24 @@ blockquote {
 	    border-right: none;
 	    border-left: none;
 		@include margin(null null null null);
-
+		& h1.logo {
+			font-family: 'PRISTINA';
+			font-size: em(125);
+			line-height: 1.33;
+			position: relative;
+			padding-top: em(1.25);
+			& span.h5 {
+				font-weight: 100;
+				font-size: em(12px);
+				color: $sub_fontColor;
+			}
+		}
 		& .container { 
 			@include padding(3.25% null 3.25% null);
-		}
-		& h1 {
-			font-size: em(58);
-			padding-top: em(1.25);
-			line-height: 1.50;
 		}
 		& .fa-inverse {
 			color: $sub_fontColor;
 		}
-
 		& {
 			.video-btn {
 				position: absolute;
@@ -426,7 +472,7 @@ blockquote {
 				height: auto;
 				z-index: -100;
 				transform: translateX(-50%) translateY(-50%);
-				background-image: url('../assets/img/Hello-World.jpg') no-repeat;
+				background-image: url('../assets/img/Hello-World.png') no-repeat;
 				background-size: cover;
 				transition: 2s opacity;
 			}
@@ -440,7 +486,7 @@ blockquote {
 				height: auto;
 				z-index: -100;
 				transform: translateX(-50%) translateY(-50%);
-				background-color: rgba($video_overlay_bgcolor, 0.45);
+				background-color: rgba($base_bgcolor, 0.45);
 			}
 		}
 	}
@@ -457,7 +503,7 @@ blockquote {
 			border: none;
 		}
 	}
-// 10. Testimonials Carousel
+// 11. Testimonials Carousel
 // =========================
 	.testimonials {
 		&.carousel {
