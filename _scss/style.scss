@@ -22,6 +22,7 @@
 //  9. Title Section 
 // 10. Carousel 
 // 11. Testimonials Carousel
+// 12. Contact Section
 //  
 // ----------------------------
 // i. imports
@@ -178,7 +179,6 @@ blockquote {
 		background: rgba($base_bgcolor, 0.0); 
 	}
 }
-
 // 3. Unordered & Ordered Lists
 // =========================
 //  
@@ -207,15 +207,14 @@ blockquote {
 //  check_circle_icon =  renders the circle-check icon
 // - Options 
 	$select_fa_bullets_mode: check_circle_icon;
-
 	ul.fa_bullets li {
 		list-style: none;
 		@include margin (1.5% null null 3.5%);
 	}
 
 	ul.fa_bullets > li:before {
-	    @include position(absolute, null null null 2.25%);
-	    font-size: em(45);
+	    @include position(absolute, null null null 5.05%);
+	    font-size: em(20);
 		font-family: $fa_font-family;		
 	}
 
@@ -225,7 +224,7 @@ blockquote {
 			ul.fa_bullets.icon--#{$listBullet_Color} > li:before {
 				color: #{$iconColor};
 			}
-			 
+			  
 		}
 		@each $listBullet_icon, $icon in $icon_listBullets {
 			ul.fa_bullets.icon--#{$listBullet_icon} > li:before {
@@ -255,6 +254,28 @@ blockquote {
 				color: $fa_bullets_check_color;
 		}
 	}
+	ol.big-number {
+		margin-top: 2.5%;
+		counter-reset: big-numbers;
+		list-style: none;
+		& li {
+			margin-bottom: 5.5%;
+			margin-left: 3.55%;
+			&:last-child {
+				margin-bottom: 0.5%;
+			}
+		}
+		& li:before {
+			content: counter(big-numbers) ". ";
+			counter-increment: big-numbers;
+			font-size: em(33);
+			font-weight: 700;
+			position: absolute;
+			left: 4.0%;
+			margin-top: -1.7%;
+		}
+	}
+
 
 // 4. Footer 
 // =========================
@@ -324,7 +345,7 @@ blockquote {
 		outline: 0; // to remove the blue border of the button when clicked.
 		}
 	} 
-// 7. Article Section Animations and styles
+// 7. Portfolio Section
 // =========================
 	section.portfolio {
 		padding-bottom: em(60px);
@@ -523,5 +544,12 @@ blockquote {
 		}
 		& .carousel-indicators li {
 			background: lighten($base_bgcolor,60%);
+		}
+	}
+// 12. Contact Section
+// =========================
+	section.contact {
+		& p:nth-child(2) {
+			margin-bottom: em(30px);
 		}
 	}
