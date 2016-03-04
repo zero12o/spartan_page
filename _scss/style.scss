@@ -1,5 +1,5 @@
 //  Theme made my Mobiuszero. 
-//  bulid version 0.4.0
+//  bulid version 0.5.0
 //  
 // -------------------------
 // 	Table of contents
@@ -11,6 +11,7 @@
 // 		- Font Colors
 // 		- Bullet Icons And Colors
 //  iii. functions
+//  iv. Miscellaneous
 // 	1. Font 
 // 	2. Layout
 // 	3. Unordered & Ordered Lists
@@ -23,6 +24,7 @@
 // 10. Carousel 
 // 11. Testimonials Carousel
 // 12. Contact Section
+// 13. Content Section
 //  
 // ----------------------------
 // i. imports
@@ -31,8 +33,8 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "web-fonts";
-@import "fonts/logofont.css";
-@include web-fonts(("Droid Sans": ("400","700")), "Oswald");
+@font-face {font-family: 'PRISTINA'; src: url('font/PRISTINA.eot'); src: local('PRISTINA'), url('font/PRISTINA.woff') format('woff'), url('font/PRISTINA.ttf') format('truetype'); }
+@include web-fonts(("Droid Sans": ("400","700")), ("Droid Serif": ("400","700")));
 @import "sass_mq"; //media queries function call
 // ii. variables 
 // ************************
@@ -42,7 +44,7 @@
 	$image_titlebg: url('../img/titlebg.png');
 // - Font Family
 	$base_font-family: 'Droid Sans', sans-serif;
-	$heading_font-family: 'Oswald', sans-serif;
+	$heading_font-family: 'Droid Serif', sans-serif;
 	$fa_font-family:  'FontAwesome';
 	$logo_font-family: 'PRISTINA';
 //  - Font Colors
@@ -50,32 +52,7 @@
 	$sub_fontColor: #ffffff; 
 	$heading_fontColor: #1c1c1c;
 	$text-danger_fontColor: #d90000;
-//  - Bullet Icons And Colors
-	$icon_listColor: (
-		airplane: #31559c,
-		vector-graph: #42a03f,
-		money: #587852,
-		insitute: #656565,
-		lock: #8c2217,
-		mapp: #3da9aa,
-		location: #c02a08,
-		exit: #d32029,
-		bar-graph: #6FA669
-	);
-	$icon_listBullets: (
-		airplane: '\f072',
-		vector-graph: '\f1fe',
-		money: '\f0d6',
-		insitute: '\f19c',
-		lock: '\f023',
-		mapp: '\f279',
-		location: '\f041',
-		exit: '\f08b',	
-		bar-graph: '\f080', 
-		check: 	'\f00c',
-		circled-check: '\f058',
-		bullet: '\f111'
-	);
+//  - Bullet color
 	$fa_bullets_check_color: #128915;
 
 // iii. functions
@@ -90,9 +67,15 @@
 		font-family: $base_font-family;
 		font-size: 16px;
 		color: lighten($base_fontColor, 20%);
+		font-kerning: normal;
 	}
 	p {
 		font-size: em(18);
+	}
+	.module {
+		& 	a {
+			text-decoration: underline;
+		}
 	}
 	@for $heading from 1 through 6 {
 		h#{$heading},.h#{$heading} {
@@ -181,32 +164,7 @@ blockquote {
 }
 // 3. Unordered & Ordered Lists
 // =========================
-//  
-// 	Legend 
-// ---------------------
-// icon--airplane
-// icon--vector-graph
-// icon--money
-// icon--insitute
-// icon--lock
-// icon--mapp
-// icon--location
-// icon--exit
-// icon--bar-graph
-// icon--check
-// icon--circled-check
-// icon--bullet
-// ---------------------
-// 
-// How to use: 
-// On your html doc, you will add the class "fa_bullets" to your <ul> tag then add the what you want from the legend to the html doc. 
-// 
-//  Your change the select_fa_bullets_mode value below are the available options: 
-//  full_mode = renders all the icons
-//  check_icon = renders all is needed for the check icon
-//  check_circle_icon =  renders the circle-check icon
-// - Options 
-	$select_fa_bullets_mode: check_circle_icon;
+
 	ul.fa_bullets li {
 		list-style: none;
 		@include margin (1.5% null null 3.5%);
@@ -218,42 +176,16 @@ blockquote {
 		font-family: $fa_font-family;		
 	}
 
-	@if $select_fa_bullets_mode == full_mode {
-	// Use this to display the icon in the first level of the unordered list <ul> tag
-		@each $listBullet_Color, $iconColor in $icon_listColor {
-			ul.fa_bullets.icon--#{$listBullet_Color} > li:before {
-				color: #{$iconColor};
-			}
-			  
-		}
-		@each $listBullet_icon, $icon in $icon_listBullets {
-			ul.fa_bullets.icon--#{$listBullet_icon} > li:before {
-				content: "#{$icon}";
-			}
-		}
-	// This is for individual icon use only. Individual icons that need to be inserted, Should be in the <li> tag as a class to display as you see in the sample page refer to legend for the class name to be used. 
-		@each $listBullet_Color, $iconColor in $icon_listColor {
-			ul.fa_bullets > li.icon--#{$listBullet_Color}:before {
-				color: #{$iconColor};
-			}
-			 
-		}
-		@each $listBullet_icon, $icon in $icon_listBullets {
-			ul.fa_bullets > li.icon--#{$listBullet_icon}:before {
-				content: "#{$icon}";
-			}
-		}
-	} @else if $select_fa_bullets_mode == check_icon {
-		ul.fa_bullets.icon--check > li:before {
-				content: '\f00c';
-				color: $fa_bullets_check_color;
-		}
-	} @else if $select_fa_bullets_mode == check_circle_icon {
-		ul.fa_bullets.icon--circled-check > li:before {
-				content: '\f058';
-				color: $fa_bullets_check_color;
-		}
+	ul.fa_bullets.icon--check > li:before {
+			content: '\f00c';
+			color: $fa_bullets_check_color;
 	}
+
+	ul.fa_bullets.icon--circled-check > li:before {
+			content: '\f058';
+			color: $fa_bullets_check_color;
+	}
+
 	ol.big-number {
 		margin-top: 2.5%;
 		counter-reset: big-numbers;
@@ -283,25 +215,33 @@ blockquote {
 		@include padding (5% null 2.5% null);
 		color: $sub_fontColor;
 		background: $base_bgcolor;
-	}
-	footer ul {
-		list-style: none;
-		text-align: center;
-	}
-	footer ul li {
-		display: inline;
-		@include padding (null 1% null 2%);
-		border-left: 1px solid #fff;
-	}
-	footer ul li:first-child{
-		padding-left: 0%;
-		border-left: none;
-	}
-	footer li a {
-		color: $sub_fontColor;
-	}
-	footer p {
-		text-align: justify;
+		& ul {
+			list-style: none;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		& ul li {
+			display: inline;
+			@include padding (null 1% null 2%);
+			border-left: 1px solid #fff;
+		}
+		& ul li:first-child{
+			padding-left: 0%;
+			border-left: none;
+		}
+		& li a {
+			color: $sub_fontColor;
+		}
+		& ul.social_media li {
+			border-left: none;
+    		line-height: 0;
+			& a {
+				font-size: em(25);
+			}
+		}
+		& p {
+			text-align: justify;
+		}
 	}
 // 5. Modals 
 // =========================
@@ -330,14 +270,6 @@ blockquote {
 
 // 6. Buttons
 // =========================
-	.btn-warning {
-	    font-size: 1.85em;
-	    color: #000;
-	    background-color: #FFFF18;
-	    @include padding (null 3.5% null 3.5%);
-	    @include margin (3.5% null null null);
-	    @include transition(all 500ms ease);
-	}
 	.video-btn { 
 		background: none;
 		border: none;
@@ -349,39 +281,204 @@ blockquote {
 // =========================
 	section.portfolio {
 		padding-bottom: em(60px);
+		& h2 {
+			@include mq($from: mobile, $until: desktop){
+				font-size: em(30);
+			}
+		}
 		& div.col-md-10, div.col-md-10 h2 {
 			color: $sub_fontColor;
 		}
 		& .row:nth-of-type(2) {
 			margin-top: em(10px);
-		}
-		& div.row div.col-md-4 {
-			padding-right: 5px;
-			padding-left: 5px;
-		}
-		& .portfolio_item {
-			display: inline-block;
-		    @include animation (fade_in 550ms ease-in);
-		     
-			&:nth-of-type(2) {
-		    	@include animation (fade_in 1s ease-in);
+			@include mq($from: mobile, $until: desktop){
+				margin-top: em(0.5px);
 			}
-			&:nth-of-type(3) {
-		    	@include animation (fade_in 1.65s ease-in);
+			& div.col-md-4 {
+				padding-left: 5px;
+				padding-right: 5px;
+				@include mq($from: mobile, $until: desktop){
+					margin-top: em(10px);
+				}
 			}
 		}
-		@include keyframes(fade_in) {
-			0% {
-				@include opacity(0);
-				@include transform(translateY(75px));
+
+		& div.portfolio_bloc {
+			color: $sub_fontColor;
+			position: relative;
+			list-style: none;
+			display: block;
+			width: 100%;
+			list-style: none;
+		     animation-name: fade_in;
+			 animation-duration: 650ms;
+			 animation-timing-function: ease-in;
+			 animation-fill-mode: forwards;
+			@include keyframes(fade_in) {
+				0% {
+					@include opacity(0);
+					@include transform(translateY(75px));
+				}
+				100% {
+					@include opacity(1);
+					@include transform(translateY(0px));
+				}	
 			}
-			100% {
-				@include opacity(1);
-				@include transform(translateY(0px));
+			& {
+				/* Common style */
+				figure {
+					position: relative;
+					overflow: hidden;
+					cursor: pointer;
+				}
+				 // Solved strange flicking of the first element with this transition effect.
+				figure img {
+					transition: opacity 300ms;
+					-webkit-backface-visibility: hidden; //Chrome
+					overflow: hidden; //Chrome
+					width: 100%;
+				}
+
+				figure figcaption {
+					color: $sub_fontColor;
+					text-transform: uppercase;
+					font-size: 1.25em;
+					-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
+				}
+
+				figure figcaption::before,
+				figure figcaption::after {
+					pointer-events: none;
+				}
+
+				figure figcaption,
+				figure figcaption > a {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+
+				/* Anchor will cover the whole item by default */
+				/* For some effects it will show as a button */
+				figure figcaption > a {
+					z-index: 1000;
+					text-indent: 200%;
+					white-space: nowrap;
+					font-size: 0;
+					opacity: 0;
+				}
+
+				figure h4 {
+					word-spacing: -0.25em;
+					letter-spacing: 0px;
+					font-weight: 300;
+					font-size: em(18px);
+					@include mq($from: mobile, $until: desktop){
+						font-size: 0.85em;
+					}
+				}
+
+				figure h4,
+				figure p {
+					margin: 0;
+				}
+
+				figure p {
+					letter-spacing: 1px;
+					font-size: 68.5%;
+				}
+				// Effect
+				figure figcaption {
+					top: auto;
+					bottom: 0;
+					padding: 1em;
+					height: 4.5em;
+					background: #fff;
+					color: #3c4a50;
+					-webkit-transition: -webkit-transform 0.35s;
+					transition: transform 0.35s;
+					-webkit-transform: translate3d(0,100%,0);
+					transform: translate3d(0,100%,0);
+				}
+				figure:hover img {
+					opacity: 0.1;
+				}
+				figure p.icon-links a {
+					float: right;
+					color: #3c4a50;
+					font-size: 1.4em;
+				}
+
+				figure:hover p.icon-links a:hover,
+				figure:hover p.icon-links a:focus {
+					color: #252d31;
+				}
+
+				figure p.description {
+					position: absolute;
+					bottom: 10em;
+					padding: 2em;
+					color: #fff;
+					text-transform: none;
+					opacity: 0;
+					-webkit-transition: opacity 0.35s;
+					transition: opacity 0.35s;
+					-webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
+				}
+
+				figure h4,
+				figure p.icon-links a {
+					-webkit-transition: -webkit-transform 0.35s;
+					transition: transform 0.35s;
+					-webkit-transform: translate3d(0,200%,0);
+					transform: translate3d(0,200%,0);
+				}
+
+				figure p.icon-links a i::before {
+					display: inline-block;
+					padding: 8px 10px;
+					speak: none;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+				}
+
+				figure:hover p.description {
+					opacity: 1;
+				}
+
+				figure:hover figcaption,
+				figure:hover h4,
+				figure:hover p.icon-links a {
+					-webkit-transform: translate3d(0,0,0);
+					transform: translate3d(0,0,0);
+				}
+
+				figure:hover h4 {
+					-webkit-transition-delay: 0.05s;
+					transition-delay: 0.05s;
+				}
+
+				figure:hover p.icon-links a:nth-child(3) {
+					-webkit-transition-delay: 0.1s;
+					transition-delay: 0.1s;
+				}
+
+				figure:hover p.icon-links a:nth-child(2) {
+					-webkit-transition-delay: 0.15s;
+					transition-delay: 0.15s;
+				}
+
+				figure:hover p.icon-links a:first-child {
+					-webkit-transition-delay: 0.2s;
+					transition-delay: 0.2s;
+				}
 			}
-				
 		}
 	}
+
 // 8. Main Menu
 // =========================
     .navbar {
@@ -397,9 +494,10 @@ blockquote {
 			margin-left: 0;
 			color: $sub_fontColor;
 			display: none;
-			& span.h5 {
-				font-weight: 100;
+			& span.h5 { 
+				font-weight: 700;
 				font-size: em(12px);
+				font-family: $base_font-family;
 				color: $sub_fontColor;
 			}
 		}
@@ -426,6 +524,21 @@ blockquote {
         & .navbar-toggle {
         	border-color: inherit;
         }
+        & li.social_media {
+			border-left: none;
+    		line-height: 0;
+		    padding-left: 0%;
+		    padding-right: 0%;
+			& a {
+				font-size: em(25);
+				padding-right: 3px;
+				padding-top: 12px;
+				& .social_text {
+					font-size: em(14);
+				}
+			}
+
+		}
 	}
 	.navbar-content-view {
 		background-color: lighten($base_bgcolor, 100%);
@@ -441,6 +554,20 @@ blockquote {
         & .navbar-toggle {
         	border-color: inherit;
         }
+        & li.social_media {
+			border-left: none;
+    		line-height: 0;
+    		padding-left: 0%;
+    		padding-right: 0%;
+			& a {
+				font-size: em(25);
+				padding-right: 3px;
+				padding-top: 12px;
+				& .social_text {
+					font-size: em(14);
+				}
+			}
+		}
 	}
 	@include keyframes(fade) {
 		0% {
@@ -454,21 +581,103 @@ blockquote {
 // 9. Title Section 
 // =========================
 	section.title.module {
+		min-height: 85vh;
+		@include mq($from: mobile, $until: desktop){
+			min-height: 60vh;
+		}
 		@include padding(0 null 0 null);
 	    color: $sub_fontColor;
 	    border-right: none;
 	    border-left: none;
-		@include margin(null null null null);
+	    @include margin(null null null null);
+
+	    & a.btn, button.btn {
+	    	text-decoration: none;
+	    	color: inherit;
+	    	display: block;
+	    	margin-right: auto;
+	    	margin-left: auto;
+	    	@include transform(translateY(0px));
+	    	background-color: transparent;
+	    	border: 1px solid rgba($secondary_bgcolor, 0.5);
+	    	border-radius: 2px;
+		    padding: 15px;
+		    width: 45%;
+		    font-size: em(18px);
+		    cursor: pointer;
+			outline: none;
+			position: relative;
+		    transition: all 300ms;
+			@include mq($from: mobile, $until: desktop){
+				transform: translateY(10px);
+				-webkit-transform: translateY(10px);
+				width: 70%;
+			}
+		    @include animation (fadein 1.50s ease-in);
+			@include keyframes(fadein) {
+				0% {
+					@include opacity(0);
+					@include transform(translateY(900px));
+				}
+				100% {
+					@include opacity(1);
+				}
+					
+			}
+		    &:after {
+		    	content: '';
+				position: absolute;
+				z-index: -1;
+				transition: all 300ms;
+				width: 100%;
+				height: 0;
+				top: 0;
+				left: 0;
+				transition-delay: 0.20s;
+		    	-webkit-transition-delay: 0.20s;
+		    }
+		    &:hover, &:active {
+		    	background-color: $secondary_bgcolor;
+		    	color: $base_fontColor;
+				transition-delay: 0.10s;
+		    	-webkit-transition-delay: 0.10s;
+		    	font-weight: 700;
+		    }
+		    &:hover:after, &:active:after {
+		    	background-color: $secondary_bgcolor;
+		    	height: 100%;
+		    	font-weight: 700;
+		    }
+	    } 
+
 		& h1.logo {
 			font-family: 'PRISTINA';
+			@include transform(translateY(0px));
 			font-size: em(125);
 			line-height: 1.33;
 			position: relative;
 			padding-top: em(1.25);
 			& span.h5 {
-				font-weight: 100;
+				font-weight: 700;
 				font-size: em(12px);
+				font-family: $base_font-family;
 				color: $sub_fontColor;
+			}
+			@include mq($from: mobile, $until: desktop){
+				font-size: em(50);
+				transform: translateY(10px);
+				-webkit-transform: translateY(10px);
+			}
+		    @include animation (fadein 0.90s ease-in);
+			@include keyframes(fadein) {
+				0% {
+					@include opacity(0);
+					@include transform(translateY(700px));
+				}
+				100% {
+					@include opacity(1);
+				}
+					
 			}
 		}
 		& .container { 
@@ -553,3 +762,22 @@ blockquote {
 			margin-bottom: em(30px);
 		}
 	}
+// 13. Content Section
+// =========================
+	section.content {
+		& h2 {
+			@include mq($from: mobile, $until: desktop){
+				font-size: em(30);
+			}
+		}
+		& h4 {
+			@include mq($from: mobile, $until: desktop){
+				font-size: em(20);
+			}
+		}
+	}
+// iv. Miscellaneous
+// ************************
+.center-block {
+	float: none;
+}

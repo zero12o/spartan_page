@@ -63,14 +63,6 @@ module.exports = function(grunt) {
                     src: ['**/*'],
                     dest: 'sparta_v0.0.1/assets/css/fonts'
                 }]
-            },
-            videos: {
-                files: [{
-                    expand: true,
-                    cwd: '_video/',
-                    src: ['**/*.{mp4,ogv,webm}'],
-                    dest: 'sparta_v0.0.1/assets/videos/'
-                }]
             }
         },
         clean: {
@@ -104,6 +96,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('assemble');
     grunt.loadNpmTasks('grunt-tinypng');
-    grunt.registerTask('default', ['clean','assemble','concat','sass','copy']);
+    grunt.registerTask('default', ['clean','assemble','concat','sass','copy','watch']);
     grunt.registerTask('imageshrink',['tinypng']);
 }; 

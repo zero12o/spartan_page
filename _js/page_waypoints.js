@@ -22,7 +22,7 @@
 	// Find the class then add a class then remove a class within the the section.
 	var portfolio_section = $("#portfolio").waypoint({
 		handler: function (direction) {
-			$(".waypoint").addClass("portfolio_item").removeClass("hidden");
+			$(".waypoint").addClass("portfolio_bloc").removeClass("hidden");
 		},
 		offset: "30%"
 	});
