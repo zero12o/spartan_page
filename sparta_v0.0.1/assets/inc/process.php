@@ -11,6 +11,7 @@
     $status_msg = null;
     $status = true;
     $email = (isset($_POST['email']) ? urldecode(trim(filter_var($_POST['email'],FILTER_SANITIZE_EMAIL))) : null);
+    $email = (filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : null);
     $firstname = (isset($_POST['first_name']) ? trim(filter_var($_POST['first_name'],FILTER_SANITIZE_SPECIAL_CHARS)) : null);
     $message_subject = (isset($_POST['message_subject']) ? filter_var($_POST['message_subject'],FILTER_SANITIZE_SPECIAL_CHARS) : null);
     $message = (isset($_POST['message']) ? trim(filter_var($_POST['message'],FILTER_SANITIZE_SPECIAL_CHARS)) : null);
@@ -53,8 +54,8 @@
                     $status_msg .= "The message is ".str_word_count($message)." words long. Please make sure its over 50 words.\n";
                     $status = false;
                 }
-                if ($email == null && !domain_exists($email,"MX") && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $status_msg .= "The email address is invalid. It should be in this format user123@example.com\n";
+                if (domain_exists($email,"MX") == false) {
+                    $status_msg .= $email." is invalid. Please use a valid email ex. user123@validdomain.com\n";
                     $status = false;
                 }         
                 // If the status is still true then send out the message and update the database. 
