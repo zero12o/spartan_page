@@ -1,26 +1,59 @@
-	<section id="contact" class="contact content module">
+<section id="contact" class="contact content module">
 		<div class="container">
 			<div class="row"> 
 				<div class="col-md-10 col-md-offset-1">
 					<h2>Contact Me</h2>
-					<p>Message me with any questions or inquires that you made have about what I can do for you or to simply chat but please allow me at least 24-48 hours to response back to you.</p>
-					<div class="clearfix col-md-9">
-						<form role="form" method="POST" action="" accept-charset="UTF-8">
-							<div class="form-group">
-							  <label for="firstname" class="sr-only">First Name:</label>
-							  <input id="firstname" type="text" class="form-control" placeholder="Enter First Name" required="required" />
+					<p>Message me with any questions or inquires that you made have about what I can do for you or to simply chat but please allow me at least 24-48 hours to response back to you. <a class="hidden" href="http://www.mobiuszero.com/hp/hungry.php"><!-- FRoZXJlIGlzIG5vIHBlYWNlIGFtb25nIG1lbiwgb25seSBiZWVyIGNhbiBkbyB0aGF0ISA= --></a></p> 
+
+					<div class="center-block clearfix col-md-9">
+						<form role="form" method="POST" action="assets/inc/process.php" accept-charset="UTF-8" id="contactmeform">
+							<div class="first_name_field form-group">
+								<label for="first_name">First Name:</label>
+								<input id="first_name" name="first_name" type="text" class="form-control" placeholder="Enter Your First Name" value="" required />
+								<div class="help-block with-errors"></div>
 							</div>
-							<div class="form-group">
-							  <label for="email" class="sr-only">Email:</label>
-							  <input id="email" type="email" class="form-control" placeholder="Enter Email Address" required="required" />
+							<div class="email_field form-group">
+								<label for="email">Email:</label>
+								<input id="email" name="email" type="email" class="form-control" placeholder="Enter Your Email Address - user@example.com" value="" required  />
+								<div class="help-block with-errors"></div>
 							</div>
-							<div class="form-group">
-							  <label for="message" class="sr-only">Message:</label>
-							  <textarea class="form-control" placeholder="Tell Me Your Thoughts! Or Provide Me With Your Inquires." rows="5"></textarea>
+							<div class="message_field form-group">
+								<label for="message_subject" class="sr-only">Subject:</label>
+								<input id="message_subject" name="message_subject" type="text" class="form-control" placeholder="" value="" />
 							</div>
-							<button type="submit" name="submitform" class="btn btn-primary">Contact Me</button>
-						</form>
+							<div class="message_field form-group">
+								<label for="message">Message:</label>
+								<textarea name="message" id="message" class="form-control" placeholder="Send Me Your Message" data-minlength="50" maxlength="450" rows="5" value="" required></textarea>
+								<div class="help-block with-errors"></div>
+							</div>
+							<?php 
+								foreach ($ipFormToken as $token_name => $token_value) {
+									echo "<input class=\"hidden\" type=\"text\" name=\"$token_name\" value=\"$token_value\" />\n";
+								}
+								/* Deploy Google Recaptcha */
+								if ($deployRecaptcha) {
+									echo "<div class=\"g-recaptcha\" data-sitekey=\"6LdT7ikTAAAAAJQR7u4LS6aVoWJmd2G9CVloaZYf\"></div>";
+									echo "<script src='https://www.google.com/recaptcha/api.js'></script>";
+								} 
+							?>
+							<button type="submit" id="submitbutton" class="btn btn-lg btn-primary btn-block">Contact Me Now</button> 
+						</form>	 
+						<div id="statuscontrol" class="text-center alert alert-danger text-capitalize hidden"></div>
+						<div id="thesuccessmessage" class="thesuccessmessage hidden">
+							<h2 class="text-center">
+								<i class="fa fa-4x fa-check-circle" aria-hidden="true"></i>
+							</h2>
+							<h4 class="text-center">Your Message Has Been Sent<span class="lead">!</span></h4>
+						</div>
 					</div>
+					<h4 class="text-center">Come find me in the social areas of the internet!</h4>
+					<ul class="text-center">
+                        <li><a class="social_media_links github" href="https://github.com/zero12o" target="_blank"><i class="fa fa-github"></i></a></li>
+                        <li><a class="social_media_links linkedin" href="https://www.linkedin.com/in/carlos-vargas-16b41b107" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+                        <li><a class="social_media_links googleplus" href="https://plus.google.com/u/1/109886193538627695155/about" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
+                        <li><a class="social_media_links twitter" href="https://twitter.com/mobiusZero12o" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
+                        <li><a class="social_media_links codepen" href="http://codepen.io/mobius_zero/" target="_blank"><i class="fa fa-codepen"></i></a></li>
+					</ul>
 				</div>
 			</div>
 		</div>

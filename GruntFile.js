@@ -1,3 +1,5 @@
+var penthouse = require('penthouse'),
+    path = require('path');
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -19,7 +21,8 @@ module.exports = function(grunt) {
                 layoutdir: '_html/template/',
                 layout: "main.hbs",
                 flatten: true,
-                partials: '_html/components/**/*.hbs'
+                partials: '_html/components/**/*.hbs',
+                ext: '.php'
             },
             site: {
               files: {
@@ -43,7 +46,7 @@ module.exports = function(grunt) {
                 sourceMap: false,
             },
             js: {
-                src: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js','bower_components/waypoints/lib/jquery.waypoints.min.js','bower_components/smooth-scroll/dist/js/smooth-scroll.min.js','_js/*.js'],
+                src: ['bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js','bower_components/waypoints/lib/jquery.waypoints.min.js','bower_components/smooth-scroll/dist/js/smooth-scroll.min.js','bower_components/bootstrap-validator/dist/validator.min.js','_js/*.js'],
                 dest:'sparta_v0.0.1/assets/js/scripts.min.js'
             }
         },
@@ -56,17 +59,17 @@ module.exports = function(grunt) {
                     dest: 'sparta_v0.0.1/assets/img/'
                 }]
             },
-            fonts: {
+            php: {
                 files: [{
                     expand: true,
-                    cwd: '_scss/fonts/',
-                    src: ['**/*'],
-                    dest: 'sparta_v0.0.1/assets/css/fonts'
+                    cwd: '_php',
+                    src: ['**/*.{php,ini,html,txt}'],
+                    dest: 'sparta_v0.0.1/assets/inc/'
                 }]
             }
         },
         clean: {
-            all: ['sparta_v0.0.1/*.html','sparta_v0.0.1/assets/js/*.js','sparta_v0.0.1/assets/img/*']
+            all: ['sparta_v0.0.1/assets/inc/*','sparta_v0.0.1/*.html','sparta_v0.0.1/assets/js/*.js','sparta_v0.0.1/assets/img/*']
         },
         watch: {
             sass: {
@@ -78,8 +81,8 @@ module.exports = function(grunt) {
                 tasks: ['concat:js']
             },
             copy: {
-                files: ['_video/*','_img/*'],
-                tasks: ['copy:videos', 'copy:images',]
+                files: ['_img/*','_php/*'],
+                tasks: ['copy:images','copy:php']
             },
             assemble: {
                 files: ['_html/layouts/main.hbs', '_html/pages/*.hbs','_html/components/**/*.hbs'],
@@ -97,5 +100,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('assemble');
     grunt.loadNpmTasks('grunt-tinypng');
     grunt.registerTask('default', ['clean','assemble','concat','sass','copy','watch']);
-    grunt.registerTask('imageshrink',['tinypng']);
+    grunt.registerTask('tinypngfire',['tinypng']);
 }; 

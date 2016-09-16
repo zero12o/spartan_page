@@ -1,4 +1,4 @@
-//  Theme made my Mobiuszero. 
+	//  Theme made my Mobiuszero. 
 //  bulid version 0.5.0
 //  
 // -------------------------
@@ -17,14 +17,11 @@
 // 	3. Unordered & Ordered Lists
 //  4. Footer
 //  5. Modal
-//  6. Buttons
-//  7. Portfolio Section
-//  8. Main Menu 
-//  9. Title Section 
-// 10. Carousel 
-// 11. Testimonials Carousel
-// 12. Contact Section
-// 13. Content Section
+//  6. Portfolio Section
+//  7. Main Menu 
+//  8. Title Section 
+// 	9. Contact Section 
+// 10. Content Section
 //  
 // ----------------------------
 // i. imports
@@ -32,21 +29,19 @@
 @import "bourbon"; //multipurpose functions
 @import "bootstrap";
 @import "font-awesome";
-@import "web-fonts";
-@font-face {font-family: 'PRISTINA'; src: url('font/PRISTINA.eot'); src: local('PRISTINA'), url('font/PRISTINA.woff') format('woff'), url('font/PRISTINA.ttf') format('truetype'); }
-@include web-fonts(("Droid Sans": ("400","700")), ("Droid Serif": ("400","700")));
+// @import "web-fonts"; // Used with google fonts // @include web-fonts(("Droid Sans": ("400","700")), ("Droid Serif": ("400","700")));
+// @import "extracted_fonts";
 @import "sass_mq"; //media queries function call
 // ii. variables 
 // ************************
 // - Background
 	$base_bgcolor: #212121;
 	$secondary_bgcolor: #ffffff;
-	$image_titlebg: url('../img/titlebg.png');
+	$image_titlebg: url('../img/Hello-World.png');
 // - Font Family
 	$base_font-family: 'Droid Sans', sans-serif;
 	$heading_font-family: 'Droid Serif', sans-serif;
 	$fa_font-family:  'FontAwesome';
-	$logo_font-family: 'PRISTINA';
 //  - Font Colors
 	$base_fontColor: #212121;
 	$sub_fontColor: #ffffff; 
@@ -59,6 +54,34 @@
 // ************************
 	@mixin border-radius($box) {
 		@include prefixer(border-radius, $box, webkit moz spec);
+	}
+	@mixin button_style($btn_color) {
+		text-decoration: none;
+		font-family: $heading_font-family;
+		font-weight: 900;
+	    white-space: normal;
+		@include mq($from: mobile,$until:tablet){
+			font-size: em(18);
+		}
+		border: none;
+		position: relative;
+	    @include transition(all 300ms ease);
+	    @include box-shadow(0 6px darken($btn_color,25%));
+		&:after {
+			content: "";
+			position: absolute;
+			z-index: -1;
+			@include transition(all 300ms ease);
+		}
+		&:hover {
+			top: 2px;
+			@include box-shadow(0 4px darken($btn_color,20%));
+		}
+		&:active {
+			top: 6px;
+			border: none;
+			@include box-shadow(0 0 darken($btn_color,15%));
+		}
 	}
 
 // 1. Font 
@@ -93,9 +116,6 @@
 			color: lighten($base_fontColor, 23%);
 		}
 	}
-	.logo {
-		font-family: $logo_font-family;
-	}
 	.text-danger {
 		color: $text-danger_fontColor;
 	}
@@ -117,22 +137,22 @@
 	}
 // title section  
 	section.title { 
-		// background-color: darken($base_bgcolor, 5%);
-		// background-image: $image_titlebg;
-		// background-position: center center;
-		// background-size: 100%;
-		// background-repeat: no-repeat;
-		// background-attachment: fixed;
+		background-color: darken($base_bgcolor, 5%);
+		background-image: $image_titlebg;
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
 	}
 // main content section 
 	section.content {
 		background-color: $secondary_bgcolor;
 	}
-// bonus section 
+// portfolio section 
 	section.portfolio {
 		background-color: $base_bgcolor;
 	}
-// blockquote 
+//  blockquote 
 blockquote {
 	position: relative;
 	margin-top: em(25);
@@ -207,12 +227,10 @@ blockquote {
 			margin-top: -1.7%;
 		}
 	}
-
-
 // 4. Footer 
 // =========================
 	footer {
-		@include padding (5% null 2.5% null);
+		@include padding (3% null 2% null);
 		color: $sub_fontColor;
 		background: $base_bgcolor;
 		& ul {
@@ -232,16 +250,10 @@ blockquote {
 		& li a {
 			color: $sub_fontColor;
 		}
-		& ul.social_media li {
-			border-left: none;
-    		line-height: 0;
-			& a {
-				font-size: em(25);
-			}
-		}
 		& p {
 			text-align: justify;
 		}
+
 	}
 // 5. Modals 
 // =========================
@@ -267,17 +279,7 @@ blockquote {
 	.close {
 		opacity: 1;
 	}
-
-// 6. Buttons
-// =========================
-	.video-btn { 
-		background: none;
-		border: none;
-		&:hover,&:focus,&:active {
-		outline: 0; // to remove the blue border of the button when clicked.
-		}
-	} 
-// 7. Portfolio Section
+// 6. Portfolio Section
 // =========================
 	section.portfolio {
 		padding-bottom: em(60px);
@@ -290,6 +292,19 @@ blockquote {
 			color: $sub_fontColor;
 		}
 		& .row:nth-of-type(2) {
+			margin-top: em(40px);
+			@include mq($from: mobile, $until: desktop){
+				margin-top: em(0.5px);
+			}
+			& div.col-md-4 {
+				padding-left: 5px;
+				padding-right: 5px;
+				@include mq($from: mobile, $until: desktop){
+					margin-top: em(10px);
+				}
+			}
+		}
+		& .row:nth-of-type(3) {
 			margin-top: em(10px);
 			@include mq($from: mobile, $until: desktop){
 				margin-top: em(0.5px);
@@ -309,11 +324,143 @@ blockquote {
 			list-style: none;
 			display: block;
 			width: 100%;
+			max-width: 380px;
+			margin: auto;
 			list-style: none;
-		     animation-name: fade_in;
-			 animation-duration: 650ms;
-			 animation-timing-function: ease-in;
-			 animation-fill-mode: forwards;
+			overflow: hidden;
+		    animation-name: fade_in;
+			animation-duration: 650ms;
+			animation-timing-function: ease-in;
+			& figure {
+				cursor: pointer;
+				text-align: center;
+				& img {
+					position: relative;
+					display: block;
+					min-height: 100%;
+					max-width: 100%;
+				}
+				& h5 {
+					font-weight: 600;
+					font-family: $base_font-family;
+				}
+				& h5, & p {
+					margin: 0;
+					padding: 0;
+				}
+				& p {
+					font-size: em(17px);
+				}
+				& figcaption {
+					padding: em(15px);
+					-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					&::before {
+						pointer-events: none;
+					}
+					&::after {
+						pointer-events: none;
+					}
+					& > a {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+					& > a {
+						z-index: 1000;
+						text-indent: 200%;
+						white-space: nowrap;
+						font-size: 0;
+						opacity: 0;
+					}
+				}
+
+			}
+			& figure {
+				& h5 {
+					float: left;
+					display: inline-block;
+					padding: em(11px) em(10px);
+				}
+				& p.icon-links a {
+					float: right;
+					padding-top: em(6.5px);
+					color: lighten($base_fontColor,10%);
+				}
+				& p.icon-links a i { 
+					word-spacing: -1px;
+				}
+				& p.description {
+					position: absolute;
+					bottom: em(95px);
+					padding: em(15px);
+					color: $sub_fontColor;
+					text-transform: none;
+					opacity: 0;
+					-webkit-transition: opacity 0.35s;
+					transition: opacity 0.35s;
+					-webkit-backface-visibility: hidden;
+				}
+				&:hover p.description {
+					opacity: 1;
+				}
+				&:hover img {				
+					opacity: 0.10;
+					background: transparent;
+				}
+				& h5, & p.icon-links a {
+					-webkit-transition: -webkit-transform 0.35s;
+					transition: -webkit-transform 0.35s;
+					-webkit-transform: translate3d(0,200%,0);
+					transform: translate3d(0,200%,0);
+				}
+				& p.icon-links a i::before {
+					display: inline-block;
+					padding: 8px 10px; 
+					speak: none;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+				}
+				& figcaption {
+					top: auto;
+					bottom: 0;
+					padding: em(1px);
+					height: em(50px);
+					background: $secondary_bgcolor;
+					color: $base_fontColor;
+					-webkit-transition: -webkit-transform 0.35s;
+					transition: transform 0.35s;
+					-webkit-transform: translate3d(0,100%,0);
+					transform: translate3d(0,100%,0);
+				}
+				&:hover figcaption, &:hover h5, &:hover p.icon-links a {
+					-webkit-transform: translate3d(0,0,0);
+					transform: translate3d(0,0,0);
+				}
+				&:hover h5 {
+					-webkit-transition-delay: 0.05s;
+					transition-delay: 0.05s;
+				}
+				& p.icon-links a:nth-child(3){
+					-webkit-transition-delay: 0.04s;
+					transition-delay: 0.04s;
+				}
+				& p.icon-links a:nth-child(3){
+					-webkit-transition-delay: 0.03s;
+					transition-delay: 0.03s;
+				}
+				& p.icon-links a:first-child{
+					-webkit-transition-delay: 0.02s;
+					transition-delay: 0.02s;
+				}
+			}
 			@include keyframes(fade_in) {
 				0% {
 					@include opacity(0);
@@ -324,162 +471,9 @@ blockquote {
 					@include transform(translateY(0px));
 				}	
 			}
-			& {
-				/* Common style */
-				figure {
-					position: relative;
-					overflow: hidden;
-					cursor: pointer;
-				}
-				 // Solved strange flicking of the first element with this transition effect.
-				figure img {
-					transition: opacity 300ms;
-					-webkit-backface-visibility: hidden; //Chrome
-					overflow: hidden; //Chrome
-					width: 100%;
-				}
-
-				figure figcaption {
-					color: $sub_fontColor;
-					text-transform: uppercase;
-					font-size: 1.25em;
-					-webkit-backface-visibility: hidden;
-					backface-visibility: hidden;
-				}
-
-				figure figcaption::before,
-				figure figcaption::after {
-					pointer-events: none;
-				}
-
-				figure figcaption,
-				figure figcaption > a {
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-				}
-
-				/* Anchor will cover the whole item by default */
-				/* For some effects it will show as a button */
-				figure figcaption > a {
-					z-index: 1000;
-					text-indent: 200%;
-					white-space: nowrap;
-					font-size: 0;
-					opacity: 0;
-				}
-
-				figure h4 {
-					word-spacing: -0.25em;
-					letter-spacing: 0px;
-					font-weight: 300;
-					font-size: em(18px);
-					@include mq($from: mobile, $until: desktop){
-						font-size: 0.85em;
-					}
-				}
-
-				figure h4,
-				figure p {
-					margin: 0;
-				}
-
-				figure p {
-					letter-spacing: 1px;
-					font-size: 68.5%;
-				}
-				// Effect
-				figure figcaption {
-					top: auto;
-					bottom: 0;
-					padding: 1em;
-					height: 4.5em;
-					background: #fff;
-					color: #3c4a50;
-					-webkit-transition: -webkit-transform 0.35s;
-					transition: transform 0.35s;
-					-webkit-transform: translate3d(0,100%,0);
-					transform: translate3d(0,100%,0);
-				}
-				figure:hover img {
-					opacity: 0.1;
-				}
-				figure p.icon-links a {
-					float: right;
-					color: #3c4a50;
-					font-size: 1.4em;
-				}
-
-				figure:hover p.icon-links a:hover,
-				figure:hover p.icon-links a:focus {
-					color: #252d31;
-				}
-
-				figure p.description {
-					position: absolute;
-					bottom: 10em;
-					padding: 2em;
-					color: #fff;
-					text-transform: none;
-					opacity: 0;
-					-webkit-transition: opacity 0.35s;
-					transition: opacity 0.35s;
-					-webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
-				}
-
-				figure h4,
-				figure p.icon-links a {
-					-webkit-transition: -webkit-transform 0.35s;
-					transition: transform 0.35s;
-					-webkit-transform: translate3d(0,200%,0);
-					transform: translate3d(0,200%,0);
-				}
-
-				figure p.icon-links a i::before {
-					display: inline-block;
-					padding: 8px 10px;
-					speak: none;
-					-webkit-font-smoothing: antialiased;
-					-moz-osx-font-smoothing: grayscale;
-				}
-
-				figure:hover p.description {
-					opacity: 1;
-				}
-
-				figure:hover figcaption,
-				figure:hover h4,
-				figure:hover p.icon-links a {
-					-webkit-transform: translate3d(0,0,0);
-					transform: translate3d(0,0,0);
-				}
-
-				figure:hover h4 {
-					-webkit-transition-delay: 0.05s;
-					transition-delay: 0.05s;
-				}
-
-				figure:hover p.icon-links a:nth-child(3) {
-					-webkit-transition-delay: 0.1s;
-					transition-delay: 0.1s;
-				}
-
-				figure:hover p.icon-links a:nth-child(2) {
-					-webkit-transition-delay: 0.15s;
-					transition-delay: 0.15s;
-				}
-
-				figure:hover p.icon-links a:first-child {
-					-webkit-transition-delay: 0.2s;
-					transition-delay: 0.2s;
-				}
-			}
 		}
 	}
-
-// 8. Main Menu
+// 7. Main Menu
 // =========================
     .navbar {
         border-radius: 0px;
@@ -489,17 +483,7 @@ blockquote {
         	margin-right: 0;
         }
 		& .logo.navbar-brand {
-			font-size: em(35px);
-			padding-top: em(5.5px);
-			margin-left: 0;
-			color: $sub_fontColor;
 			display: none;
-			& span.h5 { 
-				font-weight: 700;
-				font-size: em(12px);
-				font-family: $base_font-family;
-				color: $sub_fontColor;
-			}
 		}
     }
     .stickly_navbar {
@@ -507,11 +491,18 @@ blockquote {
 	    min-width: 100%;
 	    z-index: 15;
 	    & .logo.navbar-brand {
-	    	display: inline;
+	    	display: block;
+			font-size: em(35px);
+			@include mq($from: mobile, $until: desktop){
+			    padding-top: 3.25%;
+			    font-size: 1.5625em;
+			}
+			padding-top: em(5.5px);
+			margin-left: 0;
+	    	font-family: 'Fredoka One','Roboto',san-serif;
+	    	text-decoration: none;
+	    	font-weight: 100;
 	    	color: darken($sub_fontColor, 75%);
-	    	& span.h5 { 
-	    		color: darken($sub_fontColor, 75%);	
-	    	}
 	    }
     }
 	.navbar-default {
@@ -520,22 +511,20 @@ blockquote {
 	    @include transition(all 600ms ease-in-out);
         & ul.navbar-nav li a {
         	color: $sub_fontColor;
+        	text-decoration: none;
         }
         & .navbar-toggle {
         	border-color: inherit;
         }
-        & li.social_media {
+        & ul.social_media {
 			border-left: none;
     		line-height: 0;
-		    padding-left: 0%;
-		    padding-right: 0%;
+		    padding-left: 3%;
+		    & li {
+		    	display: inline;
+		    }
 			& a {
-				font-size: em(25);
-				padding-right: 3px;
-				padding-top: 12px;
-				& .social_text {
-					font-size: em(14);
-				}
+				font-size: em(18px);
 			}
 
 		}
@@ -550,24 +539,12 @@ blockquote {
 		}
         & ul.navbar-nav li a {
         	color: darken($sub_fontColor, 75%);
+        	text-decoration: none;
         }
         & .navbar-toggle {
         	border-color: inherit;
+           	background: $base_bgcolor;
         }
-        & li.social_media {
-			border-left: none;
-    		line-height: 0;
-    		padding-left: 0%;
-    		padding-right: 0%;
-			& a {
-				font-size: em(25);
-				padding-right: 3px;
-				padding-top: 12px;
-				& .social_text {
-					font-size: em(14);
-				}
-			}
-		}
 	}
 	@include keyframes(fade) {
 		0% {
@@ -577,13 +554,12 @@ blockquote {
 			@include opacity(1);
 		}
 	}
-
-// 9. Title Section 
+// 8. Title Section 
 // =========================
 	section.title.module {
-		min-height: 85vh;
+		min-height: 100vh;
 		@include mq($from: mobile, $until: desktop){
-			min-height: 60vh;
+			min-height: 75vh;
 		}
 		@include padding(0 null 0 null);
 	    color: $sub_fontColor;
@@ -599,10 +575,12 @@ blockquote {
 	    	margin-left: auto;
 	    	@include transform(translateY(0px));
 	    	background-color: transparent;
-	    	border: 1px solid rgba($secondary_bgcolor, 0.5);
+	    	border: 5px solid rgba($secondary_bgcolor, 1);
 	    	border-radius: 2px;
 		    padding: 15px;
 		    width: 45%;
+		    text-transform: uppercase;
+		    font-weight: 900;
 		    font-size: em(18px);
 		    cursor: pointer;
 			outline: none;
@@ -650,21 +628,17 @@ blockquote {
 		    }
 	    } 
 
-		& h1.logo {
-			font-family: 'PRISTINA';
+		& h1.logo { 	
+			font-family: 'Fredoka One','Roboto',san-serif;
 			@include transform(translateY(0px));
-			font-size: em(125);
+			font-size: em(90);
 			line-height: 1.33;
+			font-weight: 100;
 			position: relative;
-			padding-top: em(1.25);
-			& span.h5 {
-				font-weight: 700;
-				font-size: em(12px);
-				font-family: $base_font-family;
-				color: $sub_fontColor;
-			}
+			padding-top: 15vh;
 			@include mq($from: mobile, $until: desktop){
-				font-size: em(50);
+				padding-top: 15vh;
+				font-size: em(40);
 				transform: translateY(10px);
 				-webkit-transform: translateY(10px);
 			}
@@ -686,83 +660,79 @@ blockquote {
 		& .fa-inverse {
 			color: $sub_fontColor;
 		}
-		& {
-			.video-btn {
-				position: absolute;
-				top: 85%;
-				left: 2%;
-			}
-			video {
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				min-width: 100%;
-				min-height: 100%;
-				width: auto;
-				height: auto;
-				z-index: -100;
-				transform: translateX(-50%) translateY(-50%);
-				background-image: url('../assets/img/Hello-World.png') no-repeat;
-				background-size: cover;
-				transition: 2s opacity;
-			}
-			.videoverlay {
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				min-width: 100%;
-				min-height: 100%;
-				width: auto;
-				height: auto;
-				z-index: -100;
-				transform: translateX(-50%) translateY(-50%);
-				background-color: rgba($base_bgcolor, 0.45);
-			}
-		}
 	}
-// 10. Carousel
+// 9. Contact Section
 // =========================
-	.carousel {
-		& button.carousel-control.left {
-			background-image: none;
-			border: none;
-		}
-
-		& button.carousel-control.right {
-			background-image: none;
-			border: none;
-		}
+	#urldomain, #message_subject {
+		display: none;
 	}
-// 11. Testimonials Carousel
-// =========================
-	.testimonials {
-		&.carousel {
-			& .carousel-control {
-				width: 4.75%;
-				height: em(43);
-				top: 40%;
-			}
-			& button.carousel-control.left {
-				background-color: $base_bgcolor;
-			}
-
-			& button.carousel-control.right {
-				background-color: $base_bgcolor;
-
-			}	
-		}
-		& .carousel-indicators li {
-			background: lighten($base_bgcolor,60%);
-		}
-	}
-// 12. Contact Section
-// =========================
 	section.contact {
+		& h4 {
+			margin-top: 3.5%;
+		}
+		& .lead {
+			font-size: em(23px);
+		}
+		& .alert {
+		    padding: 8px 15px;
+		}
+		& ul {
+			padding: 0;
+			margin: 0;
+			list-style: none; 
+			& li {
+				display: inline;
+				font-size: em(50px);
+				padding-right: 0.45em;
+				& a.social_media_links {
+					color: lighten($base_fontColor,25%);
+					transition: all 0.5s;
+					-webkit-transition: all 0.5s;
+					&.github:hover {
+						color: #913399;
+					}
+					&.linkedin:hover {
+						color: #0077B5;
+					}
+					&.googleplus:hover {
+						color: #dd4b39;
+					}
+					&.twitter:hover {
+						color: #3cf;
+					}
+					&.codepen:hover {
+						color: #000;
+					}
+				}
+			} 
+		}
+		& .thesuccessmessage {
+			& i.fa-check-circle {
+				color: #2BBF13;
+			}
+		}
+		& .help-block ul li {
+			font-size: em(18px);
+		}
 		& p:nth-child(2) {
 			margin-bottom: em(30px);
 		}
+		& .form-control {
+		    height: 48px;
+		    padding: 5px 12px;
+		} 
+		& textarea.form-control {
+		    height: auto;
+		    padding: 8px 12px;
+		}
+		button.btn-primary {
+			@include button_style($btn-primary-bg);
+			&.btn-lg {
+				font-size: em(22px);
+			}
+		}
 	}
-// 13. Content Section
+// 10. Content Section
 // =========================
 	section.content {
 		& h2 {

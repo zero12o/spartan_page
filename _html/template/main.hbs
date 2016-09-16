@@ -1,25 +1,143 @@
+<?php
+date_default_timezone_set("America/New_York");
+/* Initialization files and functions */
+/* =========================================================== */
+/* Load required files */
+require 'assets/inc/db/config.php';
+require 'assets/inc/functions/functions.php';
+/* Global Variables */
+/* =========================================================== */
+ /* Deploy Google Recaptcha */
+$deployRecaptcha = false;
+ /* Create dateTime for expiration date */
+$expire_date_string = "+2 days";
+$expire_date = output_datetime(null,$expire_date_string);
+$today_date = output_datetime(null,"now");
+/* IP ADDRESS and token variables */
+$ip_address = getIPAddress();
+$ip_token_key = randomstring(rand(15,20));
+/* Set COOKIE array values */
+$cookie_IPTokenDate = array(
+    'ip' => $ip_address, 
+    'ip_token_key' => $ip_token_key, 
+    'expire_date' => $expire_date, 
+);
+$cookie_token_encode = json_encode($cookie_IPTokenDate,JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP );
+$mztok = json_decode($_COOKIE['mztok'],true);
+$ipFormToken = array(
+    'formtoken' => $mztok['ip_token_key']
+);
+/*
+ * $mztok['ip'];
+ * $mztok['ip_token_key'];
+ * $mztok['expire_date']; 
+*/
+
+/* =========================================================== */
+    /* Make sure IP is in DB and its not flagged if not then create the cookie and send data to the database. */
+    $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($ip_address));
+
+    if ($ip_check['flagged'] != 1 && $ip_check['cookie_set'] < 7) {
+        if ($ip_check) {
+            $hit = Array(
+                'hits' => $db_conn->inc(1)
+            );
+            $db_conn->where('ip',$ip_address);
+            /* Return error if failed */
+            if(!$db_conn->update('ip_recorder',$hit)){
+                outputarray(null,'update failed: ' . $db_conn->getLastError());
+            } 
+            /* Make sure the cookie and ip values matches database values */
+            if ($ip_check['ip_token_key'] == $mztok['ip_token_key'] && $ip_check['expire_date'] > $today_date){
+                outputarray(null,'READY');
+            } elseif ($ip_check['ip_token_key'] != $mztok['ip_token_key'] && $ip_check['expire_date'] > $today_date) {
+                $expire_date = output_datetime("unix",$ip_check['expire_date']);
+                setcookie("mztok", $cookie_token_encode, $expire_date); 
+                /* Send ip token info to database */
+                $updateToken = array( 
+                    'ip_token_key' => $ip_token_key,
+                    'cookie_set'=> $db_conn->inc(1),
+                );
+                $db_conn->where('ip',$ip_address);
+                /* Return error if failed */
+                if(!$db_conn->update('ip_recorder',$updateToken)){
+                    outputarray(null,'update failed: ' . $db_conn->getLastError());
+                }
+                // outputarray(null,'KEY MISMATCH - DATE VALID');
+            } else {
+                $expire_date = output_datetime("unix",$expire_date_string);
+                $expire_db_date = output_datetime(null,$expire_date_string);
+                setcookie("mztok", $cookie_token_encode, $expire_date); 
+                /* Send ip token info to database */
+                $updateToken = array( 
+                    'ip_token_key' => $ip_token_key,
+                    'cookie_set'=> $db_conn->inc(1),
+                    'expire_date' => $expire_db_date
+                );
+                $db_conn->where('ip',$ip_address);
+                /* Return error if failed */
+                if(!$db_conn->update('ip_recorder',$updateToken)){
+                    outputarray(null,'update failed: ' . $db_conn->getLastError());
+                }
+                // outputarray(null,'REDEPLOYED - KEY MISMATCHED AND INVALID DATE');
+            }
+
+        } else {
+            $expire_date = output_datetime("unix",$expire_date_string);
+            $expire_db_date = output_datetime(null,$expire_date_string);
+            /* Create cookie for the token */
+            setcookie("mztok", $cookie_token_encode, $expire_date); 
+            /* Send ip token info to database */
+            $ipToken = array(
+                'ip' => $ip_address, 
+                'ip_token_key' => $ip_token_key,
+                'hits' => 1,
+                'cookie_set'=>1,
+                'created_date'=> $today_date,
+                'expire_date' => $expire_db_date
+            );
+            $send_ip = $db_conn->insert('ip_recorder',$ipToken);
+            /* Return error if failed */
+            if (!$send_ip){
+                outputarray(null,'update failed: ' . $db_conn->getLastError());
+            }
+            // outputarray(null,'NEW');
+        }
+    } else {
+        $deployRecaptcha = true;
+
+    }
+    
+
+    
+/* =========================================================== */
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--> 
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
+    <head> 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{{ title }}</title>
         <meta name="author" content="mobiuszero: Carlos Vargas">
         <meta name="description" content="This is the portfolio site for mobius zero. A web developer and designer that creates visually pleasing sites.">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css?v=0.5">
-        <!-- =================== Google TagManager ================== -->
+
+        <style type="text/css">
+            @font-face {font-family: 'Droid Sans'; font-style: normal; font-weight: 400; src: local('Droid Sans'), local('DroidSans'), url(http://fonts.gstatic.com/s/droidsans/v6/s-BiyweUPV0v-yRb-cjciPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Droid Sans'; font-style: normal; font-weight: 700; src: local('Droid Sans Bold'), local('DroidSans-Bold'), url(http://fonts.gstatic.com/s/droidsans/v6/EFpQQyG9GqCrobXxL-KRMYWiMMZ7xLd792ULpGE4W_Y.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Droid Serif'; font-style: normal; font-weight: 400; src: local('Droid Serif'), local('DroidSerif'), url(http://fonts.gstatic.com/s/droidserif/v6/0AKsP294HTD-nvJgucYTaI4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Droid Serif'; font-style: normal; font-weight: 700; src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(http://fonts.gstatic.com/s/droidserif/v6/QQt14e8dY39u-eYBZmppwYlIZu-HDpmDIZMigmsroc4.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Fredoka One'; font-style: normal; font-weight: 400; src: local('Fredoka One'), local('FredokaOne-Regular'), url(https://fonts.gstatic.com/s/fredokaone/v4/SL0aFUFfkFMMdariYQ3_YY4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } </style>
+        <!-- Main styles -->
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css?v=0.6.1">
+
+<!-- =================== Google Analytics ================== -->
             {{>google_tagmanager}}
-        <!-- =================== End Google TagManager ============== -->
+        <!-- =================== End Google Analytics ============== -->
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        {{>menu}}
         {{>body}}
         {{>footer}}
     </body>
