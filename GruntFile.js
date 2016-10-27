@@ -58,6 +58,14 @@ module.exports = function(grunt) {
                     src: ['**/*.{png,jpg,svg,PNG,JPG}'],
                     dest: 'sparta_v0.0.1/assets/img/'
                 }]
+            },           
+            tinyMCE: {
+                files: [{
+                    expand: true,
+                    cwd: '_js/tinymce/',
+                    src: ['**/*'],
+                    dest: 'sparta_v0.0.1/assets/js/'
+                }]
             },
             php: {
                 files: [{

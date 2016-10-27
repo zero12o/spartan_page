@@ -40,7 +40,7 @@
 	$image_titlebg: url('../img/Hello-World.png');
 // - Font Family
 	$base_font-family: 'Droid Sans', sans-serif;
-	$heading_font-family: 'Droid Serif', sans-serif;
+	$heading_font-family: 'Open Sans', sans-serif;
 	$fa_font-family:  'FontAwesome';
 //  - Font Colors
 	$base_fontColor: #212121;
@@ -115,9 +115,6 @@
 			font-size: em($value);
 			color: lighten($base_fontColor, 23%);
 		}
-	}
-	.text-danger {
-		color: $text-danger_fontColor;
 	}
 	// font styles
 	.text-underline {
@@ -331,136 +328,7 @@ blockquote {
 		    animation-name: fade_in;
 			animation-duration: 650ms;
 			animation-timing-function: ease-in;
-			& figure {
-				cursor: pointer;
-				text-align: center;
-				& img {
-					position: relative;
-					display: block;
-					min-height: 100%;
-					max-width: 100%;
-				}
-				& h5 {
-					font-weight: 600;
-					font-family: $base_font-family;
-				}
-				& h5, & p {
-					margin: 0;
-					padding: 0;
-				}
-				& p {
-					font-size: em(17px);
-				}
-				& figcaption {
-					padding: em(15px);
-					-webkit-backface-visibility: hidden;
-					backface-visibility: hidden;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					&::before {
-						pointer-events: none;
-					}
-					&::after {
-						pointer-events: none;
-					}
-					& > a {
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-					}
-					& > a {
-						z-index: 1000;
-						text-indent: 200%;
-						white-space: nowrap;
-						font-size: 0;
-						opacity: 0;
-					}
-				}
 
-			}
-			& figure {
-				& h5 {
-					float: left;
-					display: inline-block;
-					padding: em(11px) em(10px);
-				}
-				& p.icon-links a {
-					float: right;
-					padding-top: em(6.5px);
-					color: lighten($base_fontColor,10%);
-				}
-				& p.icon-links a i { 
-					word-spacing: -1px;
-				}
-				& p.description {
-					position: absolute;
-					bottom: em(95px);
-					padding: em(15px);
-					color: $sub_fontColor;
-					text-transform: none;
-					opacity: 0;
-					-webkit-transition: opacity 0.35s;
-					transition: opacity 0.35s;
-					-webkit-backface-visibility: hidden;
-				}
-				&:hover p.description {
-					opacity: 1;
-				}
-				&:hover img {				
-					opacity: 0.10;
-					background: transparent;
-				}
-				& h5, & p.icon-links a {
-					-webkit-transition: -webkit-transform 0.35s;
-					transition: -webkit-transform 0.35s;
-					-webkit-transform: translate3d(0,200%,0);
-					transform: translate3d(0,200%,0);
-				}
-				& p.icon-links a i::before {
-					display: inline-block;
-					padding: 8px 10px; 
-					speak: none;
-					-webkit-font-smoothing: antialiased;
-					-moz-osx-font-smoothing: grayscale;
-				}
-				& figcaption {
-					top: auto;
-					bottom: 0;
-					padding: em(1px);
-					height: em(50px);
-					background: $secondary_bgcolor;
-					color: $base_fontColor;
-					-webkit-transition: -webkit-transform 0.35s;
-					transition: transform 0.35s;
-					-webkit-transform: translate3d(0,100%,0);
-					transform: translate3d(0,100%,0);
-				}
-				&:hover figcaption, &:hover h5, &:hover p.icon-links a {
-					-webkit-transform: translate3d(0,0,0);
-					transform: translate3d(0,0,0);
-				}
-				&:hover h5 {
-					-webkit-transition-delay: 0.05s;
-					transition-delay: 0.05s;
-				}
-				& p.icon-links a:nth-child(3){
-					-webkit-transition-delay: 0.04s;
-					transition-delay: 0.04s;
-				}
-				& p.icon-links a:nth-child(3){
-					-webkit-transition-delay: 0.03s;
-					transition-delay: 0.03s;
-				}
-				& p.icon-links a:first-child{
-					-webkit-transition-delay: 0.02s;
-					transition-delay: 0.02s;
-				}
-			}
 			@include keyframes(fade_in) {
 				0% {
 					@include opacity(0);
@@ -475,85 +343,90 @@ blockquote {
 	}
 // 7. Main Menu
 // =========================
-    .navbar {
-        border-radius: 0px;
-        padding-top: 1.25%;	
-        padding-bottom: 1.25%;
-        & .navbar-right {
-        	margin-right: 0;
-        }
-		& .logo.navbar-brand {
-			display: none;
-		}
-    }
-    .stickly_navbar {
-	    position: fixed;
-	    min-width: 100%;
-	    z-index: 15;
-	    & .logo.navbar-brand {
-	    	display: block;
-			font-size: em(35px);
-			@include mq($from: mobile, $until: desktop){
-			    padding-top: 3.25%;
-			    font-size: 1.5625em;
-			}
-			padding-top: em(5.5px);
-			margin-left: 0;
-	    	font-family: 'Fredoka One','Roboto',san-serif;
-	    	text-decoration: none;
-	    	font-weight: 100;
-	    	color: darken($sub_fontColor, 75%);
-	    }
-    }
-	.navbar-default {
-	    background-color: rgba($base_bgcolor, 0.05);
-	    border-color: rgba($base_bgcolor, 0.25);
-	    @include transition(all 600ms ease-in-out);
-        & ul.navbar-nav li a {
-        	color: $sub_fontColor;
-        	text-decoration: none;
-        }
-        & .navbar-toggle {
-        	border-color: inherit;
-        }
-        & ul.social_media {
-			border-left: none;
-    		line-height: 0;
-		    padding-left: 3%;
-		    & li {
-		    	display: inline;
+	.title.module {
+		& {
+			.navbar {
+		        border-radius: 0px;
+		        padding-top: 1.25%;	
+		        padding-bottom: 1.25%;
+		        & .navbar-right {
+		        	margin-right: 0;
+		        }
+				& .logo.navbar-brand {
+					display: none;
+				}
 		    }
-			& a {
-				font-size: em(18px);
-			}
+		    .stickly_navbar {
+			    position: fixed;
+			    min-width: 100%;
+			    z-index: 15;
+			    & .logo.navbar-brand {
+			    	display: block;
+					font-size: em(35px);
+					@include mq($from: mobile, $until: desktop){
+					    padding-top: 3.25%;
+					    font-size: 1.5625em;
+					}
+					padding-top: em(5.5px);
+					margin-left: 0;
+			    	font-family: 'Fredoka One','Roboto',san-serif;
+			    	text-decoration: none;
+			    	font-weight: 100;
+			    	color: darken($sub_fontColor, 75%);
+			    }
+		    }
+			.navbar-default {
+			    background-color: rgba($base_bgcolor, 0.05);
+			    border-color: rgba($base_bgcolor, 0.25);
+			    @include transition(all 600ms ease-in-out);
+		        & ul.navbar-nav li a {
+		        	color: $sub_fontColor;
+		        	text-decoration: none;
+		        }
+		        & .navbar-toggle {
+		        	border-color: inherit;
+		        }
+		        & ul.social_media {
+					border-left: none;
+		    		line-height: 0;
+				    padding-left: 3%;
+				    & li {
+				    	display: inline;
+				    }
+					& a {
+						font-size: em(18px);
+					}
 
+				}
+			}
+			.navbar-content-view {
+				background-color: lighten($base_bgcolor, 100%);
+			    border-color: rgba($base_bgcolor, 0.0);
+			    border-bottom-color: lighten($base_bgcolor, 80%);
+			    @include animation (fade 200ms ease-in);
+				& .fa-inverse {
+					color: darken($sub_fontColor, 75%);
+				}
+		        & ul.navbar-nav li a {
+		        	color: darken($sub_fontColor, 75%);
+		        	text-decoration: none;
+		        }
+		        & .navbar-toggle {
+		        	border-color: inherit;
+		           	background: $base_bgcolor;
+		        }
+			}
+			@include keyframes(fade) {
+				0% {
+					@include opacity(0);
+				}
+				100% {
+					@include opacity(1);
+				}
+			}
 		}
 	}
-	.navbar-content-view {
-		background-color: lighten($base_bgcolor, 100%);
-	    border-color: rgba($base_bgcolor, 0.0);
-	    border-bottom-color: lighten($base_bgcolor, 80%);
-	    @include animation (fade 200ms ease-in);
-		& .fa-inverse {
-			color: darken($sub_fontColor, 75%);
-		}
-        & ul.navbar-nav li a {
-        	color: darken($sub_fontColor, 75%);
-        	text-decoration: none;
-        }
-        & .navbar-toggle {
-        	border-color: inherit;
-           	background: $base_bgcolor;
-        }
-	}
-	@include keyframes(fade) {
-		0% {
-			@include opacity(0);
-		}
-		100% {
-			@include opacity(1);
-		}
-	}
+    
 // 8. Title Section 
 // =========================
 	section.title.module {
@@ -568,6 +441,7 @@ blockquote {
 	    @include margin(null null null null);
 
 	    & a.btn, button.btn {
+	    	font-family: $heading_font-family;
 	    	text-decoration: none;
 	    	color: inherit;
 	    	display: block;
@@ -635,7 +509,7 @@ blockquote {
 			line-height: 1.33;
 			font-weight: 100;
 			position: relative;
-			padding-top: 15vh;
+			padding-top: 7vh;
 			@include mq($from: mobile, $until: desktop){
 				padding-top: 15vh;
 				font-size: em(40);
@@ -676,7 +550,7 @@ blockquote {
 		& .alert {
 		    padding: 8px 15px;
 		}
-		& ul {
+		& ul.social_media {
 			padding: 0;
 			margin: 0;
 			list-style: none; 
@@ -713,13 +587,15 @@ blockquote {
 		}
 		& .help-block ul li {
 			font-size: em(18px);
+			font-weight: 700;
+			text-transform: uppercase;
 		}
 		& p:nth-child(2) {
 			margin-bottom: em(30px);
 		}
 		& .form-control {
 		    height: 48px;
-		    padding: 5px 12px;
+		    padding: 5px 12px; 
 		} 
 		& textarea.form-control {
 		    height: auto;

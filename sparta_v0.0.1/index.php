@@ -126,8 +126,7 @@ $ipFormToken = array(
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
         <style type="text/css">
-            @font-face {font-family: 'Droid Sans'; font-style: normal; font-weight: 400; src: local('Droid Sans'), local('DroidSans'), url(http://fonts.gstatic.com/s/droidsans/v6/s-BiyweUPV0v-yRb-cjciPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Droid Sans'; font-style: normal; font-weight: 700; src: local('Droid Sans Bold'), local('DroidSans-Bold'), url(http://fonts.gstatic.com/s/droidsans/v6/EFpQQyG9GqCrobXxL-KRMYWiMMZ7xLd792ULpGE4W_Y.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Droid Serif'; font-style: normal; font-weight: 400; src: local('Droid Serif'), local('DroidSerif'), url(http://fonts.gstatic.com/s/droidserif/v6/0AKsP294HTD-nvJgucYTaI4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Droid Serif'; font-style: normal; font-weight: 700; src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(http://fonts.gstatic.com/s/droidserif/v6/QQt14e8dY39u-eYBZmppwYlIZu-HDpmDIZMigmsroc4.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Fredoka One'; font-style: normal; font-weight: 400; src: local('Fredoka One'), local('FredokaOne-Regular'), url(https://fonts.gstatic.com/s/fredokaone/v4/SL0aFUFfkFMMdariYQ3_YY4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } </style>
-        <!-- Main styles -->
+            /* latin */ @font-face {font-family: 'Droid Sans'; font-style: normal; font-weight: 400; src: local('Droid Sans'), local('DroidSans'), url(https://fonts.gstatic.com/s/droidsans/v6/s-BiyweUPV0v-yRb-cjciPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } /* cyrillic-ext */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzK-j2U0lmluP9RWlSytm3ho.woff2) format('woff2'); unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F; } /* cyrillic */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzJX5f-9o1vgP2EXwfjgl7AY.woff2) format('woff2'); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; } /* greek-ext */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzBWV49_lSm1NYrwo-zkhivY.woff2) format('woff2'); unicode-range: U+1F00-1FFF; } /* greek */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzKaRobkAwv3vxw3jMhVENGA.woff2) format('woff2'); unicode-range: U+0370-03FF; } /* vietnamese */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzP8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2'); unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB; } /* latin-ext */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzD0LW-43aMEzIO6XUTLjad8.woff2) format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; } /* latin */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzOgdm0LZdjqr5-oayXSOefg.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Fredoka One'; font-style: normal; font-weight: 400; src: local('Fredoka One'), local('FredokaOne-Regular'), url(https://fonts.gstatic.com/s/fredokaone/v4/SL0aFUFfkFMMdariYQ3_YY4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } </style> <!-- Main styles -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css?v=0.6.1">
 
 <!-- =================== Google Analytics ================== -->
@@ -168,7 +167,7 @@ $ipFormToken = array(
 			</div>
 		</div>
 	</section>
-	<section id="about" class="content module">
+	<section id="about" class="about content module">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
@@ -197,11 +196,6 @@ $ipFormToken = array(
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/world-chaos.png" alt="Opt-in Page: World Chaos" width="380" height="275" />
-									<figcaption>
-										<h5 class="text-center">Full Width Opt-in Page</h4>
-										<p class="icon-links"><a href="#"><i class="fa fa-external-link-square"></i></a> <a href="#"><i class="fa fa-info-circle"></i></a> <a href="#"><i class="fa fa-eye"></i></a></p>
-										<p class="description">Full width opt-in page that I have created for the for a lead generation campaign.</p>
-									</figcaption>
 								</figure>
 							</div>
 						</div>
@@ -209,11 +203,6 @@ $ipFormToken = array(
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/theweeklyoptionstrader.png" alt="Opt-in Page: World Chaos" width="380" height="275" />
-									<figcaption>
-										<h5 class="text-center">WordPress Site</h5>
-										<p class="icon-links"><a href="#"><i class="fa fa-external-link-square"></i></a> <a href=Trader"#"><i class="fa fa-info-circle"></i></a> <a href="#"><i class="fa fa-eye"></i></a></p>
-										<p class="description">A WordPress child theme that I have created for a financial magazine news site</p>
-									</figcaption>
 								</figure>
 							</div>
 						</div>
@@ -221,11 +210,6 @@ $ipFormToken = array(
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/24hourprofit.png" alt="Opt-in Page: World Chaos" width="380" height="275" />
-									<figcaption>
-										<h5 class="text-center">Fixed Width Opt-in Page</h5>
-										<p class="icon-links"><a href="#"><i class="fa fa-external-link-square"></i></a> <a href="#"><i class="fa fa-info-circle"></i></a> <a href="#"><i class="fa fa-eye"></i></a></p>
-										<p class="description">A fixed width opt-in page that I have created for the for a lead generation campaign.</p>
-									</figcaption>
 								</figure>
 							</div>
 						</div>
@@ -239,11 +223,6 @@ $ipFormToken = array(
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/theweeklyoptionstrader_unsub.png" alt="Opt-Out Page: The Weekly Options Trader" width="380" height="275" />
-									<figcaption>
-										<h5 class="text-center">Ongage Opt-Out Page</h5>
-										<p class="icon-links"><a href="#"><i class="fa fa-external-link-square"></i></a> <a href="#"><i class="fa fa-info-circle"></i></a> <a href="#"><i class="fa fa-eye"></i></a></p>
-										<p class="description">A unsubscribe page that I have created for to be used with the CRM called Ongage.</p>
-									</figcaption>
 								</figure>
 							</div>
 						</div>
@@ -251,11 +230,6 @@ $ipFormToken = array(
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/investing-lab_salespage.png" alt="Opt-in Page: World Chaos" width="380" height="275" />
-									<figcaption>
-										<h5 class="text-center">Fixed Width Sales Page</h5>
-										<p class="icon-links"><a href="#"><i class="fa fa-external-slink-square"></i></a> <a href="#"><i class="fa fa-info-circle"></i></a> <a href="#"><i class="fa fa-eye"></i></a></p>
-										<p class="description">A fixed width sales page created for a financial investment education site.</p>
-									</figcaption>
 								</figure>
 							</div>
 						</div>
@@ -263,11 +237,6 @@ $ipFormToken = array(
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/investingsignal_member_subscribe_minsite.png" alt="Investing Signal member subscribe minsite" width="380" height="275" />
-									<figcaption>
-										<h5 class="text-center">Mini Site</h5>
-										<p class="icon-links"><a href="#"><i class="fa fa-external-link-square"></i></a> <a href="#"><i class="fa fa-info-circle"></i></a> <a href="#"><i class="fa fa-eye"></i></a></p>
-										<p class="description">A mini site that I have created for a site called investing signal, to generate leads with a google ad words campaign.</p>
-									</figcaption>
 								</figure>
 							</div>
 						</div>
@@ -281,7 +250,7 @@ $ipFormToken = array(
 			<div class="row"> 
 				<div class="col-md-10 col-md-offset-1">
 					<h2>Contact Me</h2>
-					<p>Message me with any questions or inquires that you made have about what I can do for you or to simply chat but please allow me at least 24-48 hours to response back to you. <a class="hidden" href="http://www.mobiuszero.com/hp/hungry.php"><!-- FRoZXJlIGlzIG5vIHBlYWNlIGFtb25nIG1lbiwgb25seSBiZWVyIGNhbiBkbyB0aGF0ISA= --></a></p> 
+					<p>Message me with any questions or inquires that you made have about what I can do for you or to simply chat but please allow me at least 24-48 hours to respond back to you. <a class="hidden" href="http://www.mobiuszero.com/hp/hungry.php"><!-- FRoZXJlIGlzIG5vIHBlYWNlIGFtb25nIG1lbiwgb25seSBiZWVyIGNhbiBkbyB0aGF0ISA= --></a></p> 
 
 					<div class="center-block clearfix col-md-9">
 						<form role="form" method="POST" action="assets/inc/process.php" accept-charset="UTF-8" id="contactmeform">
@@ -301,7 +270,7 @@ $ipFormToken = array(
 							</div>
 							<div class="message_field form-group">
 								<label for="message">Message:</label>
-								<textarea name="message" id="message" class="form-control" placeholder="Send Me Your Message" data-minlength="50" maxlength="450" rows="5" value="" required></textarea>
+								<textarea name="message" id="message" class="form-control" placeholder="Write Your Message Or Inquiries Here. Up To 450 Words Max." rows="10" value="" required></textarea>
 								<div class="help-block with-errors"></div>
 							</div>
 							<?php 
@@ -325,7 +294,7 @@ $ipFormToken = array(
 						</div>
 					</div>
 					<h4 class="text-center">Come find me in the social areas of the internet!</h4>
-					<ul class="text-center">
+					<ul class="text-center social_media">
                         <li><a class="social_media_links github" href="https://github.com/zero12o" target="_blank"><i class="fa fa-github"></i></a></li>
                         <li><a class="social_media_links linkedin" href="https://www.linkedin.com/in/carlos-vargas-16b41b107" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
                         <li><a class="social_media_links googleplus" href="https://plus.google.com/u/1/109886193538627695155/about" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
@@ -343,11 +312,12 @@ $ipFormToken = array(
                         <ul class="text-center">
                             <li>MobiusZero &copy; <span id="year"></span> <script> var date = new Date(); var get_year = date.getFullYear(); document.getElementById("year").innerHTML = get_year; </script></li>
                         </ul>
-                    </div>
+                    </div> 
                 </div>
-            </div>
+            </div> 
         </footer>
         <!-- bootstrap plugins -->
-        <script async src="assets/js/scripts.min.js?v=3.3.5"></script>
+        <script src="assets/js/scripts.min.js?v=3.3.5"></script>
+        
     </body>
 </html>

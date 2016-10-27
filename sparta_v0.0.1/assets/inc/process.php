@@ -10,56 +10,71 @@
     // --------------------------------
     $status_msg = null;
     $status = true;
+    // Validate email
+    // --------------------------------
     $email = (isset($_POST['email']) ? urldecode(trim(filter_var($_POST['email'],FILTER_SANITIZE_EMAIL))) : null);
     $email = (filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : null);
+    // Sanitize inputs
+    // --------------------------------
     $firstname = (isset($_POST['first_name']) ? trim(filter_var($_POST['first_name'],FILTER_SANITIZE_SPECIAL_CHARS)) : null);
     $message_subject = (isset($_POST['message_subject']) ? filter_var($_POST['message_subject'],FILTER_SANITIZE_SPECIAL_CHARS) : null);
     $message = (isset($_POST['message']) ? trim(filter_var($_POST['message'],FILTER_SANITIZE_SPECIAL_CHARS)) : null);
     $ip_token_key = (isset($_POST['formtoken']) ? trim(filter_var($_POST['formtoken'],FILTER_SANITIZE_SPECIAL_CHARS)) : null);
+    // Google Recaptcha Variable when active
+    // --------------------------------
     $recaptcha = (isset($_POST['g-recaptcha-response']) ? $_POST['g-recaptcha-response'] : null);
+    // Get ip address of the request been made from
+    // --------------------------------
     $ip_address = getIPAddress();
+    // --------------------------------
+    // Get date and ouput in 20XX-DD-MM 00:00:00 format
     $today_date = output_datetime(null,"now");
     // -------------------------------- 
     // Make sure that the IP that comes in is not null, the subject is null and token key is not null < - less then > - greater then 
     if ($ip_address != null && $message_subject == null && $ip_token_key != null) {
-        $ip_key_check = $db_conn->rawQueryOne('select * from ip_recorder where ip = ?',array($ip_address)); 
+        $ip_db_check = $db_conn->rawQueryOne('select * from ip_recorder where ip = ?',array($ip_address)); 
         // Make sure that we have a connection and the IP that is making the request is in database
-        if ($ip_key_check) {
+        if ($ip_db_check) {
             // Make sure the IP is not flagged
-            if ($ip_key_check['ip'] === $ip_address && $ip_key_check['flagged'] != 1) {
+            if ($ip_db_check['ip'] === $ip_address && $ip_db_check['flagged'] != 1) {
                 // Make sure that the expiry date does not exceed today's date.
-                if ($ip_key_check['expire_date'] < $today_date) {
+                if ($ip_db_check['expire_date'] < $today_date) {
                     $status_msg = "ERROR: EXPIRY EXCEEDED. REFRESH BROWSER.";
+                    $status = false;
+                }                 
+                // Make sure that form token matches the database token.
+                if ($ip_db_check['ip_token_key'] != $ip_token_key) {
+                    $status_msg = "ERROR: INVALID TOKEN. REFRESH BROWSER.";
                     $status = false;
                 }   
                 // Make sure that the message check does not 
-                if ($ip_key_check['msg_sent'] > 3 ) {
-                    $status_msg = "ERROR: SUBMIT EXCEEDED";
+                if ($ip_db_check['msg_sent'] > 3 ) {
+                    $status_msg = "ERROR: SUBMIT EXCEEDED.";
                     $status = false;
                 } 
                 // Check to make sure the message elements are not malformed or missing.
                 if ($firstname == null) {
-                    $status_msg = "You forgot to fill out your first name!\n";
+                    $status_msg = "ERROR:FNAME\n";
                     $status = false;
                 }
                 if ($message == null) {
-                    $status_msg .= "You forgot to write your message!\n";
+                    $status_msg .= "ERROR:MESSAGE0\n";
                     $status = false;
                 }
-                if (str_word_count($message) > 450) {
-                    $status_msg .= "The message is ".str_word_count($message)." words long. Please make sure its under 450 words.\n";
+                if (str_word_count($message) > 450 || strlen($message) > 3100 ) {
+                    $status_msg .= "ERROR:MESSAGE450\n";
                     $status = false;
                 } 
-                if (str_word_count($message) < 50){
-                    $status_msg .= "The message is ".str_word_count($message)." words long. Please make sure its over 50 words.\n";
+                if (str_word_count($message) < 50 || strlen($message) < 334){
+                    $status_msg .= "ERROR:MESSAGE50\n";
                     $status = false;
                 }
                 if (domain_exists($email,"MX") == false) {
-                    $status_msg .= $email." is invalid. Please use a valid email ex. user123@validdomain.com\n";
+                    $status_msg .= "ERROR:EMAIL\n";
                     $status = false;
                 }         
                 // If the status is still true then send out the message and update the database. 
-                if ($status != false && $ip_key_check['cookie_set'] < 7){
+                if ($status != false && $ip_db_check['cookie_set'] < 7){
                     $sendmsg = array(                          
                         'email'=> $email,                          
                         'message'=> $message,
@@ -71,7 +86,7 @@
                     } else {
                         $status_msg = deploymessage($sendmsg);
                     }
-                } elseif ($status != false && $ip_key_check['cookie_set'] > 7) {
+                } elseif ($status != false && $ip_db_check['cookie_set'] > 7) {
                     if (googleRecaptcha($recaptcha,$ip_address)) {
                         $sendmsg = array(                          
                             'email'=> $email,                          
@@ -80,7 +95,7 @@
                             'time'=>$today_date
                         );
                         if(deploymessage($sendmsg)) {
-                            $status_msg = "RECAPTCHA SUCCESS";
+                            $status_msg = "SUCCESS";
                         } else {
                             $status_msg = deploymessage($sendmsg);
                         }
@@ -103,6 +118,6 @@
         }
     } else {
         $status_msg = "ERROR: NULL VALUES";
-    }
+    }   
     exit($status_msg);
 ?> 

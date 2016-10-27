@@ -1,1 +1,3 @@
-var sticky_menu = $("#about").waypoint({handler: function (direction) {if (direction == "down") {$("#main_menu").addClass("stickly_navbar navbar-content-view").removeClass("navbar-default"); } else {$("#main_menu").removeClass("stickly_navbar navbar-content-view").addClass("navbar-default"); } }, offset: "38%"}); var portfolio_section = $("#portfolio").waypoint({handler: function (direction) {$(".waypoint").addClass("portfolio_bloc").removeClass("hidden"); }, offset: "30%"});
+var sticky_menu = $("#about").waypoint({handler: function (direction) {if (direction == "down") {$("#main_menu").addClass("stickly_navbar navbar-content-view").removeClass("navbar-default"); } else {$("#main_menu").removeClass("stickly_navbar navbar-content-view").addClass("navbar-default"); } }, offset: "38%"}); 
+
+var portfolio_section = $("#portfolio").waypoint({handler: function (direction) {$(".waypoint").addClass("portfolio_bloc").removeClass("hidden"); }, offset: "30%"});
