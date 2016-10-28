@@ -1,5 +1,3 @@
-var penthouse = require('penthouse'),
-    path = require('path');
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -44,9 +42,13 @@ module.exports = function(grunt) {
         concat: {
             options: {
                 sourceMap: false,
+                stripBanners: {
+                    block: true
+                },
+
             },
             js: {
-                src: ['bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js','bower_components/waypoints/lib/jquery.waypoints.min.js','bower_components/smooth-scroll/dist/js/smooth-scroll.min.js','bower_components/bootstrap-validator/dist/validator.min.js','_js/*.js'],
+                src: ['bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js','bower_components/waypoints/lib/jquery.waypoints.min.js','bower_components/smooth-scroll/dist/js/smooth-scroll.min.js','bower_components/bootstrap-validator/dist/validator.min.js','bower_components/masonry/dist/masonry.pkgd.min.js','_js/*.js'],
                 dest:'sparta_v0.0.1/assets/js/scripts.min.js'
             }
         },
@@ -58,15 +60,7 @@ module.exports = function(grunt) {
                     src: ['**/*.{png,jpg,svg,PNG,JPG}'],
                     dest: 'sparta_v0.0.1/assets/img/'
                 }]
-            },           
-            tinyMCE: {
-                files: [{
-                    expand: true,
-                    cwd: '_js/tinymce/',
-                    src: ['**/*'],
-                    dest: 'sparta_v0.0.1/assets/js/'
-                }]
-            },
+            },  
             php: {
                 files: [{
                     expand: true,
@@ -85,7 +79,7 @@ module.exports = function(grunt) {
                 tasks: ['sass:dist']
             },
             js: {
-                files:  ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js', '_js/*.js'],
+                files:  ['bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js', '_js/*.js'],
                 tasks: ['concat:js']
             },
             copy: {
@@ -97,6 +91,17 @@ module.exports = function(grunt) {
                 tasks: ['assemble']
             }
 
+        }, 
+        compress: {
+            main: {
+                options: {
+                    archive: 'mzPortfolio.zip',
+                },
+                files: [{ 
+                    expand: true,
+                    src: ['sparta_v0.0.1/**/*']
+                }] 
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -109,4 +114,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-tinypng');
     grunt.registerTask('default', ['clean','assemble','concat','sass','copy','watch']);
     grunt.registerTask('tinypngfire',['tinypng']);
+    grunt.registerTask('compressProdFiles',['compress:main']);
 }; 

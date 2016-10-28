@@ -124,9 +124,7 @@ $ipFormToken = array(
         <meta name="author" content="mobiuszero: Carlos Vargas">
         <meta name="description" content="This is the portfolio site for mobius zero. A web developer and designer that creates visually pleasing sites.">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-
-        <style type="text/css">
-            /* latin */ @font-face {font-family: 'Droid Sans'; font-style: normal; font-weight: 400; src: local('Droid Sans'), local('DroidSans'), url(https://fonts.gstatic.com/s/droidsans/v6/s-BiyweUPV0v-yRb-cjciPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } /* cyrillic-ext */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzK-j2U0lmluP9RWlSytm3ho.woff2) format('woff2'); unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F; } /* cyrillic */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzJX5f-9o1vgP2EXwfjgl7AY.woff2) format('woff2'); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; } /* greek-ext */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzBWV49_lSm1NYrwo-zkhivY.woff2) format('woff2'); unicode-range: U+1F00-1FFF; } /* greek */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzKaRobkAwv3vxw3jMhVENGA.woff2) format('woff2'); unicode-range: U+0370-03FF; } /* vietnamese */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzP8zf_FOSsgRmwsS7Aa9k2w.woff2) format('woff2'); unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB; } /* latin-ext */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzD0LW-43aMEzIO6XUTLjad8.woff2) format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF; } /* latin */ @font-face {font-family: 'Open Sans'; font-style: normal; font-weight: 700; src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzOgdm0LZdjqr5-oayXSOefg.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } @font-face {font-family: 'Fredoka One'; font-style: normal; font-weight: 400; src: local('Fredoka One'), local('FredokaOne-Regular'), url(https://fonts.gstatic.com/s/fredokaone/v4/SL0aFUFfkFMMdariYQ3_YY4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; } </style> <!-- Main styles -->
+        <!-- Main styles -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css?v=0.6.1">
 
 <!-- =================== Google Analytics ================== -->
@@ -195,21 +193,21 @@ $ipFormToken = array(
 						<div class="col-md-4" >
 							<div class="waypoint hidden">
 								<figure>
-									<img src="assets/img/world-chaos.png" alt="Opt-in Page: World Chaos" width="380" height="275" />
+									<img src="assets/img/world-chaos.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
 						<div class="col-md-4" >
 							<div class="waypoint hidden">
 								<figure>
-									<img src="assets/img/theweeklyoptionstrader.png" alt="Opt-in Page: World Chaos" width="380" height="275" />
+									<img src="assets/img/theweeklyoptionstrader.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
 						<div class="col-md-4" >
 							<div class="waypoint hidden">
 								<figure>
-									<img src="assets/img/24hourprofit.png" alt="Opt-in Page: World Chaos" width="380" height="275" />
+									<img src="assets/img/24hourprofit.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
@@ -222,21 +220,21 @@ $ipFormToken = array(
 						<div class="col-md-4" >
 							<div class="waypoint hidden">
 								<figure>
-									<img src="assets/img/theweeklyoptionstrader_unsub.png" alt="Opt-Out Page: The Weekly Options Trader" width="380" height="275" />
+									<img src="assets/img/theweeklyoptionstrader_unsub.png" alt="Opt-Out Page: The Weekly Options Trader" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
 						<div class="col-md-4" >
 							<div class="waypoint hidden">
 								<figure>
-									<img src="assets/img/investing-lab_salespage.png" alt="Opt-in Page: World Chaos" width="380" height="275" />
+									<img src="assets/img/investing-lab_salespage.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
 						<div class="col-md-4" >
 							<div class="waypoint hidden">
 								<figure>
-									<img src="assets/img/investingsignal_member_subscribe_minsite.png" alt="Investing Signal member subscribe minsite" width="380" height="275" />
+									<img src="assets/img/investingsignal_member_subscribe_minsite.png" alt="Investing Signal member subscribe minsite" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>

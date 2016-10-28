@@ -28,9 +28,9 @@
 // ************************
 @import "bourbon"; //multipurpose functions
 @import "bootstrap";
-@import "font-awesome";
-// @import "web-fonts"; // Used with google fonts // @include web-fonts(("Droid Sans": ("400","700")), ("Droid Serif": ("400","700")));
-// @import "extracted_fonts";
+@import "font-awesome"; 
+@import "web-fonts"; // Used with google fonts // 
+@include web-fonts(("Fredoka One"), (("Open Sans": ("400","700")), ("Droid Sans": ("400","700"))));
 @import "sass_mq"; //media queries function call
 // ii. variables 
 // ************************
@@ -405,7 +405,7 @@ blockquote {
 			    border-bottom-color: lighten($base_bgcolor, 80%);
 			    @include animation (fade 200ms ease-in);
 				& .fa-inverse {
-					color: darken($sub_fontColor, 75%);
+					color: $sub_fontColor;
 				}
 		        & ul.navbar-nav li a {
 		        	color: darken($sub_fontColor, 75%);
