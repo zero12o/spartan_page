@@ -80,7 +80,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files:  ['bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js', '_js/*.js'],
-                tasks: ['concat:js']
+                tasks: ['concat:js','uglify:minify_js']
             },
             copy: {
                 files: ['_img/*','_php/*'],
@@ -102,6 +102,13 @@ module.exports = function(grunt) {
                     src: ['sparta_v0.0.1/**/*']
                 }] 
             }
+        },
+        uglify: {
+            minify_js: {
+                files: {
+                    'sparta_v0.0.1/assets/js/scripts.min.js' : ['sparta_v0.0.1/assets/js/scripts.min.js']
+                }
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -110,9 +117,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('assemble');
     grunt.loadNpmTasks('grunt-tinypng');
-    grunt.registerTask('default', ['clean','assemble','concat','sass','copy','watch']);
+    grunt.registerTask('default', ['clean','assemble','concat','sass','copy','uglify','watch']);
     grunt.registerTask('tinypngfire',['tinypng']);
     grunt.registerTask('compressProdFiles',['compress:main']);
 }; 

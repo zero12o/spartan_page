@@ -25,33 +25,26 @@ $(document).ready(function() {
 		 })
 		 .done(function(text) {
 		 	if (text.indexOf("SUCCESS") !== -1 ){
-		 		console.log(text);
-		 		// successActions();
 		 	} else if (text.indexOf("ERROR:FNAME") !== -1 ){
 		 		$(".first_name_field").addClass('has-error has-danger');
 		 		$("div.first_name_field div.help-block.with-errors").html("<ul class=\"list-unstyled text-danger\"><li>The First Name Is Missing.</li></ul>");
 				tryagain();
-		 		// console.log(text,'Missing First Name');
 		 	} else if (text.indexOf("ERROR:MESSAGE0") !== -1 ){
 		 		$(".message_field").addClass('has-error has-danger');
 		 		$("div.message_field div.help-block.with-errors").html("<ul class=\"list-unstyled text-danger\"><li>The Message Is Missing.</li></ul>");
 				tryagain();
-		 		// console.log(text,'Missing Message');
 		 	} else if (text.indexOf("ERROR:MESSAGE450") !== -1 ){
 		 		$(".message_field").addClass('has-error has-danger');
 		 		$("div.message_field div.help-block.with-errors").html("<ul class=\"list-unstyled text-danger\"><li>The Message Is Over 450 Words.</li></ul>");
 				tryagain();
-		 		// console.log(text,'Message Over 450');
 		 	} else if (text.indexOf("ERROR:MESSAGE50") !== -1 ){
 		 		$(".message_field").addClass('has-error has-danger');
 		 		$("div.message_field div.help-block.with-errors").html("<ul class=\"list-unstyled text-danger\"><li>The Message Is Under 50 Words.</li></ul>");
 				tryagain();
-		 		// console.log(text,'Message Under 50');
 		 	} else if (text.indexOf("ERROR:EMAIL") !== -1 ){
 		 		$(".email_field").addClass('has-error has-danger');
 		 		$("div.email_field div.help-block.with-errors").html("<ul class=\"list-unstyled text-danger\"><li>The Email Address Is Invalid.</li></ul>");
 				tryagain();
-		 		// console.log(text,'Invalid Email');
 		 	} else {
 		 		console.log(text);
 		 		getServerStatusMsg(text);
