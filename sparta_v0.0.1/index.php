@@ -137,21 +137,21 @@ $ipFormToken = array(
         <![endif]-->
         
 	<section id="title_section" class="title module">
-	        <div id="main_menu" class="navbar navbar-default" role="navigation">
+	        <div id="main-menu" class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand logo" href="#title_section" data-menu="main_menu_link">&#60;MobiusZero &#92;&#62;</a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar_mainmenu">
+            <a class="navbar-brand logo" href="#title_section" data-menu="main-menu-link">&#60;MobiusZero &#92;&#62;</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".mainmenu">
             <span class="sr-only">Toggle navigation</span>
             <i class="fa fa-bars fa-lg fa-inverse"></i>
             </button>
         </div>
-        <div class="collapse navbar-collapse navbar_mainmenu">
+        <div class="collapse navbar-collapse mainmenu">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#title_section" data-menu="main_menu_link">Home</a></li>
-                <li><a href="#about" data-menu="main_menu_link">About</a></li>
-                <li><a href="#portfolio" data-menu="main_menu_link">Portfolio</a></li>
-                <li><a href="#contact" data-menu="main_menu_link">Contact</a></li>
+                <li><a href="#title_section" data-menu="main-menu-link">Home</a></li>
+                <li><a href="#about" data-menu="main-menu-link">About</a></li>
+                <li><a href="#portfolio" data-menu="main-menu-link">Portfolio</a></li>
+                <li><a href="#contact" data-menu="main-menu-link">Contact</a></li>
             </ul>
         </div>
     </div>
@@ -159,8 +159,12 @@ $ipFormToken = array(
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="text-center logo">&#60;<span>MobiusZero &#92;&#62;</h1>
-					<a href="#portfolio" data-menu="main_menu_link" class="btn btn-projects">View My Projects</a>
+					<div class="logo-placement">
+						<div class="logo-holder">
+							<h1 class="text-center logo"><span>&#60;MobiusZero &#92;&#62;</h1>
+							<a href="#portfolio" data-menu="main-menu-link" class="btn btn-projects">View My Projects</a>
+						</div>
+					</div>
 				</div>		 
 			</div>
 		</div>
@@ -170,11 +174,13 @@ $ipFormToken = array(
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 		            <h2>A few words about me.</h2> 
-		            <h4>I am a web designer that is based in Florida. My main focus is design minimalism. Its my obsession.</h4>
-		            <p>I create beautiful, usable, professional websites using best practice accessibility and the latest W3C web standards guidelines, resulting in semantic and SEO friendly webpages. All my websites are lovingly hand coded in HTML 5 and CCS3.</p>
-		            <p>In my toolbox I use Photoshop, Illustrator, and Fireworks for layout and asset building. Dreamweaver for email layout and coding. Node and Grunt for page building and modularization for different setups with the very kind help of sublime text 3. Finally, I use frameworks like bootstrap to help me in my quest to make outstanding looking websites.</p>
-		            <p>I am currently teaching myself more php and javascript so I can create wordpress themes or more interesting looking pages. Though my two year plan that I have will have me circling around C++. I may dibble in Ruby on Rails. Stay tuned by <a data-menu="contact" href="#contact">following me.</a></p>
-		            <p>I have practical knowledge of Infusionsoft to create small to large scale marketing funnels. So, if you need help with getting your marketing funnel in order I can be more than happy to help out.</p> 
+		            <h4>I am a web developer with a main focus in design minimalism. Its my obsession.</h4>
+					<p>I am a web designer that is based in Florida. My main focus is design minimalism. Its my obsession.</p>
+
+					<p>I create beautiful, usable, professional websites using best practice accessibility and the latest W3C web standards guidelines, resulting in semantic and SEO friendly webpages. All my websites are lovingly hand coded in HTML 5 and CCS3.</p>
+					<p>In my toolbox I use Photoshop, Illustrator, and Fireworks for layout and asset building. Dreamweaver for email layout and coding. Node and Grunt for page building and modularization for different setups with the very kind help of sublime text 3. Finally, I use frameworks like bootstrap to help me in my quest to make outstanding looking websites.</p>
+					<p>I am currently have introductory practical knowledge of php and javascript so I can create wordpress themes or more interesting looking pages. Though my two year plan that I have will have me circling around C++ or more focus direction with javascript.</p>
+					<p>I have practical knowledge  with Infusionsoft to create small to large scale marketing funnels. I worked with the following ESP API's Get Response, Infusionsoft, Mail Chimp and Ongage.  So, if you need help with getting your marketing funnel in order or need a custom API solution. I can be more than happy to help out.</p>
 				</div>
 			</div>
 		</div>
@@ -263,8 +269,8 @@ $ipFormToken = array(
 								<div class="help-block with-errors"></div>
 							</div>
 							<div class="message_field form-group">
-								<label for="message_subject" class="sr-only">Subject:</label>
-								<input id="message_subject" name="message_subject" type="text" class="form-control" placeholder="" value="" />
+								<label for="message-subject" class="sr-only">Subject:</label>
+								<input id="message-subject" name="message_subject" type="text" class="form-control" placeholder="" value="" />
 							</div>
 							<div class="message_field form-group">
 								<label for="message">Message:</label>
@@ -293,11 +299,11 @@ $ipFormToken = array(
 					</div>
 					<h4 class="text-center">Come find me in the social areas of the internet!</h4>
 					<ul class="text-center social_media">
-                        <li><a class="social_media_links github" href="https://github.com/zero12o" target="_blank"><i class="fa fa-github"></i></a></li>
-                        <li><a class="social_media_links linkedin" href="https://www.linkedin.com/in/carlos-vargas-16b41b107" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
-                        <li><a class="social_media_links googleplus" href="https://plus.google.com/u/1/109886193538627695155/about" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
-                        <li><a class="social_media_links twitter" href="https://twitter.com/mobiusZero12o" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
-                        <li><a class="social_media_links codepen" href="http://codepen.io/mobius_zero/" target="_blank"><i class="fa fa-codepen"></i></a></li>
+                        <li><a class="social-media-links github" href="https://github.com/zero12o" target="_blank"><i class="fa fa-github"></i></a></li>
+                        <li><a class="social-media-links linkedin" href="https://www.linkedin.com/in/carlos-vargas-16b41b107" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+                        <li><a class="social-media-links googleplus" href="https://plus.google.com/u/1/109886193538627695155/about" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
+                        <li><a class="social-media-links twitter" href="https://twitter.com/mobiusZero12o" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
+                        <li><a class="social-media-links codepen" href="http://codepen.io/mobius_zero/" target="_blank"><i class="fa fa-codepen"></i></a></li>
 					</ul>
 				</div>
 			</div>

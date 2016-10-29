@@ -41,21 +41,21 @@
 // - Font Family
 	$base_font-family: 'Droid Sans', sans-serif;
 	$heading_font-family: 'Open Sans', sans-serif;
-	$fa_font-family:  'FontAwesome';
+	$fa-font-family:  'FontAwesome';
 //  - Font Colors
 	$base_fontColor: #212121;
 	$sub_fontColor: #ffffff; 
 	$heading_fontColor: #1c1c1c;
 	$text-danger_fontColor: #d90000;
 //  - Bullet color
-	$fa_bullets_check_color: #128915;
+	$fa-bullets_check_color: #128915;
 
 // iii. functions
 // ************************
 	@mixin border-radius($box) {
 		@include prefixer(border-radius, $box, webkit moz spec);
 	}
-	@mixin button_style($btn_color) {
+	@mixin button-style($btn_color) {
 		text-decoration: none;
 		font-family: $heading_font-family;
 		font-weight: 900;
@@ -86,11 +86,17 @@
 
 // 1. Font 
 // ========================
+	html {
+		margin: 0;
+		padding: 0;
+		height: 100%
+	}
 	body {
 		font-family: $base_font-family;
 		font-size: 16px;
 		color: lighten($base_fontColor, 20%);
 		font-kerning: normal;
+		height: 100%
 	}
 	p {
 		font-size: em(18);
@@ -125,11 +131,7 @@
 	body {
 	    overflow-x: hidden;
 	}
-	section,div,body {
-		position: relative;
-	}
 	.module {
-		min-height: 100vh;
 		@include padding(2.5% null 2.5% null);
 	}
 // title section  
@@ -143,6 +145,7 @@
 	}
 // main content section 
 	section.content {
+		min-height: 100vh;
 		background-color: $secondary_bgcolor;
 	}
 // portfolio section 
@@ -155,7 +158,7 @@ blockquote {
 	margin-top: em(25);
 	margin-bottom: em(25);
 	& p::before {
-		font-family: $fa_font-family; 
+		font-family: $fa-font-family; 
 		content: "\f10d \00a0";
 		font-size: em(31.5);
 	    position: absolute;
@@ -168,7 +171,7 @@ blockquote {
 		text-align: justify;
 	}
 	& p::after {
-		font-family: $fa_font-family; 
+		font-family: $fa-font-family; 
 		content: "\00a0 \f10e";
 		font-size: em(25.5);
 		position: absolute;
@@ -182,25 +185,25 @@ blockquote {
 // 3. Unordered & Ordered Lists
 // =========================
 
-	ul.fa_bullets li {
+	ul.fa-bullets li {
 		list-style: none;
 		@include margin (1.5% null null 3.5%);
 	}
 
-	ul.fa_bullets > li:before {
+	ul.fa-bullets > li:before {
 	    @include position(absolute, null null null 5.05%);
 	    font-size: em(20);
-		font-family: $fa_font-family;		
+		font-family: $fa-font-family;		
 	}
 
-	ul.fa_bullets.icon--check > li:before {
+	ul.fa-bullets.icon--check > li:before {
 			content: '\f00c';
-			color: $fa_bullets_check_color;
+			color: $fa-bullets_check_color;
 	}
 
-	ul.fa_bullets.icon--circled-check > li:before {
+	ul.fa-bullets.icon--circled-check > li:before {
 			content: '\f058';
-			color: $fa_bullets_check_color;
+			color: $fa-bullets_check_color;
 	}
 
 	ol.big-number {
@@ -315,7 +318,7 @@ blockquote {
 			}
 		}
 
-		& div.portfolio_bloc {
+		& div.portfolio-bloc {
 			color: $sub_fontColor;
 			position: relative;
 			list-style: none;
@@ -356,7 +359,7 @@ blockquote {
 					display: none;
 				}
 		    }
-		    .stickly_navbar {
+		    .stickly-navbar {
 			    position: fixed;
 			    min-width: 100%;
 			    z-index: 15;
@@ -376,6 +379,9 @@ blockquote {
 			    }
 		    }
 			.navbar-default {
+				position: absolute;
+				width: 100%;
+				z-index: 100;
 			    background-color: rgba($base_bgcolor, 0.05);
 			    border-color: rgba($base_bgcolor, 0.25);
 			    @include transition(all 600ms ease-in-out);
@@ -430,27 +436,22 @@ blockquote {
 // 8. Title Section 
 // =========================
 	section.title.module {
-		min-height: 100vh;
-		@include mq($from: mobile, $until: desktop){
-			min-height: 75vh;
-		}
+		
 		@include padding(0 null 0 null);
 	    color: $sub_fontColor;
 	    border-right: none;
 	    border-left: none;
-	    @include margin(null null null null);
-
-	    & a.btn, button.btn {
-	    	font-family: $heading_font-family;
-	    	text-decoration: none;
-	    	color: inherit;
-	    	display: block;
-	    	margin-right: auto;
-	    	margin-left: auto;
-	    	@include transform(translateY(0px));
-	    	background-color: transparent;
-	    	border: 5px solid rgba($secondary_bgcolor, 1);
-	    	border-radius: 2px;
+		& a.btn, button.btn {
+			font-family: $heading_font-family;
+			text-decoration: none;
+			color: inherit;
+			display: block;
+			margin-right: auto;
+			margin-left: auto;
+			@include transform(translateY(0px));
+			background-color: transparent;
+			border: 5px solid rgba($secondary_bgcolor, 1);
+			border-radius: 2px;
 		    padding: 15px;
 		    width: 45%;
 		    text-transform: uppercase;
@@ -500,36 +501,31 @@ blockquote {
 		    	height: 100%;
 		    	font-weight: 700;
 		    }
-	    } 
+		} 
 
 		& h1.logo { 	
 			font-family: 'Fredoka One','Roboto',san-serif;
-			@include transform(translateY(0px));
 			font-size: em(90);
 			line-height: 1.33;
 			font-weight: 100;
-			position: relative;
-			padding-top: 7vh;
-			@include mq($from: mobile, $until: desktop){
-				padding-top: 15vh;
-				font-size: em(40);
-				transform: translateY(10px);
-				-webkit-transform: translateY(10px);
+			margin-top: 0;
+			@include mq($from: tablet, $until: desktop){
+				font-size: em(70);
 			}
-		    @include animation (fadein 0.90s ease-in);
-			@include keyframes(fadein) {
-				0% {
-					@include opacity(0);
-					@include transform(translateY(700px));
-				}
-				100% {
-					@include opacity(1);
-				}
-					
+			@include mq($from: mobile, $until: tablet){
+				font-size: em(50);
 			}
+
 		}
-		& .container { 
-			@include padding(3.25% null 3.25% null);
+		// To make sure the logo is centered vertically and horizontally on the module. no matter how much I say otherwise. 
+		& .logo-placement {
+			width: 100%;
+			height: 100%;
+			display: table;
+			& .logo-holder {
+				display: table-cell;
+				vertical-align: middle;
+			}
 		}
 		& .fa-inverse {
 			color: $sub_fontColor;
@@ -537,7 +533,7 @@ blockquote {
 	}
 // 9. Contact Section
 // =========================
-	#urldomain, #message_subject {
+	#urldomain, #message-subject {
 		display: none;
 	}
 	section.contact {
@@ -558,7 +554,7 @@ blockquote {
 				display: inline;
 				font-size: em(50px);
 				padding-right: 0.45em;
-				& a.social_media_links {
+				& a.social-media-links {
 					color: lighten($base_fontColor,25%);
 					transition: all 0.5s;
 					-webkit-transition: all 0.5s;
@@ -602,7 +598,7 @@ blockquote {
 		    padding: 8px 12px;
 		}
 		button.btn-primary {
-			@include button_style($btn-primary-bg);
+			@include button-style($btn-primary-bg);
 			&.btn-lg {
 				font-size: em(22px);
 			}
