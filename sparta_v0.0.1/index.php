@@ -2,135 +2,111 @@
 /* Initialization files and functions */
 /* =========================================================== */
 /* Load required files */
-// require 'assets/inc/db/config.php';
-// require_once 'assets/inc/vendor/vendor/autoload.php';
-// require 'assets/inc/functions/functions.php';
-
-
-// /* Global Variables */
-// /* =========================================================== */
-//  /* Deploy Google Recaptcha */
-// $deployRecaptcha = false;
-//  /* Create dateTime for expiration date */
-/**
-* output datetime
-*
-* @param string $type need for check if format request needs to be returned in unix
-* @param 
-* @param
-* @return datetime
-*/
-function output_datetime($type = null,$daterelativeformat){
-  /* Create dateTime object $dateformat*/
-  $set_date = new DateTime(); 
-  /* Create dateTime object for expiration date */
-  $set_date->setTimestamp(strtotime($daterelativeformat));
-  if ($type != "unix"){
-    $return_date = $set_date->format('Y-m-d H:i:s');
-  } elseif ($type === "unix")  {
-    $return_date = $set_date->format('U');
-  }
-  return $return_date; 
-}
-
+require 'assets/inc/db/config.php';
+require_once 'assets/inc/vendor/vendor/autoload.php';
+require 'assets/inc/functions/functions.php';
+/* Global Variables */
+/* =========================================================== */
+ /* Deploy Google Recaptcha */
+$deployRecaptcha = false;
+ /* Create dateTime for expiration date */
 $expire_date_string = "+3 days";
 $expire_date = output_datetime(null,$expire_date_string);
-echo $expire_date;
-// $today_date = output_datetime(null,"now");
-// /* IP ADDRESS and token variables */
-// $ip_address = getIPAddress();
-// $ip_token_key = randomstring(rand(15,20));
-// /* Set COOKIE array values */
-// $cookie_IPTokenDate = array(
-//     'ip' => $ip_address, 
-//     'ip_token_key' => $ip_token_key, 
-//     'expire_date' => $expire_date, 
-// );
-// $cookie_token_encode = json_encode($cookie_IPTokenDate,JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP );
-// $mztok = json_decode($_COOKIE['mztok'],true);
-// $ipFormToken = array(
-//     'formtoken' => $mztok['ip_token_key']
-// );
-// /*
-//  * $mztok['ip'];
-//  * $mztok['ip_token_key'];
-//  * $mztok['expire_date']; 
-// */
+$today_date = output_datetime(null,"now");
+/* IP ADDRESS and token variables */
+$ip_address = getIPAddress();
+$ip_token_key = randomstring(rand(15,20));
+/* Set COOKIE array values */
+$cookie_IPTokenDate = array(
+    'ip' => $ip_address, 
+    'ip_token_key' => $ip_token_key, 
+    'expire_date' => $expire_date, 
+);
+$cookie_token_encode = json_encode($cookie_IPTokenDate,JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP );
+$mztok = json_decode($_COOKIE['mztok'],true);
+$ipFormToken = array(
+    'formtoken' => $mztok['ip_token_key']
+);
+/*
+ * $mztok['ip'];
+ * $mztok['ip_token_key'];
+ * $mztok['expire_date']; 
+*/
 
-// /* =========================================================== */
-//     /* Make sure IP is in DB and its not flagged if not then create the cookie and send data to the database. */
-//     $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($ip_address));
+/* =========================================================== */
+    /* Make sure IP is in DB and its not flagged if not then create the cookie and send data to the database. */
+    $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($ip_address));
 
-//     if ($ip_check['flagged'] != 1 && $ip_check['cookie_set'] < 7) {
-//         if ($ip_check) {
-//             $hit = Array(
-//                 'hits' => $db_conn->inc(1)
-//             );
-//             $db_conn->where('ip',$ip_address);
-//             /* Return error if failed */
-//             if(!$db_conn->update('ip_recorder',$hit)){
-//                 outputarray(null,'update failed: ' . $db_conn->getLastError());
-//             } 
-//             /* Make sure the cookie and ip values matches database values */
-//             if ($ip_check['ip_token_key'] == $mztok['ip_token_key'] && $ip_check['expire_date'] > $today_date){
-//                 outputarray(null,'READY');
-//             } elseif ($ip_check['ip_token_key'] != $mztok['ip_token_key'] && $ip_check['expire_date'] > $today_date) {
-//                 $expire_date = output_datetime("unix",$ip_check['expire_date']);
-//                 setcookie("mztok", $cookie_token_encode, $expire_date, '/', null, null, true); 
-//                 /* Send ip token info to database */
-//                 $updateToken = array( 
-//                     'ip_token_key' => $ip_token_key,
-//                     'cookie_set'=> $db_conn->inc(1),
-//                 );
-//                 $db_conn->where('ip',$ip_address);
-//                 /* Return error if failed */
-//                 if(!$db_conn->update('ip_recorder',$updateToken)){
-//                     outputarray(null,'update failed: ' . $db_conn->getLastError());
-//                 }
-//                 // outputarray(null,'KEY MISMATCH - DATE VALID');
-//             } else {
-//                 $expire_date = output_datetime("unix",$expire_date_string);
-//                 $expire_db_date = output_datetime(null,$expire_date_string);
-//                 setcookie("mztok", $cookie_token_encode, $expire_date, '/', null, null, true); 
-//                 /* Send ip token info to database */
-//                 $updateToken = array( 
-//                     'ip_token_key' => $ip_token_key,
-//                     'cookie_set'=> $db_conn->inc(1),
-//                     'expire_date' => $expire_db_date
-//                 );
-//                 $db_conn->where('ip',$ip_address);
-//                 /* Return error if failed */
-//                 if(!$db_conn->update('ip_recorder',$updateToken)){
-//                     outputarray(null,'update failed: ' . $db_conn->getLastError());
-//                 }
-//                 // outputarray(null,'REDEPLOYED - KEY MISMATCHED AND INVALID DATE');
-//             }
+    if ($ip_check['flagged'] != 1 && $ip_check['cookie_set'] < 7) {
+        if ($ip_check) {
+            $hit = Array(
+                'hits' => $db_conn->inc(1)
+            );
+            $db_conn->where('ip',$ip_address);
+            /* Return error if failed */
+            if(!$db_conn->update('ip_recorder',$hit)){
+                outputarray(null,'update failed: ' . $db_conn->getLastError());
+            } 
+            /* Make sure the cookie and ip values matches database values */
+            if ($ip_check['ip_token_key'] == $mztok['ip_token_key'] && $ip_check['expire_date'] > $today_date){
+                outputarray(null,'READY');
+            } elseif ($ip_check['ip_token_key'] != $mztok['ip_token_key'] && $ip_check['expire_date'] > $today_date) {
+                $expire_date = output_datetime("unix",$ip_check['expire_date']);
+                setcookie("mztok", $cookie_token_encode, $expire_date, '/', null, null, true); 
+                /* Send ip token info to database */
+                $updateToken = array( 
+                    'ip_token_key' => $ip_token_key,
+                    'cookie_set'=> $db_conn->inc(1),
+                );
+                $db_conn->where('ip',$ip_address);
+                /* Return error if failed */
+                if(!$db_conn->update('ip_recorder',$updateToken)){
+                    outputarray(null,'update failed: ' . $db_conn->getLastError());
+                }
+                // outputarray(null,'KEY MISMATCH - DATE VALID');
+            } else {
+                $expire_date = output_datetime("unix",$expire_date_string);
+                $expire_db_date = output_datetime(null,$expire_date_string);
+                setcookie("mztok", $cookie_token_encode, $expire_date, '/', null, null, true); 
+                /* Send ip token info to database */
+                $updateToken = array( 
+                    'ip_token_key' => $ip_token_key,
+                    'cookie_set'=> $db_conn->inc(1),
+                    'expire_date' => $expire_db_date
+                );
+                $db_conn->where('ip',$ip_address);
+                /* Return error if failed */
+                if(!$db_conn->update('ip_recorder',$updateToken)){
+                    outputarray(null,'update failed: ' . $db_conn->getLastError());
+                }
+                // outputarray(null,'REDEPLOYED - KEY MISMATCHED AND INVALID DATE');
+            }
 
-//         } else {
-//             $expire_date = output_datetime("unix",$expire_date_string);
-//             $expire_db_date = output_datetime(null,$expire_date_string);
-//             /* Create cookie for the token */
-//             setcookie("mztok", $cookie_token_encode, $expire_date, '/', null, null, true); 
-//             /* Send ip token info to database */
-//             $ipToken = array(
-//                 'ip' => $ip_address, 
-//                 'ip_token_key' => $ip_token_key,
-//                 'hits' => 1,
-//                 'cookie_set'=>1,
-//                 'created_date'=> $today_date,
-//                 'expire_date' => $expire_db_date
-//             );
-//             $send_ip = $db_conn->insert('ip_recorder',$ipToken);
-//             /* Return error if failed */
-//             if (!$send_ip){
-//                 outputarray(null,'update failed: ' . $db_conn->getLastError());
-//             }
-//             // outputarray(null,'NEW');
-//         }
-//     } else {
-//         $deployRecaptcha = true;
+        } else {
+            $expire_date = output_datetime("unix",$expire_date_string);
+            $expire_db_date = output_datetime(null,$expire_date_string);
+            /* Create cookie for the token */
+            setcookie("mztok", $cookie_token_encode, $expire_date, '/', null, null, true); 
+            /* Send ip token info to database */
+            $ipToken = array(
+                'ip' => $ip_address, 
+                'ip_token_key' => $ip_token_key,
+                'hits' => 1,
+                'cookie_set'=>1,
+                'created_date'=> $today_date,
+                'expire_date' => $expire_db_date
+            );
+            $send_ip = $db_conn->insert('ip_recorder',$ipToken);
+            /* Return error if failed */
+            if (!$send_ip){
+                outputarray(null,'update failed: ' . $db_conn->getLastError());
+            }
+            // outputarray(null,'NEW');
+        }
+    } else {
+        $deployRecaptcha = true;
 
-//     }
+    }
     
 /* =========================================================== */
 ?>

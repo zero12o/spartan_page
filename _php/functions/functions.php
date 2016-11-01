@@ -85,15 +85,16 @@ function googleRecaptcha($gRecaptchaResponse, $remoteIp){
 * @param string $daterelativeformat used for the strtotime function
 * @return datetime
 */
-function output_datetime($type = null,$daterelativeformat){
+function output_datetime($type = null, $daterelativeformat){
   /* Create dateTime object $dateformat*/
-  $set_date = new DateTime(); 
+  $date = new DateTime(); 
+  $date->setTimezone(new DateTimeZone('America/New_York'));
   /* Create dateTime object for expiration date */
-  $set_date->setTimestamp(strtotime($daterelativeformat));
+  $date->setTimestamp(strtotime($daterelativeformat));
   if ($type != "unix"){
-    $return_date = $set_date->format('Y-m-d H:i:s');
+    $return_date = $date->format('Y-m-d H:i:s');
   } elseif ($type === "unix")  {
-    $return_date = $set_date->format('U');
+    $return_date = $date->format('U');
   }
   return $return_date; 
 }
