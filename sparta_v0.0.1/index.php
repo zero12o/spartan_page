@@ -4,13 +4,14 @@ date_default_timezone_set("America/New_York");
 /* =========================================================== */
 /* Load required files */
 require 'assets/inc/db/config.php';
+require_once 'assets/inc/vendor/vendor/autoload.php';
 require 'assets/inc/functions/functions.php';
 /* Global Variables */
 /* =========================================================== */
  /* Deploy Google Recaptcha */
 $deployRecaptcha = false;
  /* Create dateTime for expiration date */
-$expire_date_string = "+2 days";
+$expire_date_string = "+3 days";
 $expire_date = output_datetime(null,$expire_date_string);
 $today_date = output_datetime(null,"now");
 /* IP ADDRESS and token variables */
@@ -52,7 +53,7 @@ $ipFormToken = array(
                 outputarray(null,'READY');
             } elseif ($ip_check['ip_token_key'] != $mztok['ip_token_key'] && $ip_check['expire_date'] > $today_date) {
                 $expire_date = output_datetime("unix",$ip_check['expire_date']);
-                setcookie("mztok", $cookie_token_encode, $expire_date); 
+                setcookie("mztok", $cookie_token_encode, $expire_date, '/', null, null, true); 
                 /* Send ip token info to database */
                 $updateToken = array( 
                     'ip_token_key' => $ip_token_key,
@@ -67,7 +68,7 @@ $ipFormToken = array(
             } else {
                 $expire_date = output_datetime("unix",$expire_date_string);
                 $expire_db_date = output_datetime(null,$expire_date_string);
-                setcookie("mztok", $cookie_token_encode, $expire_date); 
+                setcookie("mztok", $cookie_token_encode, $expire_date, '/', null, null, true); 
                 /* Send ip token info to database */
                 $updateToken = array( 
                     'ip_token_key' => $ip_token_key,
@@ -86,7 +87,7 @@ $ipFormToken = array(
             $expire_date = output_datetime("unix",$expire_date_string);
             $expire_db_date = output_datetime(null,$expire_date_string);
             /* Create cookie for the token */
-            setcookie("mztok", $cookie_token_encode, $expire_date); 
+            setcookie("mztok", $cookie_token_encode, $expire_date, '/', null, null, true); 
             /* Send ip token info to database */
             $ipToken = array(
                 'ip' => $ip_address, 
@@ -107,8 +108,6 @@ $ipFormToken = array(
         $deployRecaptcha = true;
 
     }
-    
-
     
 /* =========================================================== */
 ?>

@@ -16,7 +16,7 @@
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
     curl_setopt($ch,CURLOPT_FOLLOWLOCATION,0);
     // execute
-    $output=curl_exec($ch);
+    $output = curl_exec($ch);
     // test
     if ($test === true) {
       print_r($output);
@@ -42,7 +42,7 @@
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
     curl_setopt($ch,CURLOPT_FOLLOWLOCATION,0);
     // execute
-    $output=curl_exec($ch);
+    $output = curl_exec($ch);
     // test
     if ($test === true) {
       print_r($output);
@@ -62,7 +62,6 @@
 */
 function googleRecaptcha($gRecaptchaResponse, $remoteIp){
   // Load required files
-  require 'vendor/recaptcha/autoload.php';
   $secertKey = "6LdT7ikTAAAAAOSLdyfe3oAxcrjjPBSrm3J9YhiC";
   // Create the recaptcha object
   $recaptcha = new \ReCaptcha\ReCaptcha($secertKey);
@@ -145,51 +144,19 @@ function getIPAddress() {
 
     return $ip;
 }
-
 /**
-* Pseudo random string shuffle 
-* @param int $l default value is 12 characters
-* @return Pseudo string value
-*  
+* Creates random strings 
+* @param int $length variable needed for the lenght of the string. 
+* @return random string between A-z,0-9
+
 */
-function mt_rand_str ($l = 12, $c = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKMONPQRSTYVWXYZ') {
-
-    for ($s = '', $cl = strlen($c)-1, $i = 0; $i < $l; $s .= $c[mt_rand(0, $cl)], ++$i);
-    return $s;
+function randomstring ($length = 15) {
+  $factory = new RandomLib\Factory;
+  $generator = $factory->getLowStrengthGenerator();
+  $password = $generator->generateString($length,"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  return $password;
 }
-/**
- * Returns a true random number from RANDOM.ORG's integer
- * http interface. Requires GET cURL. I have rewritten this to use the strings on random.org 
- *
- * @author Bo Allen - https://boallen.com/php-get-true-random-number.html - and me mobiuszero
- * @param int $length (Optional) The length of the string that you need (default 10)
- * @return mixed Random number (int) on success, error or message (string) on failure
- */
-function randomstring($length = 0) {
-    // Validate parameters
-    if ( (int)$length <= 0 || !is_numeric($length) ) {
-        $length = 10;
-    }
 
-    // Curl options
-    $options = array(
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_HEADER => false,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_USERAGENT => 'PHP',
-        CURLOPT_AUTOREFERER => true,
-        CURLOPT_CONNECTTIMEOUT => 120,
-        CURLOPT_TIMEOUT => 120,
-        CURLOPT_MAXREDIRS => 10,
-    );
-    // Curl init & run
-    $ch = curl_init('http://www.random.org/strings/?num=1&len='. $length .'&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new');
-    curl_setopt_array($ch, $options);
-    $content = curl_exec($ch);
-    curl_close($ch);
-    return trim($content);
-}
 /**
  * Make sure the domain that the email has has an MX record that exists
  * @param  string $email the users email addresss      

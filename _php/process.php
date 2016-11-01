@@ -5,11 +5,11 @@
     // Load required files
     // -------------------------------
     require 'db/config.php';
+    require_once 'vendor/vendor/autoload.php';
     require 'functions/functions.php';
     // Declared Variables
     // --------------------------------
-    $status_msg = null;
-    $status = true;
+    $status_msg = array();
     // Get ip address of the request been made from
     // --------------------------------
     $ip_address = $db_conn->escape(getIPAddress());
@@ -23,6 +23,7 @@
 		foreach ($postVars as $post_VarsKey) {
 			if ($post_VarsKey === "email") {
 				${$post_VarsKey} = (filter_var($_POST["{$post_VarsKey}"],FILTER_VALIDATE_EMAIL) ? $_POST["{$post_VarsKey}"] : null );
+                $email = (domain_exists(${$post_VarsKey},"MX") ? ${$post_VarsKey} : null);
 
 			} elseif ($post_VarsKey === "g-recaptcha-response") {
 				$recaptcha = (isset($_POST["{$post_VarsKey}"]) ? $_POST["{$post_VarsKey}"] : null);
@@ -37,16 +38,15 @@
     // Make sure that the IP that comes in is not null, the subject is null and token key is not null < - less then > - greater then 
     if ($ip_address != null && empty($message_subject) && $formtoken != null) {
         // Make sure the IP that is making the request is in database and not flagged
-        if ($ip_db_check['ip'] === $ip_address && $ip_db_check['flagged'] != 1 || ($ip_db_check['ip'] != $ip_address) {
-
-
-
-
+        if ($ip_db_check['ip'] === $ip_address && $ip_db_check['flagged'] != 1) {
+            // Make sure that the expiry date does not exceed today's date
+            
 
     
         } else {
-            // rerturn 403 if IP is flagged
-            header("HTTP/1.0 403 Forbidden");
+            // rerturn 403 if IP is flagged or not in the data table
+            header("HTTP/1.1 403 Unauthorized");
+            header("Location: ../403.html");
         }
     } else {
         $status_msg = "ERROR:NULL";
