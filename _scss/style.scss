@@ -38,6 +38,7 @@
 	$base_bgcolor: #212121;
 	$secondary_bgcolor: #ffffff;
 	$image_titlebg: url('../img/Hello-World.png');
+	$portfolioSectionBG: url("../img/graphy-dark.png");
 // - Font Family
 	$base_font-family: 'Droid Sans', sans-serif;
 	$heading_font-family: 'Open Sans', sans-serif;
@@ -89,14 +90,12 @@
 	html {
 		margin: 0;
 		padding: 0;
-		height: 100%
 	}
 	body {
 		font-family: $base_font-family;
 		font-size: 16px;
 		color: lighten($base_fontColor, 20%);
 		font-kerning: normal;
-		height: 100%
 	}
 	p {
 		font-size: em(18);
@@ -284,7 +283,7 @@ blockquote {
 // 6. Portfolio Section
 // =========================
 	section.portfolio {
-		background-image: url("../img/graphy-dark.png");
+		background-image: $portfolioSectionBG;
 		& h2 {
 			@include mq($from: mobile, $until: desktop){
 				font-size: em(30);
@@ -334,90 +333,87 @@ blockquote {
 	}
 // 7. Main Menu
 // =========================
-	.title.module {
-		& {
-			.navbar {
-		        border-radius: 0px;
-		        padding-top: 1.25%;	
-		        padding-bottom: 1.25%;
-		        & .navbar-right {
-		        	margin-right: 0;
-		        }
-				& .logo.navbar-brand {
-					display: none;
-				}
+	.navbar {
+        border-radius: 0px;
+        padding-top: 1.25%;	
+        padding-bottom: 1.25%;
+        margin-bottom: 0;
+        & .navbar-right {
+        	margin-right: 0;
+        }
+		& .logo.navbar-brand {
+			display: none;
+		}
+    }
+    .stickly-navbar {
+	    position: fixed;
+	    min-width: 100%;
+	    z-index: 15;
+	    & .logo.navbar-brand {
+	    	display: block;
+			font-size: em(35px);
+			@include mq($from: mobile, $until: desktop){
+			    padding-top: 3.25%;
+			    font-size: 1.5625em;
+			}
+			padding-top: em(5.5px);
+			margin-left: 0;
+	    	font-family: 'Fredoka One','Roboto',san-serif;
+	    	text-decoration: none;
+	    	font-weight: 100;
+	    	color: darken($sub_fontColor, 75%);
+	    }
+    }
+	.navbar-default {
+		position: absolute;
+		width: 100%;
+		z-index: 100;
+	    background-color: rgba($base_bgcolor, 0.05);
+	    border-color: rgba($base_bgcolor, 0.25);
+	    @include transition(all 600ms ease-in-out);
+        & ul.navbar-nav li a {
+        	color: $sub_fontColor;
+        	text-decoration: none;
+        }
+        & .navbar-toggle {
+        	border-color: inherit;
+        }
+        & ul.social_media {
+			border-left: none;
+    		line-height: 0;
+		    padding-left: 3%;
+		    & li {
+		    	display: inline;
 		    }
-		    .stickly-navbar {
-			    position: fixed;
-			    min-width: 100%;
-			    z-index: 15;
-			    & .logo.navbar-brand {
-			    	display: block;
-					font-size: em(35px);
-					@include mq($from: mobile, $until: desktop){
-					    padding-top: 3.25%;
-					    font-size: 1.5625em;
-					}
-					padding-top: em(5.5px);
-					margin-left: 0;
-			    	font-family: 'Fredoka One','Roboto',san-serif;
-			    	text-decoration: none;
-			    	font-weight: 100;
-			    	color: darken($sub_fontColor, 75%);
-			    }
-		    }
-			.navbar-default {
-				position: absolute;
-				width: 100%;
-				z-index: 100;
-			    background-color: rgba($base_bgcolor, 0.05);
-			    border-color: rgba($base_bgcolor, 0.25);
-			    @include transition(all 600ms ease-in-out);
-		        & ul.navbar-nav li a {
-		        	color: $sub_fontColor;
-		        	text-decoration: none;
-		        }
-		        & .navbar-toggle {
-		        	border-color: inherit;
-		        }
-		        & ul.social_media {
-					border-left: none;
-		    		line-height: 0;
-				    padding-left: 3%;
-				    & li {
-				    	display: inline;
-				    }
-					& a {
-						font-size: em(18px);
-					}
+			& a {
+				font-size: em(18px);
+			}
 
-				}
-			}
-			.navbar-content-view {
-				background-color: lighten($base_bgcolor, 100%);
-			    border-color: rgba($base_bgcolor, 0.0);
-			    border-bottom-color: lighten($base_bgcolor, 80%);
-			    @include animation (fade 200ms ease-in);
-				& .fa-inverse {
-					color: $sub_fontColor;
-				}
-		        & ul.navbar-nav li a {
-		        	color: darken($sub_fontColor, 75%);
-		        	text-decoration: none;
-		        }
-		        & .navbar-toggle {
-		        	border-color: inherit;
-		           	background: $base_bgcolor;
-		        }
-			}
-			@include keyframes(fade) {
-				0% {
-					@include opacity(0);
-				}
-				100% {
-					@include opacity(1);
-				}
-			}
+		}
+	}
+	.navbar-content-view {
+		background-color: lighten($base_bgcolor, 100%);
+	    border-color: rgba($base_bgcolor, 0.0);
+	    border-bottom-color: lighten($base_bgcolor, 80%);
+	    @include animation (fade 200ms ease-in);
+		& .fa-inverse {
+			color: $sub_fontColor;
+		}
+        & ul.navbar-nav li a {
+        	color: darken($sub_fontColor, 75%);
+        	text-decoration: none;
+        }
+        & .navbar-toggle {
+        	border-color: inherit;
+           	background: $base_bgcolor;
+        }
+	}
+	@include keyframes(fade) {
+		0% {
+			@include opacity(0);
+		}
+		100% {
+			@include opacity(1);
 		}
 	}
     
@@ -500,7 +496,7 @@ blockquote {
 			@include mq($from: tablet, $until: desktop){
 				font-size: em(70);
 			}
-			@include mq($from: mobile, $until: tablet){
+			@include mq($from: mobile, $until: tablet){ 
 				font-size: em(50);
 			}
 
@@ -508,7 +504,7 @@ blockquote {
 		// To make sure the logo is centered vertically and horizontally on the module. no matter how much I say otherwise. 
 		& .logo-placement {
 			width: 100%;
-			height: 100%;
+			height: 100vh; 
 			display: table;
 			& .logo-holder {
 				display: table-cell;

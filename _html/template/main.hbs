@@ -3,7 +3,7 @@
 /* =========================================================== */
 /* Load required files */
 require 'assets/inc/db/config.php';
-require_once 'assets/inc/vendor/vendor/autoload.php';
+require 'assets/inc/vendor/vendor/autoload.php';
 require 'assets/inc/functions/functions.php';
 /* Global Variables */
 /* =========================================================== */
@@ -12,6 +12,8 @@ $deployRecaptcha = false;
  /* Create dateTime for expiration date */
 $expire_date_string = "+3 days";
 $expire_date = output_datetime(null,$expire_date_string);
+// echo "Menu Issue ?";
+// echo $expire_date;
 $today_date = output_datetime(null,"now");
 /* IP ADDRESS and token variables */
 $ip_address = getIPAddress();
@@ -32,10 +34,9 @@ $ipFormToken = array(
  * $mztok['ip_token_key'];
  * $mztok['expire_date']; 
 */
-
+$ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($ip_address));
 /* =========================================================== */
     /* Make sure IP is in DB and its not flagged if not then create the cookie and send data to the database. */
-    $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($ip_address));
 
     if ($ip_check['flagged'] != 1 && $ip_check['cookie_set'] < 7) {
         if ($ip_check) {
@@ -81,7 +82,6 @@ $ipFormToken = array(
                 }
                 // outputarray(null,'REDEPLOYED - KEY MISMATCHED AND INVALID DATE');
             }
-
         } else {
             $expire_date = output_datetime("unix",$expire_date_string);
             $expire_db_date = output_datetime(null,$expire_date_string);
@@ -105,7 +105,6 @@ $ipFormToken = array(
         }
     } else {
         $deployRecaptcha = true;
-
     }
     
 /* =========================================================== */

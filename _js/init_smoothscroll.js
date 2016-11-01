@@ -8,7 +8,7 @@ $(document).ready(function() {
 		offset: $('body').offset().top + 50
 	});
 });
-/* console.log("body top offset: ",$('body').offset().top + 50, smoothScroll); */
+// console.log("body top offset: ",$('body').offset().top + 50, smoothScroll); 
 /* Collapse menu fix - https://github.com/twbs/bootstrap/issues/12852 */
 $(document).on('click', '.navbar-collapse.in', function(event) {
 	if(($(event.target).is('a')) && ($(event.target).attr('class') !== 'dropdown-toggle')){

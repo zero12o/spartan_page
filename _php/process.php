@@ -1,7 +1,4 @@
 <?php 
-    // Set timezone
-    // -------------------------------
-    date_default_timezone_set("America/New_York");
     // Load required files
     // -------------------------------
     require 'db/config.php';
