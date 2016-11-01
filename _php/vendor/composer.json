@@ -1,0 +1,8 @@
+{
+    "require": {
+        "ircmaxell/random-lib": "^1.2",
+        "google/recaptcha": "^1.1",
+        "phpmailer/phpmailer": "^5.2",
+        "league/oauth2-client": "^1.4"
+    }
+}
