@@ -10,114 +10,48 @@
     // --------------------------------
     $status_msg = null;
     $status = true;
-    // Validate email
-    // --------------------------------
-    $email = (isset($_POST['email']) ? urldecode(trim(filter_var($_POST['email'],FILTER_SANITIZE_EMAIL))) : null);
-    $email = (filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : null);
-    // Sanitize inputs
-    // --------------------------------
-    $firstname = (isset($_POST['first_name']) ? trim(filter_var($_POST['first_name'],FILTER_SANITIZE_SPECIAL_CHARS)) : null);
-    $message_subject = (isset($_POST['message_subject']) ? filter_var($_POST['message_subject'],FILTER_SANITIZE_SPECIAL_CHARS) : null);
-    $message = (isset($_POST['message']) ? trim(filter_var($_POST['message'],FILTER_SANITIZE_SPECIAL_CHARS)) : null);
-    $ip_token_key = (isset($_POST['formtoken']) ? trim(filter_var($_POST['formtoken'],FILTER_SANITIZE_SPECIAL_CHARS)) : null);
-    // Google Recaptcha Variable when active
-    // --------------------------------
-    $recaptcha = (isset($_POST['g-recaptcha-response']) ? $_POST['g-recaptcha-response'] : null);
     // Get ip address of the request been made from
     // --------------------------------
-    $ip_address = getIPAddress();
+    $ip_address = $db_conn->escape(getIPAddress());
     // --------------------------------
     // Get date and ouput in 20XX-DD-MM 00:00:00 format
     $today_date = output_datetime(null,"now");
+    // --------------------------------
+    $ip_db_check = $db_conn->rawQueryOne('select * from ip_recorder where ip = ?',array($ip_address)); 
+    $postVars = array('email','first_name','message','message_subject','formtoken','g-recaptcha-response');
+	if ($_POST) {
+		foreach ($postVars as $post_VarsKey) {
+			if ($post_VarsKey === "email") {
+				${$post_VarsKey} = (filter_var($_POST["{$post_VarsKey}"],FILTER_VALIDATE_EMAIL) ? $_POST["{$post_VarsKey}"] : null );
+
+			} elseif ($post_VarsKey === "g-recaptcha-response") {
+				$recaptcha = (isset($_POST["{$post_VarsKey}"]) ? $_POST["{$post_VarsKey}"] : null);
+                
+			} else {
+				${$post_VarsKey} = (isset($_POST["{$post_VarsKey}"]) ? filter_var($_POST["{$post_VarsKey}"],FILTER_SANITIZE_ENCODED) : null );
+			}
+		}
+	}
+	 
     // -------------------------------- 
     // Make sure that the IP that comes in is not null, the subject is null and token key is not null < - less then > - greater then 
-    if ($ip_address != null && $message_subject == null && $ip_token_key != null) {
-        $ip_db_check = $db_conn->rawQueryOne('select * from ip_recorder where ip = ?',array($ip_address)); 
-        // Make sure that we have a connection and the IP that is making the request is in database
-        if ($ip_db_check) {
-            // Make sure the IP is not flagged
-            if ($ip_db_check['ip'] === $ip_address && $ip_db_check['flagged'] != 1) {
-                // Make sure that the expiry date does not exceed today's date.
-                if ($ip_db_check['expire_date'] < $today_date) {
-                    $status_msg = "ERROR: EXPIRY EXCEEDED. REFRESH BROWSER.";
-                    $status = false;
-                }                 
-                // Make sure that form token matches the database token.
-                if ($ip_db_check['ip_token_key'] != $ip_token_key) {
-                    $status_msg = "ERROR: INVALID TOKEN. REFRESH BROWSER.";
-                    $status = false;
-                }   
-                // Make sure that the message check does not 
-                if ($ip_db_check['msg_sent'] > 3 ) {
-                    $status_msg = "ERROR: SUBMIT EXCEEDED.";
-                    $status = false;
-                } 
-                // Check to make sure the message elements are not malformed or missing.
-                if ($firstname == null) {
-                    $status_msg = "ERROR:FNAME\n";
-                    $status = false;
-                }
-                if ($message == null) {
-                    $status_msg .= "ERROR:MESSAGE0\n";
-                    $status = false;
-                }
-                if (str_word_count($message) > 450 || strlen($message) > 3100 ) {
-                    $status_msg .= "ERROR:MESSAGE450\n";
-                    $status = false;
-                } 
-                if (str_word_count($message) < 50 || strlen($message) < 334){
-                    $status_msg .= "ERROR:MESSAGE50\n";
-                    $status = false;
-                }
-                if (domain_exists($email,"MX") == false) {
-                    $status_msg .= "ERROR:EMAIL\n";
-                    $status = false;
-                }         
-                // If the status is still true then send out the message and update the database. 
-                if ($status != false && $ip_db_check['cookie_set'] < 7){
-                    $sendmsg = array(                          
-                        'email'=> $email,                          
-                        'message'=> $message,
-                        'firstname'=> $firstname,
-                        'time'=>$today_date
-                    );
-                    if(deploymessage($sendmsg)) {
-                        $status_msg = "SUCCESS";
-                    } else {
-                        $status_msg = deploymessage($sendmsg);
-                    }
-                } elseif ($status != false && $ip_db_check['cookie_set'] > 7) {
-                    if (googleRecaptcha($recaptcha,$ip_address)) {
-                        $sendmsg = array(                          
-                            'email'=> $email,                          
-                            'message'=> $message,
-                            'firstname'=> $firstname,
-                            'time'=>$today_date
-                        );
-                        if(deploymessage($sendmsg)) {
-                            $status_msg = "SUCCESS";
-                        } else {
-                            $status_msg = deploymessage($sendmsg);
-                        }
-                    } else {
-                        $status_msg .= googleRecaptcha($recaptcha,$ip_address)."\n";
-                        $flagged = array( 
-                            'flagged'=> $db_conn->inc(1),
-                        );
-                        $db_conn->where('ip',$ip_address);
-                        /* Return error if failed */
-                        if(!$db_conn->update('ip_recorder',$flagged)){
-                            $status_msg .= 'update failed: ' . $db_conn->getLastError();  
-                        }
-                    }
-                } 
-            }
-            
+    if ($ip_address != null && empty($message_subject) && $formtoken != null) {
+        // Make sure the IP that is making the request is in database and not flagged
+        if ($ip_db_check['ip'] === $ip_address && $ip_db_check['flagged'] != 1 || ($ip_db_check['ip'] != $ip_address) {
+
+
+
+
+
+    
         } else {
-            $status_msg = "ERROR: ".$db_conn->getLastError();
+            // rerturn 403 if IP is flagged
+            header("HTTP/1.0 403 Forbidden");
         }
     } else {
-        $status_msg = "ERROR: NULL VALUES";
+        $status_msg = "ERROR:NULL";
     }   
+    // exit($status_msg);
+    $status_msg = json_encode($status_msg);
     exit($status_msg);
 ?> 

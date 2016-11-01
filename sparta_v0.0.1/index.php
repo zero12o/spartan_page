@@ -135,7 +135,7 @@ $ipFormToken = array(
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+            
 	<section id="title_section" class="title module">
 	        <div id="main-menu" class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
@@ -172,15 +172,19 @@ $ipFormToken = array(
 	<section id="about" class="about content module">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-		            <h2>A few words about me.</h2> 
-		            <h4>I am a web developer with a main focus in design minimalism. Its my obsession.</h4>
-					<p>I am a web designer that is based in Florida. My main focus is design minimalism. Its my obsession.</p>
+				<div class="col-md-10 center-block">
+					<article>
+						<div class="content-item">
+				            <h2>A few words about me.</h2> 
+				            <h4>I am a web developer with a main focus in design minimalism. Its my obsession.</h4>
+							<p>I am a web designer that is based in Florida. My main focus is design minimalism. Its my obsession.</p>
 
-					<p>I create beautiful, usable, professional websites using best practice accessibility and the latest W3C web standards guidelines, resulting in semantic and SEO friendly webpages. All my websites are lovingly hand coded in HTML 5 and CCS3.</p>
-					<p>In my toolbox I use Photoshop, Illustrator, and Fireworks for layout and asset building. Dreamweaver for email layout and coding. Node and Grunt for page building and modularization for different setups with the very kind help of sublime text 3. Finally, I use frameworks like bootstrap to help me in my quest to make outstanding looking websites.</p>
-					<p>I am currently have introductory practical knowledge of php and javascript so I can create wordpress themes or more interesting looking pages. Though my two year plan that I have will have me circling around C++ or more focus direction with javascript.</p>
-					<p>I have practical knowledge  with Infusionsoft to create small to large scale marketing funnels. I worked with the following ESP API's Get Response, Infusionsoft, Mail Chimp and Ongage.  So, if you need help with getting your marketing funnel in order or need a custom API solution. I can be more than happy to help out.</p>
+							<p>I create beautiful, usable, professional websites using best practice accessibility and the latest W3C web standards guidelines, resulting in semantic and SEO friendly webpages. All my websites are lovingly hand coded in HTML 5 and CCS3.</p>
+							<p>In my toolbox I use Photoshop, Illustrator, and Fireworks for layout and asset building. Dreamweaver for email layout and coding. Node and Grunt for page building and modularization for different setups with the very kind help of sublime text 3. Finally, I use frameworks like bootstrap to help me in my quest to make outstanding looking websites.</p>
+							<p>I am currently have introductory practical knowledge of php and javascript so I can create wordpress themes or more interesting looking pages. Though my two year plan that I have will have me circling around C++ or more focus direction with javascript.</p>
+							<p>I have practical knowledge  with Infusionsoft to create small to large scale marketing funnels. I worked with the following ESP API's Get Response, Infusionsoft, Mail Chimp and Ongage.  So, if you need help with getting your marketing funnel in order or need a custom API solution. I can be more than happy to help out.</p>
+						</div>
+					</article>
 				</div>
 			</div>
 		</div>
@@ -188,56 +192,54 @@ $ipFormToken = array(
 	<section id="portfolio" class="portfolio content module">
 		<div class="container">
 			<div class="row"> 
-				<div class="col-md-10 col-md-offset-1">
-					<h2>My Portfolio</h2>
-					<p>Here are some of my projects that I had worked on. Take a look and let me know what you think. I'll try to send updates on twitter if I have anything new that I have created that I want to add to my portfolio. You can also find me in codepen. I'll be doing some unique experiments on there.</p>
+				<div class="col-md-10 center-block">
+					<article>
+						<h2>My Portfolio</h2>
+						<p>Here are some of my projects that I had worked on. Take a look and let me know what you think. I'll try to send updates on twitter if I have anything new that I have created that I want to add to my portfolio. You can also find me in codepen. I'll be doing some unique experiments on there.</p>
+					</article>
 				</div>
 			</div>
+		</div>
+		<div class="container portfolio-elememts">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row">
-						<div class="col-md-4" >
+						<div class="col-md-4 col-sm-6" >
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/world-chaos.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
-						<div class="col-md-4" >
+						<div class="col-md-4 col-sm-6" >
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/theweeklyoptionstrader.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
-						<div class="col-md-4" >
+						<div class="col-md-4 col-sm-6" >
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/24hourprofit.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="row">
-						<div class="col-md-4" >
+						<div class="col-md-4 col-sm-6" >
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/theweeklyoptionstrader_unsub.png" alt="Opt-Out Page: The Weekly Options Trader" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
-						<div class="col-md-4" >
+						<div class="col-md-4 col-sm-6" >
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/investing-lab_salespage.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
 								</figure>
 							</div>
 						</div>
-						<div class="col-md-4" >
+						<div class="col-md-4 col-sm-6" >
 							<div class="waypoint hidden">
 								<figure>
 									<img src="assets/img/investingsignal_member_subscribe_minsite.png" alt="Investing Signal member subscribe minsite" width="380" height="275" class="img-responsive" />
@@ -252,11 +254,12 @@ $ipFormToken = array(
 <section id="contact" class="contact content module">
 		<div class="container">
 			<div class="row"> 
-				<div class="col-md-10 col-md-offset-1">
+				<div class="col-md-10 center-block">
 					<h2>Contact Me</h2>
-					<p>Message me with any questions or inquires that you made have about what I can do for you or to simply chat but please allow me at least 24-48 hours to respond back to you. <a class="hidden" href="http://www.mobiuszero.com/hp/hungry.php"><!-- FRoZXJlIGlzIG5vIHBlYWNlIGFtb25nIG1lbiwgb25seSBiZWVyIGNhbiBkbyB0aGF0ISA= --></a></p> 
-
-					<div class="center-block clearfix col-md-9">
+					<p>Message me with any questions or inquires that you made have about what I can do for you or to simply chat but please allow me at least 24-48 hours to respond back to you. <a class="hidden" href="http://www.mobiuszero.com/hp/hungry.php"><!-- FRoZXJlIGlzIG5vIHBlYWNlIGFtb25nIG1lbiwgb25seSBiZWVyIGNhbiBkbyB0aGF0ISA= --></a></p>
+				</div>
+				<div class="col-md-12 contact_form">
+					<div class="col-md-7">
 						<form role="form" method="POST" action="assets/inc/process.php" accept-charset="UTF-8" id="contactmeform">
 							<div class="first_name_field form-group">
 								<label for="first_name">First Name:</label>
@@ -297,19 +300,21 @@ $ipFormToken = array(
 							<h4 class="text-center">Your Message Has Been Sent<span class="lead">!</span></h4>
 						</div>
 					</div>
-					<h4 class="text-center">Come find me in the social areas of the internet!</h4>
-					<ul class="text-center social_media">
-                        <li><a class="social-media-links github" href="https://github.com/zero12o" target="_blank"><i class="fa fa-github"></i></a></li>
-                        <li><a class="social-media-links linkedin" href="https://www.linkedin.com/in/carlos-vargas-16b41b107" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
-                        <li><a class="social-media-links googleplus" href="https://plus.google.com/u/1/109886193538627695155/about" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
-                        <li><a class="social-media-links twitter" href="https://twitter.com/mobiusZero12o" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
-                        <li><a class="social-media-links codepen" href="http://codepen.io/mobius_zero/" target="_blank"><i class="fa fa-codepen"></i></a></li>
-					</ul>
+					<div class="col-md-5">
+						<h4 class="text-center">Come find me in the social areas of the internet!</h4>
+						<ul class="text-center social_media">
+	                        <li><a class="social-media-links github" href="https://github.com/zero12o" target="_blank"><i class="fa fa-github"></i></a></li>
+	                        <li><a class="social-media-links linkedin" href="https://www.linkedin.com/in/carlos-vargas-16b41b107" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
+	                        <li><a class="social-media-links googleplus" href="https://plus.google.com/u/1/109886193538627695155/about" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
+	                        <li><a class="social-media-links twitter" href="https://twitter.com/mobiusZero12o" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
+	                        <li><a class="social-media-links codepen" href="http://codepen.io/mobius_zero/" target="_blank"><i class="fa fa-codepen"></i></a></li>
+						</ul>
+					</div>					
 				</div>
 			</div>
 		</div>
 	</section>  
-        <footer>
+            <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

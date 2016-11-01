@@ -119,7 +119,7 @@
 	@each $heading, $value in $heading_sizes {
 		h#{$heading}, .h#{$heading} {
 			font-size: em($value);
-			color: lighten($base_fontColor, 23%);
+			color: lighten($base_fontColor, 10%);
 		}
 	}
 	// font styles
@@ -132,7 +132,8 @@
 	    overflow-x: hidden;
 	}
 	.module {
-		@include padding(2.5% null 2.5% null);
+		width: 100%;
+		@include padding(2.5% null 4.5% null);
 	}
 // title section  
 	section.title { 
@@ -150,7 +151,8 @@
 	}
 // portfolio section 
 	section.portfolio {
-		background-color: $base_bgcolor;
+		background-color: darken($base_bgcolor, 5%); 
+		background-attachment: fixed;
 	}
 //  blockquote 
 blockquote {
@@ -230,13 +232,13 @@ blockquote {
 // 4. Footer 
 // =========================
 	footer {
-		@include padding (3% null 2% null);
+		@include padding (1.25% null 1.25% null);
 		color: $sub_fontColor;
 		background: $base_bgcolor;
 		& ul {
 			list-style: none;
-			padding-left: 0;
-			padding-right: 0;
+			padding: 0;
+			margin: 0;
 		}
 		& ul li {
 			display: inline;
@@ -282,7 +284,7 @@ blockquote {
 // 6. Portfolio Section
 // =========================
 	section.portfolio {
-		padding-bottom: em(60px);
+		background-image: url("../img/graphy-dark.png");
 		& h2 {
 			@include mq($from: mobile, $until: desktop){
 				font-size: em(30);
@@ -291,31 +293,8 @@ blockquote {
 		& div.col-md-10, div.col-md-10 h2 {
 			color: $sub_fontColor;
 		}
-		& .row:nth-of-type(2) {
-			margin-top: em(40px);
-			@include mq($from: mobile, $until: desktop){
-				margin-top: em(0.5px);
-			}
-			& div.col-md-4 {
-				padding-left: 5px;
-				padding-right: 5px;
-				@include mq($from: mobile, $until: desktop){
-					margin-top: em(10px);
-				}
-			}
-		}
-		& .row:nth-of-type(3) {
-			margin-top: em(10px);
-			@include mq($from: mobile, $until: desktop){
-				margin-top: em(0.5px);
-			}
-			& div.col-md-4 {
-				padding-left: 5px;
-				padding-right: 5px;
-				@include mq($from: mobile, $until: desktop){
-					margin-top: em(10px);
-				}
-			}
+		& .container:nth-of-type(2){
+			margin-top: 2.5%;
 		}
 
 		& div.portfolio-bloc {
@@ -341,6 +320,15 @@ blockquote {
 					@include opacity(1);
 					@include transform(translateY(0px));
 				}	
+			}
+		}
+		& .portfolio-elememts {
+			& div.row, div.row div.col-md-12, div.col-md-12 * {
+				margin: 0;
+				padding: 0;
+			}
+			& div.col-md-4 {
+				padding: 2.5px;
 			}
 		}
 	}
@@ -537,8 +525,15 @@ blockquote {
 		display: none;
 	}
 	section.contact {
+	    padding-top: 3.25%;
+		& .contact_form {
+			margin-top: 2.5%;
+		}
 		& h4 {
 			margin-top: 3.5%;
+			@include mq($from: mobile, $until: tablet ){
+				margin-top: 10%;
+			}
 		}
 		& .lead {
 			font-size: em(23px);
@@ -558,19 +553,19 @@ blockquote {
 					color: lighten($base_fontColor,25%);
 					transition: all 0.5s;
 					-webkit-transition: all 0.5s;
-					&.github:hover {
+					&.github {
 						color: #913399;
 					}
-					&.linkedin:hover {
+					&.linkedin {
 						color: #0077B5;
 					}
-					&.googleplus:hover {
+					&.googleplus {
 						color: #dd4b39;
 					}
-					&.twitter:hover {
+					&.twitter {
 						color: #3cf;
 					}
-					&.codepen:hover {
+					&.codepen {
 						color: #000;
 					}
 				}
@@ -608,6 +603,9 @@ blockquote {
 // =========================
 	section.content {
 		& h2 {
+			font-size: em(60px);
+		}
+		& h2 {
 			@include mq($from: mobile, $until: desktop){
 				font-size: em(30);
 			}
@@ -615,6 +613,15 @@ blockquote {
 		& h4 {
 			@include mq($from: mobile, $until: desktop){
 				font-size: em(20);
+			}
+		}
+		&.about article .content-item {
+			display: table;	
+			width: 100%;
+			height: 90%;
+			& .content-item {
+		 		display: table-cell;
+		 		vertical-align: middle;
 			}
 		}
 	}
