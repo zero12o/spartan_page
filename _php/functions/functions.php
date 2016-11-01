@@ -80,25 +80,18 @@ function googleRecaptcha($gRecaptchaResponse, $remoteIp){
 
 /**
 * output datetime
+*
+* @param string $type In use to see if the value needs to unix or timestamp format
+* @param string $daterelativeformat used for the strtotime function
 * @return datetime
-* $set_date->setTimestamp(strtotime("now")) "+5 minute";
-  $today_date = $set_date->format('Y-m-d H:i:s');
 */
-function output_datetime($type = null,$format = null,$daterelativeformat){
+function output_datetime($type = null,$daterelativeformat){
   /* Create dateTime object $dateformat*/
   $set_date = new DateTime(); 
   /* Create dateTime object for expiration date */
   $set_date->setTimestamp(strtotime($daterelativeformat));
   if ($type != "unix"){
-    if ($format == "dayMonDateSuffix") {
-        $return_date = $set_date->format('l, F dS');
-    } elseif ($format == "monDayYearTime"){
-        $return_date = $set_date->format('F d, Y H:i:s');
-    } elseif ($format == "timeMerTZ"){
-        $return_date = $set_date->format('g A')." EASTERN TIME";
-    } elseif ($format == "std") {
-        $return_date = $set_date->format('Y-d-m H:i:s');
-    }
+    $return_date = $set_date->format('Y-m-d H:i:s');
   } elseif ($type === "unix")  {
     $return_date = $set_date->format('U');
   }

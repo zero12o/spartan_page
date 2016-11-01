@@ -28,14 +28,14 @@
 								<div class="help-block with-errors"></div>
 							</div>
 							<?php 
-								foreach ($ipFormToken as $token_name => $token_value) {
-									echo "<input class=\"hidden\" type=\"text\" name=\"$token_name\" value=\"$token_value\" />\n";
-								}
-								/* Deploy Google Recaptcha */
-								if ($deployRecaptcha) {
-									echo "<div class=\"g-recaptcha\" data-sitekey=\"6LdT7ikTAAAAAJQR7u4LS6aVoWJmd2G9CVloaZYf\"></div>";
-									echo "<script src='https://www.google.com/recaptcha/api.js'></script>";
-								} 
+								// foreach ($ipFormToken as $token_name => $token_value) {
+								// 	echo "<input class=\"hidden\" type=\"text\" name=\"$token_name\" value=\"$token_value\" />\n";
+								// }
+								// /* Deploy Google Recaptcha */
+								// if ($deployRecaptcha) {
+								// 	echo "<div class=\"g-recaptcha\" data-sitekey=\"6LdT7ikTAAAAAJQR7u4LS6aVoWJmd2G9CVloaZYf\"></div>";
+								// 	echo "<script src='https://www.google.com/recaptcha/api.js'></script>";
+								// } 
 							?>
 							<button type="submit" id="submitbutton" class="btn btn-lg btn-primary btn-block">Contact Me Now</button> 
 						</form>	 
