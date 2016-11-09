@@ -136,7 +136,7 @@ $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($
 	<section id="title_section" class="title module">
 		<div id="main-menu" class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-        <div class="navbar-header">
+        <div class="navbar-header"> 
             <a class="navbar-brand logo" href="#title_section" data-menu="main-menu-link">&#60;MobiusZero &#92;&#62;</a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".mainmenu">
             <span class="sr-only">Toggle navigation</span>
@@ -197,59 +197,62 @@ $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($
 				</div>
 			</div>
 		</div>
-		<div class="container portfolio-elememts">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row">
-						<div class="col-md-4 col-sm-6" >
-							<div class="waypoint hidden">
-								<figure>
-									<img src="assets/img/world-chaos.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
-								</figure>
+						<div id="portifolioImgHolder" class="masonry-elememts">
+							<div class="masonry-resize col-xs-6 col-sm-4 col-md-4"></div>
+							<div class="masonry-item col-xs-6 col-sm-4 col-md-4">
+								<div class="waypoint portfolio-bloc ">
+									<figure>
+										<img src="assets/img/portfolio/world-chaos.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
+									</figure>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-4 col-sm-6" >
-							<div class="waypoint hidden">
-								<figure>
-									<img src="assets/img/theweeklyoptionstrader.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
-								</figure>
+							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
+								<div class="waypoint portfolio-bloc ">
+									<figure>
+										<img src="assets/img/portfolio/theweeklyoptionstrader.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
+									</figure>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-4 col-sm-6" >
-							<div class="waypoint hidden">
-								<figure>
-									<img src="assets/img/24hourprofit.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
-								</figure>
+							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
+								<div class="waypoint portfolio-bloc ">
+									<figure>
+										<img src="assets/img/portfolio/24hourprofit.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
+									</figure>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-4 col-sm-6" >
-							<div class="waypoint hidden">
-								<figure>
-									<img src="assets/img/theweeklyoptionstrader_unsub.png" alt="Opt-Out Page: The Weekly Options Trader" width="380" height="275" class="img-responsive" />
-								</figure>
+							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
+								<div class="waypoint portfolio-bloc ">
+									<figure>
+										<img src="assets/img/portfolio/theweeklyoptionstrader_unsub.png" alt="Opt-Out Page: The Weekly Options Trader" class="img-responsive msny" />
+									</figure>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-4 col-sm-6" >
-							<div class="waypoint hidden">
-								<figure>
-									<img src="assets/img/investing-lab_salespage.png" alt="Opt-in Page: World Chaos" width="380" height="275" class="img-responsive" />
-								</figure>
+							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
+								<div class="waypoint portfolio-bloc ">
+									<figure>
+										<img src="assets/img/portfolio/investing-lab_salespage.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
+									</figure>
+								</div>
 							</div>
+							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
+								<div class="waypoint portfolio-bloc ">
+									<figure> 
+										<img src="assets/img/portfolio/investingsignal_member_subscribe_minsite.png" alt="Investing Signal member subscribe minsite" class="img-responsive msny" />
+									</figure>
+								</div>
+							</div>							
 						</div>
-						<div class="col-md-4 col-sm-6" >
-							<div class="waypoint hidden">
-								<figure>
-									<img src="assets/img/investingsignal_member_subscribe_minsite.png" alt="Investing Signal member subscribe minsite" width="380" height="275" class="img-responsive" />
-								</figure>
-							</div>
-						</div>
-					</div>
+					</div> 
 				</div>
 			</div>
 		</div>
 	</section>   
 <section id="contact" class="contact content module">
-		<div class="container">
+		<div class="container"> 
 			<div class="row"> 
 				<div class="col-md-10 center-block">
 					<h2>Contact Me</h2>
@@ -260,41 +263,50 @@ $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($
 						<form role="form" method="POST" action="assets/inc/process.php" accept-charset="UTF-8" id="contactmeform">
 							<div class="first_name_field form-group">
 								<label for="first_name">First Name:</label>
-								<input id="first_name" name="first_name" type="text" class="form-control" placeholder="Enter Your First Name" value="" required />
+								<div class="input-group">
+									<span class="input-group-addon" id="personIcon"><i class="fa fa-user" aria-hidden="true"></i></span>
+									<input id="first_name" name="first_name" type="text" class="form-control" placeholder="Enter Your First Name" value="" required aria-describedby="personIcon" />
+								</div>
 								<div class="help-block with-errors"></div>
 							</div>
 							<div class="email_field form-group">
 								<label for="email">Email:</label>
-								<input id="email" name="email" type="email" class="form-control" placeholder="Enter Your Email Address - user@example.com" value="" required  />
+								<div class="input-group">
+									<span class="input-group-addon" id="emailIcon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+									<input id="email" name="email" type="email" class="form-control" placeholder="Enter Your Email Address - user@example.com" value="" required aria-describedby="emailIcon" />
+								</div>
 								<div class="help-block with-errors"></div>
 							</div>
-							<div class="message_field form-group">
+							<div class="message_subject_field form-group">
 								<label for="message-subject" class="sr-only">Subject:</label>
 								<input id="message-subject" name="message_subject" type="text" class="form-control" placeholder="" value="" />
 							</div>
 							<div class="message_field form-group">
-								<label for="message">Message:</label>
-								<textarea name="message" id="message" class="form-control" placeholder="Write Your Message Or Inquiries Here. Up To 450 Words Max." rows="10" value="" required></textarea>
-								<div class="help-block with-errors"></div>
+							<label for="message">Message:</label>
+							<div class="input-group">
+								<span class="input-group-addon" id="messageIcon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+								<textarea name="message" id="message" class="form-control" placeholder="Write Your Message Or Inquiries Here. Up To 450 Words Max." rows="10" value="" required aria-describedby="messageIcon"></textarea> 
+							</div>
+							<div class="help-block with-errors"></div>
 							</div>
 							<?php 
-								// foreach ($ipFormToken as $token_name => $token_value) {
-								// 	echo "<input class=\"hidden\" type=\"text\" name=\"$token_name\" value=\"$token_value\" />\n";
-								// }
-								// /* Deploy Google Recaptcha */
-								// if ($deployRecaptcha) {
-								// 	echo "<div class=\"g-recaptcha\" data-sitekey=\"6LdT7ikTAAAAAJQR7u4LS6aVoWJmd2G9CVloaZYf\"></div>";
-								// 	echo "<script src='https://www.google.com/recaptcha/api.js'></script>";
-								// } 
+								foreach ($ipFormToken as $token_name => $token_value) {
+									echo "<input class=\"hidden\" type=\"text\" name=\"$token_name\" value=\"$token_value\" />\n";
+								}
+								/* Deploy Google Recaptcha */
+								if ($deployRecaptcha) {
+									echo "<div class=\"g-recaptcha\" data-sitekey=\"6LdT7ikTAAAAAJQR7u4LS6aVoWJmd2G9CVloaZYf\"></div>";
+									echo "<script src='https://www.google.com/recaptcha/api.js'></script>";
+								} 
 							?>
 							<button type="submit" id="submitbutton" class="btn btn-lg btn-primary btn-block">Contact Me Now</button> 
 						</form>	 
 						<div id="statuscontrol" class="text-center alert alert-danger text-capitalize hidden"></div>
-						<div id="thesuccessmessage" class="thesuccessmessage hidden">
-							<h2 class="text-center">
-								<i class="fa fa-4x fa-check-circle" aria-hidden="true"></i>
-							</h2>
-							<h4 class="text-center">Your Message Has Been Sent<span class="lead">!</span></h4>
+						<div id="robotStatusMsg" class="robotStatusMsg hidden">
+							<div class="robotThoughtCloud">
+								<h4 class="text-center">Thanks I will message you as soon as I can.</h4>
+							</div>
+							<img src="assets/img/statusBot.svg" alt="robotStatusMsg" class="img-responsive center-block" />
 						</div>
 					</div>
 					<div class="col-md-5">
@@ -323,7 +335,7 @@ $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($
             </div> 
         </footer>
         <!-- bootstrap plugins -->
-        <script src="assets/js/scripts.min.js?v=3.3.5"></script>
+        <script src="assets/js/scripts.min.js?v=3.3.7"></script>
         
     </body>
 </html>

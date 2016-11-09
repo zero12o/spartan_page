@@ -47,7 +47,6 @@
 	$base_fontColor: #212121;
 	$sub_fontColor: #ffffff; 
 	$heading_fontColor: #1c1c1c;
-	$text-danger_fontColor: #d90000;
 //  - Bullet color
 	$fa-bullets_check_color: #128915;
 
@@ -61,6 +60,7 @@
 		font-family: $heading_font-family;
 		font-weight: 900;
 	    white-space: normal;
+	    border-radius: 2px;
 		@include mq($from: mobile,$until:tablet){
 			font-size: em(18);
 		}
@@ -96,6 +96,7 @@
 		font-size: 16px;
 		color: lighten($base_fontColor, 20%);
 		font-kerning: normal;
+		position: relative;
 	}
 	p {
 		font-size: em(18);
@@ -295,7 +296,9 @@ blockquote {
 		& .container:nth-of-type(2){
 			margin-top: 2.5%;
 		}
-
+		& div.masonry-item {
+			margin-bottom: 5px;
+		}
 		& div.portfolio-bloc {
 			color: $sub_fontColor;
 			position: relative;
@@ -306,44 +309,39 @@ blockquote {
 			margin: auto;
 			list-style: none;
 			overflow: hidden;
-		    animation-name: fade_in;
-			animation-duration: 650ms;
-			animation-timing-function: ease-in;
-
-			@include keyframes(fade_in) {
-				0% {
-					@include opacity(0);
-					@include transform(translateY(75px));
-				}
-				100% {
-					@include opacity(1);
-					@include transform(translateY(0px));
-				}	
-			}
 		}
-		& .portfolio-elememts {
+		& .masonry-elememts {
 			& div.row, div.row div.col-md-12, div.col-md-12 * {
 				margin: 0;
 				padding: 0;
 			}
-			& div.col-md-4 {
+			& div.col-md-4.masonry-resize, div.col-md-4.masonry-item {
 				padding: 2.5px;
 			}
+
 		}
 	}
 // 7. Main Menu
 // =========================
 	.navbar {
         border-radius: 0px;
-        padding-top: 1.25%;	
-        padding-bottom: 1.25%;
+        padding-top: 0.25%;	
+        padding-bottom: 0.25%;
         margin-bottom: 0;
+        font-family: $heading_font-family;
+        font-size: em(18px);
+	    font-weight: 700;
         & .navbar-right {
         	margin-right: 0;
         }
 		& .logo.navbar-brand {
 			display: none;
+			line-height: 1.33;
 		}
+		& .navbar-nav.nav {
+			position: relative;
+			top: 0.75em;
+		} 
     }
     .stickly-navbar {
 	    position: fixed;
@@ -352,10 +350,12 @@ blockquote {
 	    & .logo.navbar-brand {
 	    	display: block;
 			font-size: em(35px);
+			line-height: 1.33;
 			@include mq($from: mobile, $until: desktop){
 			    padding-top: 3.25%;
 			    font-size: 1.5625em;
 			}
+			height: inherit;
 			padding-top: em(5.5px);
 			margin-left: 0;
 	    	font-family: 'Fredoka One','Roboto',san-serif;
@@ -366,11 +366,12 @@ blockquote {
     }
 	.navbar-default {
 		position: absolute;
-		width: 100%;
+		width: 100%; 
 		z-index: 100;
-	    background-color: rgba($base_bgcolor, 0.05);
-	    border-color: rgba($base_bgcolor, 0.25);
-	    @include transition(all 600ms ease-in-out);
+		border: none;
+		border-color: rgba(0,0,0,0.00);
+	    background-color: rgba(0,0,0,0.00);
+	    @include transition(all 100ms ease-in-out);
         & ul.navbar-nav li a {
         	color: $sub_fontColor;
         	text-decoration: none;
@@ -378,18 +379,6 @@ blockquote {
         & .navbar-toggle {
         	border-color: inherit;
         }
-        & ul.social_media {
-			border-left: none;
-    		line-height: 0;
-		    padding-left: 3%;
-		    & li {
-		    	display: inline;
-		    }
-			& a {
-				font-size: em(18px);
-			}
-
-		}
 	}
 	.navbar-content-view {
 		background-color: lighten($base_bgcolor, 100%);
@@ -519,7 +508,7 @@ blockquote {
 // =========================
 	#urldomain, #message-subject {
 		display: none;
-	}
+	}	
 	section.contact {
 	    padding-top: 3.25%;
 		& .contact_form {
@@ -567,11 +556,6 @@ blockquote {
 				}
 			} 
 		}
-		& .thesuccessmessage {
-			& i.fa-check-circle {
-				color: #2BBF13;
-			}
-		}
 		& .help-block ul li {
 			font-size: em(18px);
 			font-weight: 700;
@@ -594,13 +578,119 @@ blockquote {
 				font-size: em(22px);
 			}
 		}
+		& .g-recaptcha {
+		    display: block;
+		    margin-bottom: 15px;
+		}
+		& {
+			.input-group-addon {
+				border-radius: 0px;
+				background: none;
+				border: 0;
+
+			}
+			.form-control {
+				border: none;
+				border-left: 0;
+				border-right: 0;
+				border-bottom: 0;
+				border-top: 0;
+				-webkit-box-shadow: none;
+				box-shadow: none;
+				border-radius: 2px;
+				&:focus {
+					-webkit-box-shadow: none;
+					box-shadow: none;
+				}
+			}
+			& .form-group {
+				&.has-error.has-danger {
+					& label {
+						color: $state-danger-text;
+					}
+					& .input-group {
+						border-style: solid;
+						border-width:  1px;
+						border-color: $state-danger-text;
+					}
+					& i.fa {
+						border-right: 1px solid $state-danger-text;
+					}
+				}
+			}
+			textarea.form-control {
+				padding-top: 15px;
+			}
+			.message_field i.fa {
+				height: 12em;
+			}
+			.message_field i.fa::before {
+				position: relative;
+				top: 50%;
+			}
+			#statuscontrol {
+				margin: 0;
+			}
+			form {
+				margin-bottom: 15px;
+				& .input-group {
+					border: 1px solid #d6d6d6;
+				}
+				& label {
+					display: block;
+				}
+				& i.fa {
+					border-right: 1px solid #d6d6d6;
+					padding-right: 15px;
+				}
+				& button.btn i.fa {
+					border: none;
+					padding: 0;
+				}
+			}
+		}
+	}
+	.robotStatusMsg {
+		& .robotThoughtCloud {
+			background: lighten($base_bgcolor, 80%);
+			padding: 6%;
+			margin-bottom: 10%;
+			border-radius: 5px;
+			width: 75%;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+			transition: all 500ms;
+			& h1, h2, h3, h4, h5, h6 {
+				margin-bottom: 0;
+				margin-top: 0;
+			}
+			@include mq($from: mobile, $until: tablet){
+				width: 100%;
+				margin-bottom: 15%;
+			}
+		} 
+		& .robotThoughtCloud::after {
+			content: "";
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 60px 60px 50px;
+			border-color: transparent lighten($base_bgcolor, 80%) transparent transparent;  
+			position: absolute;
+			top: 86%;
+			left: 25%;
+			@include mq($from: mobile, $until: tablet){
+				top: 87%;
+			}
+		}
 	}
 // 10. Content Section
 // =========================
 	section.content {
 		& h2 {
 			font-size: em(60px);
-		}
+		}  
 		& h2 {
 			@include mq($from: mobile, $until: desktop){
 				font-size: em(30);
@@ -625,4 +715,10 @@ blockquote {
 // ************************
 .center-block {
 	float: none;
+}
+.hidden {
+	display: none;
+}
+.show {
+	display: block;
 }

@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 
             },
             js: {
-                src: ['bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js','bower_components/waypoints/lib/jquery.waypoints.min.js','bower_components/smooth-scroll/dist/js/smooth-scroll.min.js','bower_components/bootstrap-validator/dist/validator.min.js','bower_components/masonry/dist/masonry.pkgd.min.js','_js/*.js'],
+                src: ['bower_components/jquery/dist/jquery.min.js','bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js','bower_components/waypoints/lib/jquery.waypoints.min.js','bower_components/smooth-scroll/dist/js/smooth-scroll.min.js','bower_components/bootstrap-validator/dist/validator.min.js','bower_components/imagesloaded/imagesloaded.pkgd.min.js','bower_components/masonry/dist/masonry.pkgd.min.js','bower_components/jquery_lazyload/jquery.lazyload.js','_js/*.js'],
                 dest:'sparta_v0.0.1/assets/js/scripts.min.js'
             }
         },

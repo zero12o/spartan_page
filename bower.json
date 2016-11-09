@@ -9,7 +9,8 @@
   "dependencies": {
     "bootstrap-sass-official": "3.3.5",
     "font-awesome": "fontawesome#~4.4.0",
-    "masonry": "^4.1.1"
+    "masonry": "^4.1.1",
+    "imagesloaded": "^4.1.1"
   },
   "private": true,
   "devDependencies": {
