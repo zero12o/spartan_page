@@ -1,0 +1,53 @@
+								// checking the directory path is correct
+								// $scannedDir = scandir($portfolioImageDir);
+								// print_r($scannedDir);
+								
+								// if (is_dir($portfolioImageDir)){
+								//   if ($dh = opendir($portfolioImageDir)){
+								//     while (($file = readdir($dh)) !== false){
+								// 	      $images[] = $file;
+								//     }
+								//     closedir($dh);
+								//     // print_r($images);
+								//     // Do a grep on all the files in the directory and make sure that they are png,svg,gif or jpg
+								//     $findImages = preg_grep("/^.*(\.[Jj][Pp][Gg]|\.[Ss][Vv][Gg]|\.[Gg][Ii][Ff]|\.[Jj][Pp][Ee][Gg]|\.[Pp][Nn][Gg])$/", $images);
+
+								//     foreach ($findImages as $key => $value) {
+								// 	    $imgName = explode(".", $value);
+								// 	    echo "<div class=\"masonry-item col-xs-12 col-sm-6 col-md-4\">";
+								// 	    echo "<div class=\"waypoint portfolio-bloc \">";
+								// 	    echo "<figure>";
+								//     	echo "<img src=\"../img/portfolio/$value\" alt=\"{$imgName[0]}\" class=\"img-responsive msny\" />";
+								//     	echo "<h4 class=\"portfolioTitle\">The Title</h4>";
+								// 	    echo "<figcaption>";
+								//     	echo "<span class=\"portfolioLearnMore\"><i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i> Learn More</span>";
+								//     	echo "<a href=\"#{$imgName[0]}\" data-toggle=\"modal\" data-target=\"#{$imgName[0]}\"></a>";
+								//     	echo "</figcaption>";
+								// 	    echo "</figure>";
+								//     	echo "</div>";
+								//     	echo "</div>";
+								//     }
+								//   }
+								// } else {
+								// 	echo "Portfolio Folder Is Missing!";
+								// }
+
+
+								
+									// checking the directory path is correct
+								$scannedDir = scandir($portfolioImageDir);
+								
+								if (is_dir($portfolioImageDir)){
+								  if ($dh = opendir($portfolioImageDir)){
+								    while (($file = readdir($dh)) !== false){
+									      $images[] = $file;
+								    }
+								    closedir($dh);
+								    // print_r($images);
+								    // Do a grep on all the files in the directory and make sure that they are png,svg,gif or jpg
+								    $images = preg_grep("/^.*(\.[Jj][Pp][Gg]|\.[Ss][Vv][Gg]|\.[Gg][Ii][Ff]|\.[Jj][Pp][Ee][Gg]|\.[Pp][Nn][Gg])$/", $images);
+								    print_r($images);
+								  }
+								} else {
+									echo "Portfolio Folder Is Missing!";
+								}

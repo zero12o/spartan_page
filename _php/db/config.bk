@@ -1,4 +1,6 @@
 host = localhost
-username = mobius_formmast
-password = ?fH@QRzBga*aKB
-dbname = mobius_form_submit
+username = mobius_zero
+password = gP&!CE~tVe6z
+usernameAddPortfolio = mobius_zero
+passwordAddPortfolio = gP&!CE~tVe6z
+dbname = mobius_site_data

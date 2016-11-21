@@ -1,18 +1,31 @@
-<!-- Signup Form -->
-        <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+<!-- Modal -->
+<div class="modal fade" id="portfolioItemDisplay" data-id="" tabindex="-1" role="dialog" aria-labelledby="portfolioItem">
+  <div class="modal-dialog full-page-dialog" role="document">
+    <div class="modal-content">
+      <div id="modalOverlay" class="modalOverlay">
+        <h3 class="modalStatusMsg"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></h3>
+      </div>
+        <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times fa-2x" aria-hidden="true"></i></button>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="portfolioItemInfoWrapper col-md-4">
+              <div class="col-md-11 center-block">
+                <h4 class="portfolioTitle"></h4>
+                <div class="portfolioThumbnail thumbnail">
+                  <img src="assets/img/placeHolder320x400.png" width="100%" alt="" />
+                </div>
+                <div class="portfolioMetaInfo"></div>
               </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            <div class="portfolioItemContentWrapper col-md-8">
+              <div class="col-md-10 center-block">
+                <div class="portfolioDescriptionContent"></div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>

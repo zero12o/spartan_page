@@ -106,7 +106,9 @@ $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($
     } else {
         $deployRecaptcha = true;
     }
-    
+/* =========================================================== */
+// Database table call
+$showPortfolioDBItems = $db_conn->JsonBuilder()->rawQuery("SELECT id, portfolioItemTitle, portfolioItemCategory, portfolioItemTechnology, portfolioThumbImage,portfolioItemDescription,portfolioItemCredits,portfolioItemDemoLink,portfolioThumbImage FROM portfolio_items");
 /* =========================================================== */
 ?>
 <!DOCTYPE html>
@@ -202,49 +204,14 @@ $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($
 				<div class="col-md-12">
 					<div class="row">
 						<div id="portifolioImgHolder" class="masonry-elememts">
-							<div class="masonry-resize col-xs-6 col-sm-4 col-md-4"></div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4">
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/world-chaos.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/theweeklyoptionstrader.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/24hourprofit.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/theweeklyoptionstrader_unsub.png" alt="Opt-Out Page: The Weekly Options Trader" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/investing-lab_salespage.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure> 
-										<img src="assets/img/portfolio/investingsignal_member_subscribe_minsite.png" alt="Investing Signal member subscribe minsite" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>							
+							<div class="masonry-resize col-xs-12 col-sm-6 col-md-4"></div>
+							<?php 
+								$showItems = json_decode($showPortfolioDBItems);
+								$arrLength = count($showItems);
+								for ($i = 0; $i < $arrLength; $i++) { 
+									echo "<div class=\"masonry-item col-xs-12 col-sm-6 col-md-4\"><div class=\"portfolio-bloc\"><figure> <img src=\"assets/img/portfolio/".$showItems[$i]->portfolioThumbImage."\" alt=\"".$showItems[$i]->portfolioItemTitle."\" class=\"img-responsive msny\" /><h4 class=\"portfolioTitle\">".$showItems[$i]->portfolioItemTitle."</h4><figcaption><span class=\"portfolioLearnMore\"><i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i> Learn More</span><a class=\"modal-call\" id=\"".$showItems[$i]->id."\" href=\"#portfolioItemDisplay\" data-toggle=\"modal\" data-target=\"#portfolioItemDisplay\"></a></figcaption></figure></div></div>";
+								} 
+							?>
 						</div>
 					</div> 
 				</div>
@@ -334,8 +301,41 @@ $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($
                 </div>
             </div> 
         </footer>
+        <!-- ======================  -->
+        <!-- Modal -->
+<div class="modal fade" id="portfolioItemDisplay" data-id="" tabindex="-1" role="dialog" aria-labelledby="portfolioItem">
+  <div class="modal-dialog full-page-dialog" role="document">
+    <div class="modal-content">
+      <div id="modalOverlay" class="modalOverlay">
+        <h3 class="modalStatusMsg"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></h3>
+      </div>
+        <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times fa-2x" aria-hidden="true"></i></button>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="portfolioItemInfoWrapper col-md-4">
+              <div class="col-md-11 center-block">
+                <h4 class="portfolioTitle"></h4>
+                <div class="portfolioThumbnail thumbnail">
+                  <img src="assets/img/placeHolder320x400.png" width="100%" alt="" />
+                </div>
+                <div class="portfolioMetaInfo"></div>
+              </div>
+            </div>
+            <div class="portfolioItemContentWrapper col-md-8">
+              <div class="col-md-10 center-block">
+                <div class="portfolioDescriptionContent"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- ======================  -->
         <!-- bootstrap plugins -->
         <script src="assets/js/scripts.min.js?v=3.3.7"></script>
-        
+         
     </body>
 </html>

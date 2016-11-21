@@ -106,7 +106,9 @@ $ip_check = $db_conn->rawQueryOne('select * from ip_recorder where ip=?',array($
     } else {
         $deployRecaptcha = true;
     }
-    
+/* =========================================================== */
+// Database table call
+$showPortfolioDBItems = $db_conn->JsonBuilder()->rawQuery("SELECT id, portfolioItemTitle, portfolioItemCategory, portfolioItemTechnology, portfolioThumbImage,portfolioItemDescription,portfolioItemCredits,portfolioItemDemoLink,portfolioThumbImage FROM portfolio_items");
 /* =========================================================== */
 ?>
 <!DOCTYPE html>

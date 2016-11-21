@@ -14,49 +14,14 @@
 				<div class="col-md-12">
 					<div class="row">
 						<div id="portifolioImgHolder" class="masonry-elememts">
-							<div class="masonry-resize col-xs-6 col-sm-4 col-md-4"></div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4">
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/world-chaos.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/theweeklyoptionstrader.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/24hourprofit.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/theweeklyoptionstrader_unsub.png" alt="Opt-Out Page: The Weekly Options Trader" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure>
-										<img src="assets/img/portfolio/investing-lab_salespage.png" alt="Opt-in Page: World Chaos" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>
-							<div class="masonry-item col-xs-6 col-sm-4 col-md-4" >
-								<div class="waypoint portfolio-bloc ">
-									<figure> 
-										<img src="assets/img/portfolio/investingsignal_member_subscribe_minsite.png" alt="Investing Signal member subscribe minsite" class="img-responsive msny" />
-									</figure>
-								</div>
-							</div>							
+							<div class="masonry-resize col-xs-12 col-sm-6 col-md-4"></div>
+							<?php 
+								$showItems = json_decode($showPortfolioDBItems);
+								$arrLength = count($showItems);
+								for ($i = 0; $i < $arrLength; $i++) { 
+									echo "<div class=\"masonry-item col-xs-12 col-sm-6 col-md-4\"><div class=\"portfolio-bloc\"><figure> <img src=\"assets/img/portfolio/".$showItems[$i]->portfolioThumbImage."\" alt=\"".$showItems[$i]->portfolioItemTitle."\" class=\"img-responsive msny\" /><h4 class=\"portfolioTitle\">".$showItems[$i]->portfolioItemTitle."</h4><figcaption><span class=\"portfolioLearnMore\"><i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i> Learn More</span><a class=\"modal-call\" id=\"".$showItems[$i]->id."\" href=\"#portfolioItemDisplay\" data-toggle=\"modal\" data-target=\"#portfolioItemDisplay\"></a></figcaption></figure></div></div>";
+								} 
+							?>
 						</div>
 					</div> 
 				</div>
