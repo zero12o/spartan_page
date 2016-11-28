@@ -3,3 +3,4 @@ _php/config.bk
 _php/config.ini
 node_modules/*
 .sass-cache/*
+database_settings/*

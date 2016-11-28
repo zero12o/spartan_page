@@ -4,7 +4,7 @@
 // -------------------------
 // 	Table of contents
 // 	-----------------
-//  i. imports
+//  i. imports  
 // 	ii. variables
 // 		- Background
 // 		- Font Family 
@@ -357,30 +357,26 @@ blockquote {
 		}
 		& div.portfolio-bloc figure .portfolioTitle{
 			opacity: 0;
-			transition: opacity 0.15s, top 0.35s;
-		    position: absolute;
-		    top: 90%;
-			left: 50%;
-			-webkit-transform: translateX(-50%);
-			transform: translateX(-50%);
+			transition: opacity 0.15s;
 		}
 		& div.portfolio-bloc figure:hover .portfolioTitle{
 			opacity: 1;
-			top: 25%;
 			color: #fff;
 		}
 		& div.portfolio-bloc figure span.portfolioLearnMore{
-			font-size: 18px;
+			font-size: em(18px);
 			opacity: 0;
 			transition: opacity 1.1s;
-			position: absolute;
-			top: 60%;
 			margin: auto;
-			-webkit-transform: translateX(-50%);
-			transform: translateX(-50%);
 		}
 		& div.portfolio-bloc figure:hover span.portfolioLearnMore {
 			opacity: 1;
+		}
+		& div.portfolio-bloc .metaBtn {
+		    position: absolute;
+		    top: 15%;
+		    width: 100%;
+		    padding: 15px;
 		}
 		& .masonry-elememts {
 			& div.row, div.row div.col-md-12, div.col-md-12 * {
@@ -413,6 +409,11 @@ blockquote {
 		    left: 96.5%;
 		    top: 1%;
 		    color: #393939;
+		    @include mq($from: mobile, $until: desktop){
+				left: 89.5%;
+				top: 0.5%;
+				color: #FFF;
+		    }
 		}
 		.modal-dialog.full-page-dialog .modal-content .modal-body {
 			padding: 0;

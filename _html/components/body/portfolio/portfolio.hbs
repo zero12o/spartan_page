@@ -4,7 +4,7 @@
 				<div class="col-md-10 center-block">
 					<article>
 						<h2>My Portfolio</h2>
-						<p>Here are some of my projects that I had worked on. Take a look and let me know what you think. I'll try to send updates on twitter if I have anything new that I have created that I want to add to my portfolio. You can also find me in codepen. I'll be doing some unique experiments on there.</p>
+						<p>Here are some of my projects that I had worked on. Take a look and let me know what you think. I'll update this portfolio as I get a new project or new idea that I want to announce. You can follow me on social media as well but all my projects will be previewed here.</p>
 					</article>
 				</div>
 			</div>
@@ -19,7 +19,24 @@
 								$showItems = json_decode($showPortfolioDBItems);
 								$arrLength = count($showItems);
 								for ($i = 0; $i < $arrLength; $i++) { 
-									echo "<div class=\"masonry-item col-xs-12 col-sm-6 col-md-4\"><div class=\"portfolio-bloc\"><figure> <img src=\"assets/img/portfolio/".$showItems[$i]->portfolioThumbImage."\" alt=\"".$showItems[$i]->portfolioItemTitle."\" class=\"img-responsive msny\" /><h4 class=\"portfolioTitle\">".$showItems[$i]->portfolioItemTitle."</h4><figcaption><span class=\"portfolioLearnMore\"><i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i> Learn More</span><a class=\"modal-call\" id=\"".$showItems[$i]->id."\" href=\"#portfolioItemDisplay\" data-toggle=\"modal\" data-target=\"#portfolioItemDisplay\"></a></figcaption></figure></div></div>";
+									echo "
+										<div class=\"masonry-item col-xs-12 col-sm-6 col-md-4\">
+											<div class=\"portfolio-bloc\">
+												<figure> 
+													<img src=\"assets/img/portfolio/".$showItems[$i]->portfolioThumbImage."\" alt=\"".$showItems[$i]->portfolioItemTitle."\" class=\"img-responsive msny\" />
+													<figcaption>
+														<div class=\"metaBtn\">
+															<h4 class=\"portfolioTitle\">".$showItems[$i]->portfolioItemTitle."</h4>
+															<span class=\"portfolioLearnMore\">
+																<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i> 
+																Learn More
+															</span>
+														</div>
+														<a class=\"modal-call\" id=\"".$showItems[$i]->id."\" href=\"#portfolioItemDisplay\" data-toggle=\"modal\" data-target=\"#portfolioItemDisplay\"></a>
+													</figcaption>
+												</figure>
+											</div>
+										</div>";
 								} 
 							?>
 						</div>

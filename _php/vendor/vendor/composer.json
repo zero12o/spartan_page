@@ -1,0 +1,5 @@
+{
+    "require": {
+        "verot/class.upload.php": "^0.33.0"
+    }
+}
